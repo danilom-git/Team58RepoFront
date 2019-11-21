@@ -9,12 +9,14 @@ class RootComp extends Component {
         return (
             <React.Fragment>
                 <div class="row">
+                    <div class="col">
                     <Header />
+                    </div>
                 </div>
 
                 <div class="container-fluid m-0 p-0">
-                    <div class="row flex-xl-nowrap">
-                        <div class="col-sm-8 bd-sidebar">
+                    <div class="row">
+                        <div class="col-sm-2">
                             <ClinicAdminNav />
                         </div>
                         <main class="col"></main>

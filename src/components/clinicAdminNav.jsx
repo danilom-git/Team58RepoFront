@@ -1,25 +1,25 @@
 import React, { Component } from "react";
 
 class ClinicAdminNav extends Component {
-    state = {};
+    state = {doctors: []};
     render() {
         return (
-            <nav class="col-sm-4 d-none d-md-block bg-light sidebar">
+            <nav class="col-sm-12 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                Profil klinike
+                                Clinic profile
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                Korisnicki profil
+                                User profile
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                Izvestaj
+                                Clinic Report
                             </a>
                         </li>
                     </ul>

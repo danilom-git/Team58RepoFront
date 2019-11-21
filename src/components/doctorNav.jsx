@@ -4,47 +4,47 @@ class DoctorNav extends Component {
     state = {};
     render() {
         return (
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <nav class="col-ms-12 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                Profil
+                                User profile
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                Pacijenti
+                                Patients
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                Pocetak pregleda
+                                Checkup start
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="#">
-                                Zakazivanje pregleda
+                                Checkup request
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="#">
-                                Zakazivanje operacije
+                                Operation request
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="#">
-                                Radni kalendar
+                                Calendar
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="#">
-                                Zahtev za odsustvo
+                                Absence request
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="#">
-                                Zahtev za godisnji
+                                Annual leave request
                             </a>
                         </li>
                     </ul>
