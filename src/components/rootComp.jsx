@@ -4,22 +4,30 @@ import Header from "./header";
 import ClinicAdminNav from "./clinicAdminNav";
 
 class RootComp extends Component {
-    state = {};
+    constructor(props){
+        super(props);
+    }
+
+    state = {
+        tip: "adminKlinike"
+    };
+
     render() {
         return (
             <React.Fragment>
-                <div class="row">
-                    <div class="col">
+                <div className="row">
+                    <div className="col">
                     <Header />
                     </div>
                 </div>
 
-                <div class="container-fluid m-0 p-0">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <ClinicAdminNav />
+                <div className="container-fluid m-0 p-0">
+                    <div className="row">
+                        <div className="col-sm-2">
+                            {(this.state.tip === "adminKlinike") && <ClinicAdminNav toRender={true} />}
+                            {(this.state.tip === "doktor")&&<DoctorNav toRender={true}/>}
                         </div>
-                        <main class="col"></main>
+                        <main className="col"></main>
                     </div>
                 </div>
             </React.Fragment>

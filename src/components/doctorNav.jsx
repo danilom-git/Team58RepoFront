@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 
 class DoctorNav extends Component {
-    state = {};
+    constructor(props){
+        super(props);
+    }
+
+    state = {toRender: false};
     render() {
         return (
             <nav class="col-ms-12 d-none d-md-block bg-light sidebar">

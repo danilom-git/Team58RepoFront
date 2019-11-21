@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 
 class Header extends Component {
+    constructor(props){
+        super(props);
+    }
+
     state = {};
     render() {
         return (
-            <nav class="navbar flex-md-nowrap p-0 bg-dark navbar-dark shadow">
-                <h3 class="text-white m-1">Home page</h3>
+            <nav className="navbar flex-md-nowrap p-0 bg-dark navbar-dark shadow">
+                <h3 className="text-white m-1">Home page</h3>
             </nav>
         );
     }
