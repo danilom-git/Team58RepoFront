@@ -3,6 +3,7 @@ import React, { Component } from "react";
 class ClinicAdminNav extends Component{
     constructor(props){
         super(props);
+        console.log("props",this.props);
     }
 
     state = {toRender: false}

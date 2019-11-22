@@ -3,18 +3,26 @@ import ClinicProfileNav from "./clinicProfileNav";
 
 class ClinicAdminNav extends Component {
     state = {
-        toRender : true
+        toRender : true,
+        refernce: []
     };
 
     constructor(props){
        super(props);
        this.state.toRender = this.props.toRender;
        this.clinicProfileRef = React.createRef();
+       console.log(props);
+
+    }
+
+    componentDidMount() {
+        console.log(this.props);
     }
 
     clinicProfileClick = () => {
         this.clinicProfileRef.current.handleClick();
         this.setState({toRender:false});
+
     }
 
 

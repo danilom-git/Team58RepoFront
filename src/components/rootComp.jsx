@@ -2,19 +2,21 @@ import React, { Component } from "react";
 import DoctorNav from "./doctorNav";
 import Header from "./header";
 import ClinicAdminNav from "./clinicAdminNav";
+import MainComp from "./mainComp";
+import { Provider } from 'react-redux';
+import store from '../store';
+import Doctors from "./doctors"
 
 class RootComp extends Component {
     constructor(props){
         super(props);
+        this.clinicAdminRef = React.createRef();
     }
-
-    state = {
-        tip: "adminKlinike"
-    };
 
     render() {
         return (
-            <React.Fragment>
+
+            <Provider store={store}>
                 <div className="row">
                     <div className="col">
                     <Header />
@@ -24,13 +26,14 @@ class RootComp extends Component {
                 <div className="container-fluid m-0 p-0">
                     <div className="row">
                         <div className="col-sm-2">
-                            {(this.state.tip === "adminKlinike") && <ClinicAdminNav toRender={true} />}
-                            {(this.state.tip === "doktor")&&<DoctorNav toRender={true}/>}
+                            <ClinicAdminNav ref={this.clinicAdminRef} toRender={true} />}
                         </div>
-                        <main className="col"></main>
+
+                            <Doctors />
+
                     </div>
                 </div>
-            </React.Fragment>
+            </Provider>
         );
     }
 }
