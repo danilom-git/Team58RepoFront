@@ -2,20 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/actions/clinicActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/doctors.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/mainComp.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/clinicInfoReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/clinicActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/clinicActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/clinicAdminNav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clinicAdminNav.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/clinicProfileNav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clinicProfileNav.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/doctorAddForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/doctorAddForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/rootComp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/rootComp.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/doctors.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/doctors.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/clinicInfoReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/clinicInfoReducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +85,9 @@
       <workItem from="1574384522421" duration="2521000" />
       <workItem from="1574387664316" duration="855000" />
       <workItem from="1574388682756" duration="648000" />
-      <workItem from="1574389370516" duration="1466000" />
+      <workItem from="1574389370516" duration="3115000" />
+      <workItem from="1574393226811" duration="3582000" />
+      <workItem from="1574397570977" duration="1598000" />
     </task>
     <task id="LOCAL-00001" summary="front prosla nedelja">
       <created>1574341398050</created>
@@ -115,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574359685544</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="sredjen header, tekst u engleski">
+      <created>1574391050254</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1574391050254</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

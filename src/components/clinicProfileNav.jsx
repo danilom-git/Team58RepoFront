@@ -1,33 +1,22 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import {setDoctorsRender} from "../actions/clinicActions";
+import PropTypes from "prop-types";
 
 class ClinicAdminNav extends Component{
-    constructor(props){
-        super(props);
-        console.log("props",this.props);
-    }
-
-    state = {toRender: false}
 
     handleClick = () => {
-        this.setState({toRender:true});
-
-        this.render();
-        console.log("ispissss:",this.state.toRender,this.state.ime);
+        this.props.setDoctorsRender(true);
     }
 
-
-    componentDidMount() {
-        console.log(this.state.toRender);
-    }
 
     render(){
-        if(this.state.toRender)
-        {
+
         return (<nav className="col-sm-12 d-none d-md-block bg-light sidebar">
             <div className="sidebar-sticky">
                 <ul className="nav flex-column">
                     <li className="nav-item">
-                        <a className="nav-link" href="#">
+                        <a onClick={this.handleClick} className="nav-link" href="#">
                             Doctors
                         </a>
                     </li>
@@ -39,10 +28,17 @@ class ClinicAdminNav extends Component{
                 </ul>
             </div>
         </nav>);
-        }else {
-        return <React.Fragment></React.Fragment>;
         }
-    }
+
 }
 
-export default ClinicAdminNav;
+ClinicAdminNav.propTypes = {
+    setDoctorsRender: PropTypes.func.isRequired,
+    renderDoctors: PropTypes.object
+};
+
+const mapStateToProps = state => ({
+    renderDoctors: state.clinicInfo.renderDoctors
+});
+
+export default connect(mapStateToProps,{setDoctorsRender})(ClinicAdminNav);

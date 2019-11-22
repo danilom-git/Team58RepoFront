@@ -1,38 +1,27 @@
 import React, { Component } from "react";
 import ClinicProfileNav from "./clinicProfileNav";
+import {setClinicAdminRender,setClinicRender} from "../actions/clinicActions";
+import PropTypes from "prop-types";
+import { connect } from 'react-redux';
+
 
 class ClinicAdminNav extends Component {
-    state = {
-        toRender : true,
-        refernce: []
-    };
-
-    constructor(props){
-       super(props);
-       this.state.toRender = this.props.toRender;
-       this.clinicProfileRef = React.createRef();
-       console.log(props);
-
-    }
 
     componentDidMount() {
         console.log(this.props);
     }
 
     clinicProfileClick = () => {
-        this.clinicProfileRef.current.handleClick();
-        this.setState({toRender:false});
-
+        this.props.setClinicAdminRender(false);
+        this.props.setClinicRender(true);
     }
 
 
     render() {
 
             return (<React.Fragment>
-                <ClinicProfileNav ref={this.clinicProfileRef}/>
-                {
-                    this.state.toRender &&
-                    <nav className="col-sm-12 d-none d-md-block bg-light sidebar">
+                {this.props.renderClinicProfileNav && <ClinicProfileNav />}
+                {this.props.renderClinicAdminNav && <nav className="col-sm-12 d-none d-md-block bg-light sidebar">
                         <div className="sidebar-sticky">
                             <ul className="nav flex-column">
                                 <li className="nav-item">
@@ -52,7 +41,7 @@ class ClinicAdminNav extends Component {
                                 </li>
                             </ul>
                         </div>
-                    </nav>
+                    </nav>}
                 }
 
             </React.Fragment>);
@@ -61,4 +50,16 @@ class ClinicAdminNav extends Component {
 
 }
 
-export default ClinicAdminNav;
+ClinicAdminNav.propTypes = {
+    setClinicAdminRender: PropTypes.func.isRequired,
+    setClinicRender: PropTypes.func.isRequired,
+    renderClinicProfileNav :PropTypes.object,
+    renderClinicAdminNav: PropTypes.object
+};
+
+const mapStateToProps = state => ({
+    renderClinicAdminNav: state.clinicInfo.renderClinicAdminNav,
+    renderClinicProfileNav: state.clinicInfo.renderClinicProfileNav
+});
+
+export default connect(mapStateToProps,{setClinicAdminRender,setClinicRender})(ClinicAdminNav);

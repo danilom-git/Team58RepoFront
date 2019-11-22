@@ -20,27 +20,31 @@ class Doctors extends React.Component{
     render() {
         const doctors = this.props.doctors.map(doctor => (
             <div key={doctor.id}>
-                <h3>{doctor.name}</h3>
-                <p>{doctor.lastName}</p>
+                <p>Ime: {doctor.name}</p>
+                <p>Prezime: {doctor.lastName}</p>
             </div>
         ));
         return (
+
+        <React.Fragment>
             <div>
-                <h3>Doctors</h3>
-                {doctors}
+            {doctors}
             </div>
+        </React.Fragment>
         );
     }
 }
 
 Doctors.propTypes = {
     getDoctors: PropTypes.func.isRequired,
-    doctors: PropTypes.array.isRequired
+    doctors: PropTypes.array.isRequired,
+    renderDoctor: PropTypes.object
 };
 
 
 const mapStateToProps = state => ({
-    doctors: state.clinicInfo.doctors
+    doctors: state.clinicInfo.doctors,
+    renderDoctor: state.clinicInfo.renderDoctor
 });
 
 export default connect(mapStateToProps,{getDoctors})(Doctors);
