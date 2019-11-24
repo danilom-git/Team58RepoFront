@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/doctors.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/doctors.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,6 +85,7 @@
       <workItem from="1574537708449" duration="342000" />
       <workItem from="1574538658968" duration="518000" />
       <workItem from="1574539740466" duration="616000" />
+      <workItem from="1574620868376" duration="47000" />
     </task>
     <task id="LOCAL-00001" summary="front prosla nedelja">
       <created>1574341398050</created>
