@@ -63,6 +63,14 @@
       <updated>1574337507497</updated>
       <workItem from="1574337511209" duration="264000" />
     </task>
+    <task id="LOCAL-00001" summary="Deleted unused initial files">
+      <created>1574781157823</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574781157823</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -80,5 +88,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Deleted unused initial files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted unused initial files" />
   </component>
 </project>
