@@ -17,10 +17,10 @@ class ClinicProfil extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col-sm-12">
+        <div className="col-sm-2">
           <ClinicProfilNav showDoctors={this.showDoctors} />
         </div>
-        <div className="col-sm-12">{this.state.main}</div>
+        <div className="col-sm-8">{this.state.main}</div>
       </div>
     );
   }

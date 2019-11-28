@@ -29,9 +29,7 @@ class App extends React.Component {
           </div>
         </div>
 
-        <div className="container-fluid m-0 p-0">
-          <div className="col-sm-2">{this.state.profil}</div>
-        </div>
+        {this.state.profil}
       </div>
     );
   }

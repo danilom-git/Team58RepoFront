@@ -11,7 +11,7 @@ class AdminClinicProfil extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col-sm-12">
+        <div className="col-sm-2">
           <ClinicAdminNav changeToClinic={this.props.changeToClinic} />
         </div>
         <div className="col">{this.state.main}</div>

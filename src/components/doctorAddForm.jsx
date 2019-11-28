@@ -35,19 +35,27 @@ class DoctorAddForm extends Component {
   render() {
     return (
       <form>
-        <label>
-          Name:
-          <input type="text" onChange={this.handleChangeIme} />
-        </label>
-        <br />
-        <label>
-          Last name:
-          <input type="text" onChange={this.handleChangePrezime} />
-        </label>
-        <br />
-        <label>
-          <button onClick={this.handleSubmit}>Add</button>
-        </label>
+        <div className="row">
+          <div className="col-sm-2">
+            <label>Name:</label>
+          </div>
+          <div col="col-sm-4">
+            <input type="text" onChange={this.handleChangeIme} />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-sm-2">
+            <label>Last name:</label>
+          </div>
+          <div col="col-sm-4">
+            <input type="text" onChange={this.handleChangePrezime} />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-sm-2">
+            <button onClick={this.handleSubmit}>Add</button>
+          </div>
+        </div>
       </form>
     );
   }
