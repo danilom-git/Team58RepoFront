@@ -4,7 +4,7 @@ class ListViewTable extends Component {
     render() {
         if (this.props.rows && this.props.rows.length) {
             return (
-                <table>
+                <table className="table">
                     <ListViewTableHeader headers={Object.keys(this.props.rows[0])} onHeaderClick={this.props.onHeaderClick}/>
                     <ListViewTableBody headers={Object.keys(this.props.rows[0])} rows={this.props.rows}/>
                 </table>

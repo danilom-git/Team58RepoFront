@@ -1,38 +1,40 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
 import ClinicProfil from "./components/clinicProfil";
-import AdminClinicProfil from "./components/adminClinicProfil";
-import DoctorProfil from "./components/doctorProfil";
+//import AdminClinicProfil from "./components/adminClinicProfil";
 import Header from "./components/header";
-import { tsConstructorType } from "@babel/types";
+import ListView from "./listView/listView";
+import PatientPage from "./pages/patientPage";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      profil: <AdminClinicProfil changeToClinic={this.changeToClinic} />
+    constructor(props) {
+        super(props);
+        this.state = {
+            page: <ClinicProfil />,
+            title: 'Clinic'
+        };
+    }
+
+    openClinicPage = () => {
+        this.setState({ page: <ClinicProfil />, title: 'Clinic' });
     };
-    this.changeToClinic = this.changeToClinic.bind(this);
-  }
 
-  changeToClinic = () => {
-    this.setState({ profil: <ClinicProfil /> });
-  };
+    openPatientPage = () => {
+        this.setState( { page: <PatientPage />, title: 'Patient' })
+    };
 
-  render() {
-    return (
-      <div className="container-fluid m-0 p-0">
-        <div className="row">
-          <div className="col">
-            <Header />
-          </div>
-        </div>
+    render() {
+        return (
+            <div className="container-fluid m-0 p-0">
+                <div className="row">
+                    <div className="col">
+                        <Header title={this.state.title} openClinicPage={this.openClinicPage} openPatientPage={this.openPatientPage}/>
+                    </div>
+                </div>
 
-        {this.state.profil}
-      </div>
-    );
-  }
+                {this.state.page}
+            </div>
+        );
+    }
 }
 
 export default App;

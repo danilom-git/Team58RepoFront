@@ -9,7 +9,10 @@ class Header extends Component {
     render() {
         return (
             <nav className="navbar flex-md-nowrap p-1 bg-dark navbar-dark shadow">
-                <h3 className="text-white m-1">Home page</h3>
+                <h3 className="text-white m-1">{this.props.title}</h3>
+
+                <btn className="btn btn-primary" onClick={this.props.openPatientPage}>Patient Page</btn>
+                <btn className="btn btn-primary" onClick={this.props.openClinicPage}>Clinic Page</btn>
             </nav>
         );
     }

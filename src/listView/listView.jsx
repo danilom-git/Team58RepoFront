@@ -99,11 +99,17 @@ class ListView extends Component {
         return (
             <div>
                 <div>
-                    <DatePicker onChange={this.onDateChange}/>
-                    <Select
-                        options={this.state.checkupTypes}
-                        onChange={this.onCheckupTypeChange}
-                    />
+                    <div>
+                        <label className="badge-primary">Choose checkup date: </label>
+                        <DatePicker onChange={this.onDateChange}/>
+                    </div>
+                    <div>
+                    <label className="badge-primary">Choose checkup type: </label>
+                        <Select
+                            options={this.state.checkupTypes}
+                            onChange={this.onCheckupTypeChange}
+                        />
+                    </div>
                     <ListViewTable rows={this.state.clinics} onHeaderClick={this.onHeaderClick}/>
                 </div>
             </div>

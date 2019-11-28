@@ -10,16 +10,21 @@ class Doctors extends React.Component {
     doctors: []
   };
 
-  handleDelete (id){
+  loadDoctors = () => {
+      fetch("http://localhost:8080/api/doctors/all")
+          .then(res => res.json())
+          .then(doctors => this.setState({ doctors: doctors }));
+  };
+
+  handleDelete = (id) => {
     console.log(id);
-    Axios.delete("http://localhost:8080/api/doctors/" + id.toString() );
-  }
+    Axios.delete("http://localhost:8080/api/doctors/" + id.toString())
+        .then(() => this.loadDoctors());
+  };
 
   componentDidMount() {
-    fetch("http://localhost:8080/api/doctors/all")
-      .then(res => res.json())
-      .then(doctors => this.setState({ doctors: doctors }));
-  }
+    this.loadDoctors();
+  };
 
   render() {
     const doctors = this.state.doctors.map(doctor => (

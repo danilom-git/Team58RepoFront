@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 
 class ClinicAdminNav extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <nav className="col-sm-12 d-none d-md-block bg-light sidebar">

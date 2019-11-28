@@ -6,7 +6,7 @@ class DatePicker extends Component {
 
         return (
             <React.Fragment>
-                <input
+                <input className="col-sm-2"
                     type='date'
                     onChange={this.props.onChange}
                     min={minDate.getFullYear() + '-' + (minDate.getMonth() + 1) + '-' + minDate.getDate()}/>
