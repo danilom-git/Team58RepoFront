@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/homeboye.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/App.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/header.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/listView/datepicker.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/listView/listView.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/listView/listViewTable.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/listView/select.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/listView/listView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/listView/listView.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/listView/listViewTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/listView/listViewTable.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +94,8 @@
       <option name="presentableId" value="Default" />
       <updated>1574337507497</updated>
       <workItem from="1574337511209" duration="264000" />
-      <workItem from="1574876705522" duration="18571000" />
+      <workItem from="1574876705522" duration="18916000" />
+      <workItem from="1574953260727" duration="6542000" />
     </task>
     <task id="LOCAL-00001" summary="Deleted unused initial files">
       <created>1574781157823</created>
@@ -109,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574781157823</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Created most of the listView component.">
+      <created>1574909076311</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1574909076311</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,6 +132,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Deleted unused initial files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deleted unused initial files" />
+    <MESSAGE value="Created most of the listView component." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created most of the listView component." />
   </component>
 </project>

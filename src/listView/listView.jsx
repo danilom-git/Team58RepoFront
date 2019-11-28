@@ -12,10 +12,10 @@ class ListView extends Component {
         // checkupType will hold the id of the selected checkup type
         this.state = {
             checkupDate: '',
-            checkupType: '',
+            checkupType: 'default',
             clinics: '',
-            clinicHeaders: ['name', 'country', 'city', 'address', 'averageRating'],
-            checkupTypes: ''
+            checkupTypes: '',
+            sorted: {key: '', order: ''}
         };
     }
 
@@ -42,6 +42,13 @@ class ListView extends Component {
     onDateChange = (e) => {
         this.setState({checkupDate: e.target.value});
         console.log(e.target.value);
+
+        if (this.state.checkupType === 'default')
+            this.loadClinics('all');
+        else if (e.target.value === '')
+            this.loadClinics('checkupType:' + this.state.checkupType);
+        else
+            this.loadClinics('checkupType:' + this.state.checkupType + '/date:' + e.target.value)
     };
 
     onCheckupTypeChange = (e) => {
@@ -50,8 +57,42 @@ class ListView extends Component {
 
         if (e.target.value === 'default')
             this.loadClinics('all');
+        else if (this.state.checkupDate === '')
+            this.loadClinics('checkupType:' + e.target.value);
         else
-            this.loadClinics('allWithType/' + e.target.value);
+            this.loadClinics('checkupType:' + e.target.value + '/date:' + this.state.checkupDate)
+    };
+
+    compareBy = (key, order) => {
+        let mul;
+        if (order === 'asc')
+            mul = 1;
+        else
+            mul = -1;
+
+        return function (a, b) {
+            if (a[key] < b[key]) return mul * -1;
+            if (a[key] > b[key]) return mul * 1;
+            return 0;
+        };
+    };
+
+    sortBy = (key, order) => {
+        let clinicsCopy = this.state.clinics;
+        clinicsCopy.sort(this.compareBy(key, order));
+        this.setState({data: clinicsCopy});
+    };
+
+    onHeaderClick = (e) => {
+        let order = 'asc';
+        const key = e.target.id;
+        if (key === this.state.sorted.key)
+            if (this.state.sorted.order === 'asc')
+                order = 'desc';
+
+        this.setState({sorted: {key: key, order: order}});
+
+        this.sortBy(key, order);
     };
 
     render() {
@@ -63,7 +104,7 @@ class ListView extends Component {
                         options={this.state.checkupTypes}
                         onChange={this.onCheckupTypeChange}
                     />
-                    <ListViewTable rows={this.state.clinics} headers={this.state.clinicHeaders}/>
+                    <ListViewTable rows={this.state.clinics} onHeaderClick={this.onHeaderClick}/>
                 </div>
             </div>
         );

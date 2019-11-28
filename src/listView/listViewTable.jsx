@@ -1,37 +1,19 @@
 import React, {Component} from 'react';
 
-// const sum_headers = [
-//     'wow', 'wee', 'guys'
-// ];
-// const sum_rows = [
-//     {
-//         id: 1,
-//         wow: 'wowOne',
-//         wee: 'weeOne',
-//         guys: 'guysOne'
-//     },
-//     {
-//         id: 2,
-//         wow: 'wowTwo',
-//         wee: 'weeTwo',
-//         guys: 'guysTwo'
-//     },
-//     {
-//         id: 3,
-//         wow: 'wowThree',
-//         wee: 'weeThree',
-//         guys: 'guysThree'
-//     }
-// ];
-
 class ListViewTable extends Component {
     render() {
-        return (
-            this.props.headers && this.props.rows && <table>
-                <ListViewTableHeader headers={this.props.headers}/>
-                <ListViewTableBody headers={this.props.headers} rows={this.props.rows}/>
-            </table>
-        );
+        if (this.props.rows && this.props.rows.length) {
+            return (
+                <table>
+                    <ListViewTableHeader headers={Object.keys(this.props.rows[0])} onHeaderClick={this.props.onHeaderClick}/>
+                    <ListViewTableBody headers={Object.keys(this.props.rows[0])} rows={this.props.rows}/>
+                </table>
+            );
+        } else {
+            return (
+                <div>Nothing to display.</div>
+            );
+        }
     }
 }
 
@@ -40,7 +22,7 @@ class ListViewTableHeader extends Component {
         return (
             <thead>
                 <tr>
-                    {this.props.headers.map(header => <th key={header}>{header}</th>)}
+                    {this.props.headers.map(header => header!=='id' && <th key={header} id={header} onClick={this.props.onHeaderClick}>{header}</th>)}
                 </tr>
             </thead>
         );
@@ -61,7 +43,7 @@ class ListViewTableRow extends Component {
     render() {
         return (
           <tr>
-              {this.props.headers.map(header => <td key={header}>{this.props.row[header]}</td>)}
+              {this.props.headers.map(header => header!=='id' && <td key={header}>{this.props.row[header]}</td>)}
           </tr>
         );
     }
