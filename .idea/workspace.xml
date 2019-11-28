@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="" />
+    <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/clinicProfil.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clinicProfil.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/clinicProfileNav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clinicProfileNav.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/doctorAddForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/doctorAddForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/doctors.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/doctors.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header.jsx" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +102,7 @@
       <workItem from="1574901332648" duration="4304000" />
       <workItem from="1574906005726" duration="1651000" />
       <workItem from="1574915673734" duration="186000" />
+      <workItem from="1574948525670" duration="3205000" />
     </task>
     <task id="LOCAL-00001" summary="front prosla nedelja">
       <created>1574341398050</created>
@@ -166,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574915836125</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="forma sredjena">
+      <created>1574948652403</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1574948652403</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,6 +206,19 @@
     <MESSAGE value="srednje state u redux-u,prikaz doktora" />
     <MESSAGE value="dodavanje doktora" />
     <MESSAGE value="bez redux-a" />
-    <option name="LAST_COMMIT_MESSAGE" value="bez redux-a" />
+    <MESSAGE value="forma sredjena" />
+    <option name="LAST_COMMIT_MESSAGE" value="forma sredjena" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/doctorAddForm.jsx</url>
+          <line>13</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

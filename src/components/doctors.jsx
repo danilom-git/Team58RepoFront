@@ -17,18 +17,25 @@ class Doctors extends React.Component {
 
   render() {
     const doctors = this.state.doctors.map(doctor => (
-      <div key={doctor.id}>
-        <p>Ime: {doctor.name}</p>
-        <p>Prezime: {doctor.lastName}</p>
-      </div>
+      <tr key={doctor.id}>
+          <td>{doctor.id}</td>
+        <td>{doctor.name}</td>
+        <td>{doctor.lastName}</td>
+          <td><button type="button" className="btn btn-light">Delete</button></td>
+      </tr>
     ));
     return (
-      <div>
-        <button onClick={this.props.changeToForm} className="btn btn-dark m-2">
-          Add doctor
-        </button>
-        <div className="m-2">{doctors}</div>
-      </div>
+
+         <table className="table">
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Name</th>
+              <th scope="col">LastName</th>
+            </tr>
+
+            {doctors}
+            </table>
+
     );
   }
 }

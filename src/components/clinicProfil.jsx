@@ -7,10 +7,10 @@ class ClinicProfil extends Component {
   state = { main: <div></div> };
 
   showDoctors = () => {
-    this.setState({ main: <Doctors changeToForm={this.changeToForm} /> });
+    this.setState({ main: <Doctors /> });
   };
 
-  changeToForm = () => {
+  changeToAddDoctor = () => {
     this.setState({ main: <DoctorAddForm /> });
   };
 
@@ -18,9 +18,9 @@ class ClinicProfil extends Component {
     return (
       <div className="row">
         <div className="col-sm-2">
-          <ClinicProfilNav showDoctors={this.showDoctors} />
+          <ClinicProfilNav showDoctors={this.showDoctors} changeToAddDoctor={this.changeToAddDoctor} />
         </div>
-        <div className="col-sm-8">{this.state.main}</div>
+        <div className="col">{this.state.main}</div>
       </div>
     );
   }
