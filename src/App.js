@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ClinicProfil from "./components/clinicProfil";
+//import AdminClinicProfil from "./components/adminClinicProfil";
+import Header from "./components/header";
+import ListView from "./listView/listView";
+import PatientPage from "./pages/patientPage";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            page: <ClinicProfil />,
+            title: 'Clinic'
+        };
+    }
+
+    openClinicPage = () => {
+        this.setState({ page: <ClinicProfil />, title: 'Clinic' });
+    };
+
+    openPatientPage = () => {
+        this.setState( { page: <PatientPage />, title: 'Patient' })
+    };
+
+    render() {
+        return (
+            <div className="container-fluid m-0 p-0">
+                <div className="row">
+                    <div className="col">
+                        <Header title={this.state.title} openClinicPage={this.openClinicPage} openPatientPage={this.openPatientPage}/>
+                    </div>
+                </div>
+
+                {this.state.page}
+            </div>
+        );
+    }
 }
 
 export default App;
