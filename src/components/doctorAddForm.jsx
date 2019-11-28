@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { addDoctor } from "../actions/clinicActions";
+import Axios from "axios";
 
 class DoctorAddForm extends Component {
   constructor(props) {
@@ -21,46 +19,38 @@ class DoctorAddForm extends Component {
   };
 
   handleSubmit = () => {
+    //name,lastName moraju da odgovaraju dto
     const postDoctor = {
-      ime: this.state.ime,
-      prezime: this.state.prezime
+      name: this.state.ime,
+      lastName: this.state.prezime
     };
-    console.log(postDoctor);
-    this.props.addDoctor(postDoctor);
+    console.log("pre posta", postDoctor);
+    Axios.post("http://localhost:8080/api/doctors", postDoctor).then(function(
+      res
+    ) {
+      console.log("posle posta", res);
+    });
   };
 
   render() {
     return (
-      <React.Fragment>
-        {this.props.renderAddDoctorForm && (
-          <form>
-            <label>
-              Name:
-              <input type="text" onChange={this.handleChangeIme} />
-            </label>
-            <br/>
-            <label>
-              Last name:
-              <input type="text" onChange={this.handleChangePrezime} />
-            </label>
-            <br/>
-            <label>
-              <button onClick={this.handleSubmit}>Add</button>
-            </label>
-          </form>
-        )}
-      </React.Fragment>
+      <form>
+        <label>
+          Name:
+          <input type="text" onChange={this.handleChangeIme} />
+        </label>
+        <br />
+        <label>
+          Last name:
+          <input type="text" onChange={this.handleChangePrezime} />
+        </label>
+        <br />
+        <label>
+          <button onClick={this.handleSubmit}>Add</button>
+        </label>
+      </form>
     );
   }
 }
 
-DoctorAddForm.propTypes = {
-  renderAddDoctorForm: PropTypes.bool,
-  addDoctor: PropTypes.func.isRequired
-};
-
-const mapStateToProps = state => ({
-  renderAddDoctorForm: state.clinicInfo.renderAddDoctorForm
-});
-
-export default connect(mapStateToProps, { addDoctor })(DoctorAddForm);
+export default DoctorAddForm;

@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { setDoctorsRender,setDoctorFormRender } from "../actions/clinicActions";
-import PropTypes from "prop-types";
 
 class ClinicAdminNav extends Component {
-  handleClick = () => {
-    this.props.setDoctorsRender(true);
-    this.props.setDoctorFormRender(false);
-  };
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     return (
@@ -15,7 +11,7 @@ class ClinicAdminNav extends Component {
         <div className="sidebar-sticky">
           <ul className="nav flex-column">
             <li className="nav-item">
-              <a onClick={this.handleClick} className="nav-link" href="#">
+              <a onClick={this.props.showDoctors} className="nav-link" href="#">
                 Doctors
               </a>
             </li>
@@ -31,10 +27,4 @@ class ClinicAdminNav extends Component {
   }
 }
 
-ClinicAdminNav.propTypes = {
-  setDoctorsRender: PropTypes.func.isRequired,
-  setDoctorFormRender:PropTypes.func.isRequired,
-  renderDoctors: PropTypes.bool
-};
-
-export default connect(null, { setDoctorsRender,setDoctorFormRender })(ClinicAdminNav);
+export default ClinicAdminNav;
