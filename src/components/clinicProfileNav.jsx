@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setDoctorsRender } from "../actions/clinicActions";
+import { setDoctorsRender,setDoctorFormRender } from "../actions/clinicActions";
 import PropTypes from "prop-types";
 
 class ClinicAdminNav extends Component {
   handleClick = () => {
     this.props.setDoctorsRender(true);
+    this.props.setDoctorFormRender(false);
   };
 
   render() {
@@ -32,7 +33,8 @@ class ClinicAdminNav extends Component {
 
 ClinicAdminNav.propTypes = {
   setDoctorsRender: PropTypes.func.isRequired,
+  setDoctorFormRender:PropTypes.func.isRequired,
   renderDoctors: PropTypes.bool
 };
 
-export default connect(null, { setDoctorsRender })(ClinicAdminNav);
+export default connect(null, { setDoctorsRender,setDoctorFormRender })(ClinicAdminNav);

@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/doctors.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/doctors.jsx" afterDir="false" />
+    <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="dodavanje doktora">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/clinicProfileNav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clinicProfileNav.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/doctorAddForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/doctorAddForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/rootComp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/rootComp.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Team58RepoFront" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -85,7 +91,13 @@
       <workItem from="1574537708449" duration="342000" />
       <workItem from="1574538658968" duration="518000" />
       <workItem from="1574539740466" duration="616000" />
-      <workItem from="1574620868376" duration="47000" />
+      <workItem from="1574620868376" duration="159000" />
+      <workItem from="1574892968788" duration="20000" />
+      <workItem from="1574895897263" duration="927000" />
+      <workItem from="1574897104750" duration="758000" />
+      <workItem from="1574898041624" duration="352000" />
+      <workItem from="1574899357109" duration="308000" />
+      <workItem from="1574901332648" duration="808000" />
     </task>
     <task id="LOCAL-00001" summary="front prosla nedelja">
       <created>1574341398050</created>
@@ -122,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574399360977</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="dodavanje doktora">
+      <created>1574620977915</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1574620977916</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +164,7 @@
     <MESSAGE value="front prosla nedelja" />
     <MESSAGE value="sredjen header, tekst u engleski" />
     <MESSAGE value="srednje state u redux-u,prikaz doktora" />
-    <option name="LAST_COMMIT_MESSAGE" value="srednje state u redux-u,prikaz doktora" />
+    <MESSAGE value="dodavanje doktora" />
+    <option name="LAST_COMMIT_MESSAGE" value="dodavanje doktora" />
   </component>
 </project>

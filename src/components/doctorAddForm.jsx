@@ -38,10 +38,12 @@ class DoctorAddForm extends Component {
               Name:
               <input type="text" onChange={this.handleChangeIme} />
             </label>
+            <br/>
             <label>
               Last name:
               <input type="text" onChange={this.handleChangePrezime} />
             </label>
+            <br/>
             <label>
               <button onClick={this.handleSubmit}>Add</button>
             </label>
