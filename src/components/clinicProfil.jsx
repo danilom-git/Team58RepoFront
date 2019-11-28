@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ClinicProfilNav from "./clinicProfileNav";
 import Doctors from "./doctors";
 import DoctorAddForm from "./doctorAddForm";
+import Halls from "./halls";
 
 class ClinicProfil extends Component {
   state = { main: <div></div> };
