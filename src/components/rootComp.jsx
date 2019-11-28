@@ -22,10 +22,9 @@ class RootComp extends Component {
           <div className="row">
             <div className="col-sm-2">
               <ClinicAdminNav />
-              <DoctorAddForm />
             </div>
-
-            {<Doctors />}
+            <DoctorAddForm />
+            <Doctors />
           </div>
         </div>
       </Provider>
