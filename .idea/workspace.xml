@@ -2,23 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/patientPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/patientSideBar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/clinicAdminNav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clinicAdminNav.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/clinicProfil.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clinicProfil.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/clinicProfileNav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clinicProfileNav.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/doctors.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/doctors.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listView/datepicker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/listView/datepicker.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listView/listView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/listView/listView.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listView/listViewTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/listView/listViewTable.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listView/select.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/listView/select.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/hallAddForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hallAddForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/halls.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/halls.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -123,6 +111,8 @@
       <workItem from="1574953260727" duration="6542000" />
       <workItem from="1574965395526" duration="1090000" />
       <workItem from="1574966964226" duration="4455000" />
+      <workItem from="1574986346708" duration="19000" />
+      <workItem from="1574987011098" duration="789000" />
     </task>
     <task id="LOCAL-00001" summary="Deleted unused initial files">
       <created>1574781157823</created>

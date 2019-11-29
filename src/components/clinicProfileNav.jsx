@@ -16,12 +16,12 @@ class ClinicAdminNav extends Component {
                 Add doctor</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a onClick={this.props.showHalls} className="nav-link" href="#">
                 Halls
               </a>
             </li>
             <li >
-              <a className="nav-link" href="#" >
+              <a onClick={this.props.changeToAddHall} className="nav-link" href="#" >
                 Add hall</a>
             </li>
           </ul>

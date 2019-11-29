@@ -46,3 +46,4 @@ class Halls extends React.Component{
         );
     }
 }
+export  default Halls;
