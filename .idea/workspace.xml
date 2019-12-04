@@ -2,7 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/app.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/pageTemplate.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generic_components/datepicker.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generic_components/navbar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generic_components/select.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generic_components/sidebar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generic_components/table.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patient/clinicList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patient/patientPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/homeboye.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/homeboye.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/header.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/doctorAddForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/doctorAddForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/listView/datepicker.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/listView/listView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/listView/listView.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/listView/select.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/patientPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/patientPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/patientSideBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/patientSideBar.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +173,21 @@
       <option name="project" value="LOCAL" />
       <updated>1575492568007</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Merge remote-tracking branch 'origin/t9.2_displaying_doctors' into t36_edit_doctors&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1575500104904</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1575500104904</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Merge remote-tracking branch 'origin/t9.2_displaying_doctors' into t36_edit_doctors&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1575500120100</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1575500120100</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,13 +212,14 @@
     <MESSAGE value="Added listView and associated components." />
     <MESSAGE value="front halls" />
     <MESSAGE value="get doctor,send update" />
-    <option name="LAST_COMMIT_MESSAGE" value="get doctor,send update" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/t9.2_displaying_doctors' into t36_edit_doctors&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/t9.2_displaying_doctors' into t36_edit_doctors&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1575492567468">
+    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1575500220449">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2/70.27.1296.741@70.27.1296.741" timestamp="1575492567468" />
+    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2/70.27.1296.741@70.27.1296.741" timestamp="1575500220449" />
     <state width="1139" height="142" key="GridCell.Tab.0.bottom" timestamp="1575493499427">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
@@ -201,17 +236,17 @@
       <screen x="70" y="27" width="1296" height="741" />
     </state>
     <state width="1139" height="142" key="GridCell.Tab.0.right/70.27.1296.741@70.27.1296.741" timestamp="1575493499423" />
-    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1575492574922">
+    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1575500138654">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2/70.27.1296.741@70.27.1296.741" timestamp="1575492574922" />
+    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2/70.27.1296.741@70.27.1296.741" timestamp="1575500138654" />
     <state x="450" y="99" width="537" height="579" key="git4idea.branch.GitSmartOperationDialog" timestamp="1575499021332">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
     <state x="450" y="99" width="537" height="579" key="git4idea.branch.GitSmartOperationDialog/70.27.1296.741@70.27.1296.741" timestamp="1575499021332" />
-    <state x="407" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1575499001061">
+    <state x="407" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1575500134901">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state x="407" y="89" width="672" height="678" key="search.everywhere.popup/70.27.1296.741@70.27.1296.741" timestamp="1575499001061" />
+    <state x="407" y="89" width="672" height="678" key="search.everywhere.popup/70.27.1296.741@70.27.1296.741" timestamp="1575500134901" />
   </component>
 </project>
