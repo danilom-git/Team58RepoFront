@@ -97,21 +97,23 @@ class ListView extends Component {
 
     render() {
         return (
-            <div>
+            <div className='container-fluid border border-success'>
                 <div>
-                    <div>
-                        <label className="badge-primary">Choose checkup date: </label>
-                        <DatePicker onChange={this.onDateChange}/>
-                    </div>
-                    <div>
-                    <label className="badge-primary">Choose checkup type: </label>
-                        <Select
-                            options={this.state.checkupTypes}
-                            onChange={this.onCheckupTypeChange}
-                        />
-                    </div>
-                    <ListViewTable rows={this.state.clinics} onHeaderClick={this.onHeaderClick}/>
+                    <label className="badge-primary">Choose checkup date: </label>
+                    <DatePicker onChange={this.onDateChange}/>
                 </div>
+                <div>
+                <label className="badge-primary">Choose checkup type: </label>
+                    <Select
+                        //options={this.state.checkupTypes}
+                        defaultId='0'
+                        defaultText='All'
+                        labelText='Select something'
+                        options={[{id: 1, text: 'Selection 1'}, {id: 2, text: 'Selection 2'}]}
+                        onChange={this.onCheckupTypeChange}
+                    />
+                </div>
+                <ListViewTable rows={this.state.clinics} onHeaderClick={this.onHeaderClick}/>
             </div>
         );
     }

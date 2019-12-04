@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 
 class Header extends Component {
-    constructor(props){
-        super(props);
-    }
-
-    state = {};
     render() {
         return (
-            <nav className="navbar flex-md-nowrap p-1 bg-dark navbar-dark shadow">
-                <h3 className="text-white m-1">{this.props.title}</h3>
+            <nav className="navbar navbar-expand-sm p-1 bg-dark navbar-dark sticky-top shadow">
+                <h3 className="text-white m-1 mr-auto">{this.props.title}</h3>
 
-                <btn className="btn btn-primary" onClick={this.props.openPatientPage}>Patient Page</btn>
-                <btn className="btn btn-primary" onClick={this.props.openClinicPage}>Clinic Page</btn>
+                <ul className="navbar-nav">
+                    <li className="nav-item">
+                        <a href='#' className="nav-link" onClick={this.props.openPatientPage}>Patient Page</a>
+                    </li>
+                    <li className="nav-item">
+                        <a href='#' className="nav-link" onClick={this.props.openClinicPage}>Clinic Page</a>
+                    </li>
+                </ul>
             </nav>
         );
     }

@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import Axios from "axios";
 
 class DoctorAddForm extends Component {
-  constructor(props) {
-    super(props);
-  }
   state = {
     ime: "",
     prezime: ""
