@@ -51,3 +51,4 @@ class HallAddForm extends React.Component{
         );
     }
 }
+export default HallAddForm;

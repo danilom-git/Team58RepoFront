@@ -2,23 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/pageTemplate.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/sidebar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/homeboye.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/homeboye.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/clinicProfil.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clinicProfil.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/clinicProfileNav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clinicProfileNav.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/doctorAddForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/doctorAddForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listView/datepicker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/listView/datepicker.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listView/listView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/listView/listView.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listView/select.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/listView/select.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/patientPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/patientPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/patientSideBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/patientSideBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/hallAddForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hallAddForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/halls.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/halls.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,14 +53,11 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -126,8 +111,8 @@
       <workItem from="1574953260727" duration="6542000" />
       <workItem from="1574965395526" duration="1090000" />
       <workItem from="1574966964226" duration="4455000" />
-      <workItem from="1575389949313" duration="14914000" />
-      <workItem from="1575478956312" duration="9109000" />
+      <workItem from="1574986346708" duration="19000" />
+      <workItem from="1574987011098" duration="789000" />
     </task>
     <task id="LOCAL-00001" summary="Deleted unused initial files">
       <created>1574781157823</created>
@@ -150,14 +135,7 @@
       <option name="project" value="LOCAL" />
       <updated>1574965507911</updated>
     </task>
-    <task id="LOCAL-00004" summary="Added listView and associated components.">
-      <created>1574971512178</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1574971512178</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
