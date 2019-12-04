@@ -7,7 +7,8 @@ class DoctorAddForm extends Component {
   }
   state = {
     ime: "",
-    prezime: ""
+    prezime: "",
+    workingTime:0
   };
 
   handleChangeIme = event => {
@@ -18,12 +19,17 @@ class DoctorAddForm extends Component {
     this.setState({ prezime: event.target.value });
   };
 
+  handleWorkingTime = event => {
+    this.setState({ workingTime: event.target.value });
+  };
+
   handleSubmit = () => {
     //name,lastName moraju da odgovaraju dto
     if(this.state.ime && this.state.prezime) {
       const postDoctor = {
         name: this.state.ime,
-        lastName: this.state.prezime
+        lastName: this.state.prezime,
+        workingTime: this.state.workingTime
       };
       console.log("pre posta", postDoctor);
       Axios.post("http://localhost:8080/api/doctors", postDoctor).then(function (
@@ -51,6 +57,14 @@ class DoctorAddForm extends Component {
           </div>
           <div col="col-sm-4">
             <input type="text" onChange={this.handleChangePrezime} />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-sm-2">
+            <label>Working time:</label>
+          </div>
+          <div col="col-sm-4">
+            <input type="text" onChange={this.handleWorkingTime} />
           </div>
         </div>
         <div className="row">

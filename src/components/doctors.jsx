@@ -28,10 +28,11 @@ class Doctors extends React.Component {
 
   render() {
     const doctors = this.state.doctors.map(doctor => (
-      <tr key={doctor.id}>
+      <tr onClick={(e) => this.props.showDoctor(e,doctor)} key={doctor.id}>
           <td>{doctor.id}</td>
         <td>{doctor.name}</td>
         <td>{doctor.lastName}</td>
+          <td>{doctor.workingTime}</td>
           <td><button onClick={this.handleDelete.bind(this,doctor.id)} type="button" className="btn btn-light">Delete</button></td>
       </tr>
     ));
@@ -42,6 +43,7 @@ class Doctors extends React.Component {
               <th scope="col">id</th>
               <th scope="col">Name</th>
               <th scope="col">LastName</th>
+                <th scope="col">WorkingTime</th>
             </tr>
 
             {doctors}
