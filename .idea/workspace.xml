@@ -2,11 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/generic_components/datepicker.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generic_components/select.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generic_components/sidebar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generic_components/table.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patient/clinicList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patient/patientPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/clinicProfil.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clinicProfil.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/clinicProfileNav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clinicProfileNav.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/hallAddForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hallAddForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/halls.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/halls.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/generic_components/navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pageTemplate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pageTemplate.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/sidebar.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/listView/datepicker.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/listView/listView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/listView/listView.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/listView/select.jsx" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +47,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="patient_side" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,6 +70,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Personal\Danilo\prog shit\healthy_frontend\src\generic_components" />
       <recent name="D:\Personal\Danilo\prog shit\healthy_frontend\src\app" />
     </key>
   </component>
@@ -158,6 +168,7 @@
     <MESSAGE value="Deleted unused initial files" />
     <MESSAGE value="Created most of the listView component." />
     <MESSAGE value="Added listView and associated components." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added listView and associated components." />
+    <MESSAGE value="Made some template components and pages." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made some template components and pages." />
   </component>
 </project>

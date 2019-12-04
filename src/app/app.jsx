@@ -1,6 +1,6 @@
 import React, {Component,} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from "./navbar";
+import Navbar from "../generic_components/navbar";
 import PageTemplate from "./pageTemplate";
 
 class App extends Component {

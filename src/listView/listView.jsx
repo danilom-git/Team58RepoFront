@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import DatePicker from "./datepicker";
-import Select from "./select";
+import DatePicker from "../generic_components/datepicker";
+import Select from "../generic_components/select";
 import ListViewTable from "./listViewTable";
 
 class ListView extends Component {
