@@ -3,25 +3,16 @@ import React, {Component} from 'react';
 class PatientSideBar extends Component {
     render() {
         return (
-            <nav className="col-sm-12 d-none d-md-block bg-light sidebar">
-                <div className="sidebar-sticky">
-                    <ul className="nav flex-column">
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">
-                                Profile
-                            </a>
-                        </li>
-                        <li >
-                            <a className="nav-link" href="#">
-                                Medial Record
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#" onClick={this.props.openBrowseClinics}>
-                                Browse Clinics
-                            </a>
-                        </li>
-                    </ul>
+            <nav className='navbar border border-warning p-0 m-0 sidebar'>
+                <div className='sidebar-sticky'>
+                <ul className='navbar-nav flex-grow-1 m-0 p-0'>
+                    <li className='nav-item m-0 p-0'>
+                        <button className='btn btn-link border border-dark m-0 p-1'>Kek</button>
+                    </li>
+                    <li className='nav-item'>
+                        <a className='nav-link' href='#'>Zvek</a>
+                    </li>
+                </ul>
                 </div>
             </nav>
         );
