@@ -18,7 +18,7 @@ class ClinicsCuboid extends Component {
                 all: []
             },
             checkupDate: {
-
+                selected: ''
             },
             clinics: '',
             checkupTypes: [],
@@ -46,21 +46,21 @@ class ClinicsCuboid extends Component {
             .then(result => result.json())
             .then(checkupTypes => {
                 let formatted = checkupTypes.map(checkupType => { return {id: checkupType.id, text: checkupType.name}; });
-                this.setState({checkupTypeInfo: {all: formatted}});
+                this.setState({checkupType: {all: formatted}});
             })
             .then(() => {console.log('fetched checkupTypes')});
     };
 
     onCheckupTypeChange = (e) => {
-        this.setState( {checkupType: e.target.value});
+        this.setState( {checkupType: {selected: e.target.value}});
         console.log(e.target.value);
 
         if (e.target.value === '-1')
             this.loadClinics('all');
-        else if (this.state.checkupDate === '')
+        else if (this.state.checkupDate.selected === '')
             this.loadClinics('checkupType:' + e.target.value);
         else
-            this.loadClinics('checkupType:' + e.target.value + '/date:' + this.state.checkupDate)
+            this.loadClinics('checkupType:' + e.target.value + '/date:' + this.state.checkupDate.selected)
     };
 
     onDateChange = (e) => {
