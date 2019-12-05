@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Select from "../generic_components/select";
 import DatePicker from "../generic_components/datepicker";
+import Table from "../generic_components/table";
 
 class ClinicsCuboid extends Component {
     constructor(props) {
@@ -10,21 +11,25 @@ class ClinicsCuboid extends Component {
         // where mm is the month (NOT month - 1)
         // checkupType will hold the id of the selected checkup type
         this.state = {
-            checkupType: {
-                labelText: 'Select the desired checkup type:',
-                defaultId: '-1',
-                defaultText: 'All',
-                selected: '-1',
-                all: []
-            },
-            checkupDate: {
-                selected: ''
-            },
-            clinics: '',
-            checkupTypes: [],
-            sorted: {key: '', order: ''}
+            chkTypeSelected: '-1',
+            chkTypeAll: [],
+
+            chkDateSelected: '',
+
+            clinicHeaders: [],
+            clinicAll: [],
+            clinicsSortedBy: {key: '', order: ''}
         };
     }
+
+    chkTypeLabelText = 'Select the desired checkup type:';
+    chkTypeDefaultId = '-1';
+    chkTypeDefaultText = 'All';
+
+    chkDateLabelText = 'Select the desired checkup date:';
+    chkDateDefault = '';
+
+    clinicEmptyListMsg = 'No clinics found that fit the selected criteria.';
 
     componentDidMount() {
         console.log('listView mounted');
@@ -36,7 +41,28 @@ class ClinicsCuboid extends Component {
         fetch('http://localhost:8080/api/clinics/' + ending)
             .then(result => result.json())
             .then(clinics => {
-                this.setState( {clinics: clinics})
+                let headers = [
+                    {headId: 'name', text: 'Name'},
+                    {headId: 'country', text: 'Country'},
+                    {headId: 'city', text: 'City'},
+                    {headId: 'address', text: 'Address'},
+                    {headId: 'averageRating', text: 'Rating'}
+                ];
+                if (ending.toString() !== 'all')
+                    headers = headers.concat({headId: 'price', text: 'Price'});
+
+                let formatted = clinics.map(clinic => {
+                    return {
+                        rowId: clinic.id,
+                        rowData: headers.map(header => {
+                            return {headId: header.headId, text: clinic[header.headId]};
+                        })};
+                });
+
+                console.log(formatted);
+
+                this.setState( {clinicHeaders: headers} );
+                this.setState( {clinicAll: formatted});
             } )
             .then(() => {console.log('fetched clinics/' + ending)});
     };
@@ -46,33 +72,33 @@ class ClinicsCuboid extends Component {
             .then(result => result.json())
             .then(checkupTypes => {
                 let formatted = checkupTypes.map(checkupType => { return {id: checkupType.id, text: checkupType.name}; });
-                this.setState({checkupType: {all: formatted}});
+                this.setState({chkTypeAll: formatted});
             })
             .then(() => {console.log('fetched checkupTypes')});
     };
 
     onCheckupTypeChange = (e) => {
-        this.setState( {checkupType: {selected: e.target.value}});
+        this.setState( {chkTypeSelected: e.target.value});
         console.log(e.target.value);
 
-        if (e.target.value === '-1')
+        if (e.target.value === this.chkTypeDefaultId)
             this.loadClinics('all');
-        else if (this.state.checkupDate.selected === '')
+        else if (this.state.chkDateSelected === this.chkDateDefault)
             this.loadClinics('checkupType:' + e.target.value);
         else
-            this.loadClinics('checkupType:' + e.target.value + '/date:' + this.state.checkupDate.selected)
+            this.loadClinics('checkupType:' + e.target.value + '/date:' + this.state.chkDateSelected)
     };
 
     onDateChange = (e) => {
         this.setState({checkupDate: e.target.value});
         console.log(e.target.value);
 
-        if (this.state.checkupType === '-1')
+        if (this.state.chkTypeSelected === this.chkTypeDefaultId)
             this.loadClinics('all');
-        else if (e.target.value === '')
-            this.loadClinics('checkupType:' + this.state.checkupType);
+        else if (e.target.value === this.chkDateDefault)
+            this.loadClinics('checkupType:' + this.state.chkTypeSelected);
         else
-            this.loadClinics('checkupType:' + this.state.checkupType + '/date:' + e.target.value)
+            this.loadClinics('checkupType:' + this.state.chkTypeSelected + '/date:' + e.target.value)
     };
 
     render() {
@@ -81,19 +107,26 @@ class ClinicsCuboid extends Component {
                 <div className='row'>
                     <div className='col'>
                         <Select
-                            labelText={this.state.checkupType.labelText}
-                            options={this.state.checkupType.all}
-                            defaultId={this.state.checkupType.defaultId}
-                            defaultText={this.state.checkupType.defaultText}
+                            labelText={this.chkTypeLabelText}
+                            options={this.state.chkTypeAll}
+                            defaultId={this.chkTypeDefaultId}
+                            defaultText={this.chkTypeDefaultText}
                             onChange={this.onCheckupTypeChange}
                         />
                     </div>
                     <div className='col'>
                         <DatePicker
-                            labelText='Select the desired day of the checkup:'
+                            labelText={this.chkDateLabelText}
                             onChange={this.onDateChange}
                         />
                     </div>
+                </div>
+                <div className='row'>
+                    <Table
+                        headers={this.state.clinicHeaders}
+                        rows={this.state.clinicAll}
+                        emptyListMsg={this.clinicEmptyListMsg}
+                    />
                 </div>
             </div>
         );

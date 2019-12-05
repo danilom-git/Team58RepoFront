@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="">
+    <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="Merge remote-tracking branch 'origin/t9.2_displaying_doctors' into t36_edit_doctors&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <change afterPath="$PROJECT_DIR$/src/utils/utils.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generic_components/datepicker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/generic_components/datepicker.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generic_components/table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/generic_components/table.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/patient/clinicsCuboid.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/patient/clinicsCuboid.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="t36_edit_doctors" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

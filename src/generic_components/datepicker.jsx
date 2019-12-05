@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
+import {dateToString} from "../utils/utils";
 
 /**
  * props: labelText, minDate, onChange
  */
 class DatePicker extends Component {
     render() {
-        let today = new Date();
-        let defaultMinDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        let defaultMinDate = dateToString(new Date());
         let defaultLabelText = 'Select a date:';
 
         return (
