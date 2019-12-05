@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 
 /**
- * props: headers, rows, sort, emptyListMsg
+ * props: headers, rows, onHeaderClick, onRowClick, emptyListMsg
  * headers: [ {headId, text}, ...]
- * rows: [ {rowId, rowData}, ...]
- * rowItems: [ {headId, text}, ... ]
+ * rows: [ { rowId: value,
+ *           headId1: value,
+ *           headId2: value,... }, ...]
  */
 class Table extends Component {
     render() {
@@ -21,19 +22,18 @@ class Table extends Component {
                     <thead className='thead-dark'>
                     <tr>
                         {this.props.headers.map(header =>
-                            <th key={header.headId} id={header.headId} onClick={this.props.sort}>{header.text}</th>
+                            <th key={header.headId} id={header.headId} onClick={this.props.onHeaderClick}>{header.text}</th>
                         )}
                     </tr>
                     </thead>
                     <tbody>
                     {this.props.rows.map(row =>
-                        <tr key={row.rowId}>
-                            {row.rowData.map(item =>
-                                <td key={item.headId}>
-                                    {isNaN(item.text) ? item.text :
-                                        (Math.round(item.text * 100) / 100).toFixed(2)}
-                                </td>
-                            )}
+                        <tr key={row.rowId} id={row.rowId} onClick={this.props.onRowClick}>
+                            {this.props.headers.map(header => {
+                                let value = row[header.headId];
+                                value = isNaN(value) ? value : (Math.round(value * 100) / 100).toFixed(2);
+                                return <td key={header.headId} id={header.headId} data-clinic={row.rowId}>{value}</td>;
+                            })}
                         </tr>
                     )}
                     </tbody>
