@@ -20,7 +20,8 @@ class DoctorAddForm extends Component {
     this.setState({ workingTime: event.target.value });
   };
 
-  handleSubmit = () => {
+  handleSubmit = (e) => {
+    e.preventDefault();
     //name,lastName moraju da odgovaraju dto
     if(this.state.ime && this.state.prezime) {
       const postDoctor = {

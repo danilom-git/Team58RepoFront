@@ -31,7 +31,8 @@ class ShowDoctor extends Component{
         this.setState({ doctor : {...this.state.doctor,workingTime : event.target.value} });
     };
 
-    handleSubmit = () => {
+    handleSubmit = (e) => {
+        e.preventDefault();
         //name,lastName moraju da odgovaraju dto
         console.log( this.state.doctor);
         if(this.state.doctor.name && this.state.doctor.lastName && this.state.doctor.workingTime != 0) {

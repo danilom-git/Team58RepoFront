@@ -13,8 +13,9 @@ class HallAddForm extends React.Component{
         this.setState({ name: event.target.value });
     };
 
-    handleSubmit = () => {
+    handleSubmit = (e) => {
         //name,lastName moraju da odgovaraju dto
+        e.preventDefault();
         if(this.state.name) {
             const postHall = {
                 name: this.state.name,
@@ -44,7 +45,7 @@ class HallAddForm extends React.Component{
 
                 <div className="row">
                     <div className="col-sm-2">
-                        <button onClick={this.handleSubmit}>Add</button>
+                        <button onClick={(e) => this.handleSubmit(e)}>Add</button>
                     </div>
                 </div>
             </form>
