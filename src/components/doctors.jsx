@@ -16,10 +16,10 @@ class Doctors extends React.Component {
           .then(doctors => this.setState({ doctors: doctors }));
   };
 
-  handleDelete = (id) => {
-    console.log(id);
+  handleDelete = (e,id) => {
     Axios.delete("http://localhost:8080/api/doctors/" + id.toString())
         .then(() => this.loadDoctors());
+    e.stopPropagation();
   };
 
   componentDidMount() {
@@ -28,25 +28,28 @@ class Doctors extends React.Component {
 
   render() {
     const doctors = this.state.doctors.map(doctor => (
-      <tr onClick={(e) => this.props.showDoctor(e,doctor)} key={doctor.id}>
+      <tr data-naziv="trDoctor" onClick={(e) => this.props.showDoctor(e,doctor)} key={doctor.id}>
           <td>{doctor.id}</td>
           <td>{doctor.name}</td>
           <td>{doctor.lastName}</td>
           <td>{doctor.workingTime}</td>
-          <td><button onClick={this.handleDelete.bind(this,doctor.id)} type="button" className="btn btn-light">Delete</button></td>
+          <td><button data-naziv="" onClick={(e) => this.handleDelete(e,doctor.id)} type="button" className="btn btn-light">Delete</button></td>
       </tr>
     ));
     return (
 
          <table className="table">
-            <tr>
-              <th scope="col">id</th>
-              <th scope="col">Name</th>
-              <th scope="col">LastName</th>
-                <th scope="col">WorkingTime</th>
-            </tr>
-
-            {doctors}
+             <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">WorkingTime</th>
+                </tr>
+             </thead>
+             <tbody>
+                {doctors}
+             </tbody>
             </table>
 
     );

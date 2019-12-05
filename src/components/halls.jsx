@@ -13,6 +13,7 @@ class Halls extends React.Component{
     handleDelete (id){
         console.log(id);
         Axios.delete("http://localhost:8080/api/halls/" + id.toString() );
+        e.stopPropagation();
     }
 
 
