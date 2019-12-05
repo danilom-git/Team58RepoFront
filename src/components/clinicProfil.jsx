@@ -41,7 +41,7 @@ class ClinicProfil extends Component {
             <div className="row">
                 <div className="col-sm-2">
                     <Sidebar
-                        links={[{id: 1, text: 'Doctors', onClick: this.showDoctors}, {id: 2, text: 'Add doctor',onClick: this.changeToAddDoctor}, {id: 3, text: 'Halls',onClick: this.showHalls}, {id: 4, text: 'Add hall',onClick: this.changeToAddHall}]}/>
+                        links={[{id: 1, text: 'Doctors', onClick: this.showDoctors}, {id: 2, text: 'Add doctor',onClick: this.changeToAddDoctor}, {id: 3, text: 'Halls',onClick: this.showHalls}, {id: 4, text: 'Add hall',onClick: this.changeToAddHall},{id: 5, text: 'One click checkup'}]}/>
                 </div>
                 <div className="col">{this.state.main}</div>
             </div>

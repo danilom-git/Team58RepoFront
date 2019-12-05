@@ -39,13 +39,16 @@ class Halls extends React.Component{
         return (
 
             <table className="table">
+                <thead>
                 <tr>
                     <th scope="col">id</th>
                     <th scope="col">Name</th>
                     <th scope="col">Number</th>
                 </tr>
-
+                </thead>
+                <tbody>
                 {halls}
+                </tbody>
             </table>
 
         );
