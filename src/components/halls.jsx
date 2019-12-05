@@ -10,17 +10,21 @@ class Halls extends React.Component{
         halls: []
     };
 
-    handleDelete (id){
+    handleDelete (e,id){
         console.log(id);
-        Axios.delete("http://localhost:8080/api/halls/" + id.toString() );
+        Axios.delete("http://localhost:8080/api/halls/" + id.toString() ).then(() => this.loadHalls());
         e.stopPropagation();
     }
 
 
-    componentDidMount() {
+    loadHalls = () => {
         fetch("http://localhost:8080/api/halls/all")
             .then(res => res.json())
             .then(halls => this.setState({ halls: halls }));
+    }
+
+    componentDidMount() {
+      this.loadHalls();
     }
 
     render() {
@@ -29,7 +33,7 @@ class Halls extends React.Component{
                 <td>{hall.id}</td>
                 <td>{hall.name}</td>
                 <td>{hall.number}</td>
-                <td><button onClick={this.handleDelete.bind(this,hall.id)} type="button" className="btn btn-light">Delete</button></td>
+                <td><button onClick={(e) => this.handleDelete(e,hall.id)} type="button" className="btn btn-light">Delete</button></td>
             </tr>
         ));
         return (
