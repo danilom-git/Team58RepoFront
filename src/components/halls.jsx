@@ -24,7 +24,7 @@ class Halls extends React.Component{
 
     render() {
         const halls = this.state.halls.map(hall => (
-            <tr key={hall.id}>
+            <tr onClick={(e) => this.props.showHall(e,hall)} key={hall.id}>
                 <td>{hall.id}</td>
                 <td>{hall.name}</td>
                 <td>{hall.number}</td>

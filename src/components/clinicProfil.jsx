@@ -6,6 +6,7 @@ import Halls from "./halls";
 import HallAddForm from  "./hallAddForm";
 import ShowDoctor from "./showDoctor";
 import Sidebar from "../generic_components/sidebar";
+import ShowHall from "./showHall";
 
 class ClinicProfil extends Component {
     state = { main: <div/> };
@@ -15,7 +16,7 @@ class ClinicProfil extends Component {
     };
 
     showHalls = () => {
-        this.setState({ main: <Halls /> });
+        this.setState({ main: <Halls showHall={this.changeToShowHall}/> });
     }
 
     changeToAddDoctor = () => {
@@ -28,6 +29,10 @@ class ClinicProfil extends Component {
 
     changeToShowDoctor = (e,doctor) => {
         this.setState({ main: <ShowDoctor doctor={doctor} /> });
+    }
+
+    changeToShowHall = (e,hall) => {
+        this.setState({ main: <ShowHall hall={hall} /> });
     }
 
     render() {
