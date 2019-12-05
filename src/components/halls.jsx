@@ -27,7 +27,7 @@ class Halls extends React.Component{
             <tr key={hall.id}>
                 <td>{hall.id}</td>
                 <td>{hall.name}</td>
-
+                <td>{hall.number}</td>
                 <td><button onClick={this.handleDelete.bind(this,hall.id)} type="button" className="btn btn-light">Delete</button></td>
             </tr>
         ));
@@ -37,7 +37,7 @@ class Halls extends React.Component{
                 <tr>
                     <th scope="col">id</th>
                     <th scope="col">Name</th>
-
+                    <th scope="col">Number</th>
                 </tr>
 
                 {halls}

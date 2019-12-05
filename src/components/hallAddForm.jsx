@@ -6,11 +6,16 @@ class HallAddForm extends React.Component{
         super(props);
     }
     state = {
-        name: ""
+        name: "",
+        number: ""
     };
 
     handleChangeName = event => {
         this.setState({ name: event.target.value });
+    };
+
+    handleChangeNumber = event => {
+        this.setState({ number: event.target.value });
     };
 
     handleSubmit = (e) => {
@@ -19,7 +24,7 @@ class HallAddForm extends React.Component{
         if(this.state.name) {
             const postHall = {
                 name: this.state.name,
-
+                number: this.state.number
             };
             console.log("pre posta", postHall);
             Axios.post("http://localhost:8080/api/halls", postHall).then(function (
@@ -40,6 +45,14 @@ class HallAddForm extends React.Component{
                     </div>
                     <div col="col-sm-4">
                         <input type="text" onChange={this.handleChangeName} />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-2">
+                        <label>Number:</label>
+                    </div>
+                    <div col="col-sm-4">
+                        <input type="text" onChange={this.handleChangeNumber} />
                     </div>
                 </div>
 
