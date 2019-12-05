@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="Merge remote-tracking branch 'origin/t9.2_displaying_doctors' into t36_edit_doctors&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <change afterPath="$PROJECT_DIR$/src/utils/utils.jsx" afterDir="false" />
+    <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generic_components/datepicker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/generic_components/datepicker.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/generic_components/table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/generic_components/table.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/patient/clinicsCuboid.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/patient/clinicsCuboid.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/patient/emptyCuboid.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/patient/emptyCuboid.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/patient/patientPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/patient/patientPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/utils.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -114,6 +116,7 @@
       <workItem from="1574966964226" duration="4455000" />
       <workItem from="1574986346708" duration="19000" />
       <workItem from="1574987011098" duration="789000" />
+      <workItem from="1575544400888" duration="14925000" />
     </task>
     <task id="LOCAL-00001" summary="Deleted unused initial files">
       <created>1574781157823</created>
@@ -150,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575505192776</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Finishing rework of patient's page with generic components.">
+      <created>1575512142276</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1575512142276</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +186,7 @@
     <MESSAGE value="Made some template components and pages." />
     <MESSAGE value="Made some more template components." />
     <MESSAGE value="Mid-creating commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="Mid-creating commit." />
+    <MESSAGE value="Finishing rework of patient's page with generic components." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finishing rework of patient's page with generic components." />
   </component>
 </project>

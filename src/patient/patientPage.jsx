@@ -8,13 +8,18 @@ class PatientPage extends Component {
         super(props);
 
         this.state = {
-            cuboid: <EmptyCuboid />
+            cuboid: this.emptyCuboid
         }
     }
 
+    emptyCuboid = <EmptyCuboid/>;
+    openEmptyCuboid = () => {
+        this.setState( {cuboid: <EmptyCuboid />} );
+    };
 
-    cuboidClinics = () => {
-        this.setState({cuboid: <ClinicsCuboid />})
+    clinicsCuboid = <ClinicsCuboid openEmptyCuboid={this.openEmptyCuboid}/>;
+    openClinicsCuboid = () => {
+        this.setState({cuboid: this.clinicsCuboid} );
     };
 
     render() {
@@ -23,7 +28,7 @@ class PatientPage extends Component {
                 <div className='row h-100'>
                     <Sidebar
                         links={[
-                            {id: 1, text: 'Browse Clinics', onClick: this.cuboidClinics},
+                            {id: 1, text: 'Browse Clinics', onClick: this.openClinicsCuboid},
                             {id: 2, text: 'Link Two'},
                             {id: 3, text: 'Link Three'}
                             ]}/>
