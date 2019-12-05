@@ -32,7 +32,7 @@ class Table extends Component {
                             {this.props.headers.map(header => {
                                 let value = row[header.headId];
                                 value = isNaN(value) ? value : (Math.round(value * 100) / 100).toFixed(2);
-                                return <td key={header.headId} id={header.headId} data-clinic={row.rowId}>{value}</td>;
+                                return <td key={header.headId} id={header.headId} data-row-id={row.rowId}>{value}</td>;
                             })}
                         </tr>
                     )}

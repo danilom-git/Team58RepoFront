@@ -18,6 +18,7 @@ class DatePicker extends Component {
                     onChange={this.props.onChange}
                     min={this.props.minDate ? this.props.minDate : defaultMinDate}
                     id='dt'
+                    value={this.props.selectedDate}
                 />
             </div>
         );

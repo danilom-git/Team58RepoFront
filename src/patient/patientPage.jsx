@@ -29,8 +29,8 @@ class PatientPage extends Component {
                     <Sidebar
                         links={[
                             {id: 1, text: 'Browse Clinics', onClick: this.openClinicsCuboid},
-                            {id: 2, text: 'Link Two'},
-                            {id: 3, text: 'Link Three'}
+                            {id: 2, text: 'View Medical Record'},
+                            {id: 3, text: 'View Profile'}
                             ]}/>
 
                     <div className='col'>

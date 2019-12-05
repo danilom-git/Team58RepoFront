@@ -9,7 +9,7 @@ class Sidebar extends Component {
         return (
             <ul className='col-2 nav flex-column float-left h-100 px-2'>
                 {this.props.links.map(link =>
-                    <li className='nav-item mb-2'>
+                    <li key={link.id} className='nav-item mb-2'>
                         <button
                             onClick={link.onClick}
                             className='btn btn-outline-primary w-100 text-left'>

@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/homeboye.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/homeboye.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/doctors.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/doctors.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generic_components/datepicker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/generic_components/datepicker.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generic_components/select.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/generic_components/select.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generic_components/sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/generic_components/sidebar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/generic_components/table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/generic_components/table.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/listView/listView.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/listView/listViewTable.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/patientPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/patientSideBar.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/patient/clinicsCuboid.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/patient/clinicsCuboid.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/patient/emptyCuboid.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/patient/emptyCuboid.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/patient/patientPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/patient/patientPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/utils.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.jsx" afterDir="false" />
     </list>
@@ -40,7 +47,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="t36_edit_doctors" />
+        <entry key="$PROJECT_DIR$" value="t9.2_displaying_doctors" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
