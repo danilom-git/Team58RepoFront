@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import Sidebar from "../generic_components/sidebar";
-import Select from "../generic_components/select";
-import DatePicker from "../generic_components/datepicker";
 
 class PageTemplate extends Component {
     render() {
@@ -33,7 +31,7 @@ class PageTemplate extends Component {
                     {headId: 'col3', text: 'yeet'}
                 ]}
         ];
-         */
+        */
         /*
         <Select
             options={options}
@@ -45,13 +43,13 @@ class PageTemplate extends Component {
         ];
         */
         return (
-            <div className='container-fluid h-100 pt-2' style={{height: 2000}}>
+            <div className='container-fluid pt-2' style={{height: '2000px'}}>
                 <div className='row h-100'>
                     <Sidebar
                         links={[{id: 1, text: 'Link One'}, {id: 2, text: 'Link Two'}, {id: 3, text: 'Link Three'}]}/>
 
                     <div className='col'>
-                        <DatePicker />
+
                     </div>
                 </div>
             </div>

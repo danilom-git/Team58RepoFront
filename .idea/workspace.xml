@@ -2,20 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/generic_components/datepicker.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generic_components/select.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generic_components/sidebar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generic_components/table.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patient/clinicList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patient/patientPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patient/emptyCuboid.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/generic_components/navbar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pageTemplate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pageTemplate.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/sidebar.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listView/datepicker.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listView/listView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/listView/listView.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listView/select.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generic_components/table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/generic_components/table.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/patient/clinicList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/patient/clinicsCuboid.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/patient/patientPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/patient/patientPage.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -145,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574965507911</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Made some more template components.">
+      <created>1575499000740</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1575499000740</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,6 +169,7 @@
     <MESSAGE value="Created most of the listView component." />
     <MESSAGE value="Added listView and associated components." />
     <MESSAGE value="Made some template components and pages." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made some template components and pages." />
+    <MESSAGE value="Made some more template components." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made some more template components." />
   </component>
 </project>

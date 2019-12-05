@@ -8,10 +8,10 @@ import React, {Component} from 'react';
  */
 class Table extends Component {
     render() {
-        let defaultEmptyListMsg = 'List is empty.';
+        let defaultEmptyListMsg = 'Table is empty.';
 
         if (!this.props.headers)
-            return <p className='text-danger font-weight-bold'>No list to display.</p>;
+            return <p className='text-danger font-weight-bold'>No table to display.</p>;
         else if (!this.props.rows || !this.props.rows.length) {
             return <p className='text-warning font-weight-bold'>{this.props.emptyListMsg ? this.props.emptyListMsg : defaultEmptyListMsg}</p>;
         }
@@ -19,20 +19,20 @@ class Table extends Component {
             return (
                 <table className='table table-hover table-bordered table-secondary'>
                     <thead className='thead-dark'>
-                    <tr>
-                        {this.props.headers.map(header =>
-                            <th key={header.headId} id={header.headId} onClick={this.props.sort}>{header.text}</th>
-                        )}
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {this.props.rows.map(row =>
-                        <tr key={row.rowId}>
-                            {row.rowItems.map(item =>
-                                <td key={item.headId}>{item.text}</td>
+                        <tr>
+                            {this.props.headers.map(header =>
+                                <th key={header.headId} id={header.headId} onClick={this.props.sort}>{header.text}</th>
                             )}
                         </tr>
-                    )}
+                    </thead>
+                    <tbody>
+                        {this.props.rows.map(row =>
+                            <tr key={row.rowId}>
+                                {row.rowItems.map(item =>
+                                    <td key={item.headId}>{item.text}</td>
+                                )}
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             );
