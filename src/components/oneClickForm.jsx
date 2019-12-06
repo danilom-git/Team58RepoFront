@@ -60,7 +60,7 @@ class OneClickForm extends Component{
 
     changePrice = (e) => {  //SET PRICE
         console.log(e.target.value);
-        this.setState({price:e.target.value});
+        this.setState({price:Number(e.target.value)});
     }
 
     handleDoctors = (e) => {// SET DOCTOR ID
@@ -173,6 +173,21 @@ class OneClickForm extends Component{
         if((!this.state.disable) && (!this.state.disableTime) && this.state.price && this.state.doctor && this.state.hall)
         {
             console.log("state iz submita",this.state);
+            const postCheck = {
+                startTime: this.state.startDate,
+                endTime: this.state.endDate,
+                duration:this.state.startDate.getTime()- this.state.endDate.getTime(),
+                price:this.state.price,
+                checkupTypeId:this.state.type,
+                hallId:this.state.hall,
+                doctorId:this.state.doctor,
+                clinicId: 1
+            }
+            /*Axios.post("http://localhost:8080/api/oneClickCheckup", postCheck).then(function (
+                res
+            ) {
+                console.log("posle posta", res);
+            });*/
         }
     }
 
