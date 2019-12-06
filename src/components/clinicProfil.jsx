@@ -48,12 +48,13 @@ class ClinicProfil extends Component {
     render() {
         //<ClinicProfilNav showHalls={this.showHalls} changeToAddHall={this.changeToAddHall} showDoctors={this.showDoctors} changeToAddDoctor={this.changeToAddDoctor} />
         return (
-            <div className="row">
-                <div className="col-sm-2">
+            <div className="container-fluid pt-2">
+                <div className="row">
                     <Sidebar
                         links={[{id: 1, text: 'Doctors', onClick: this.showDoctors}, {id: 2, text: 'Add doctor',onClick: this.changeToAddDoctor}, {id: 3, text: 'Halls',onClick: this.showHalls}, {id: 4, text: 'Add hall',onClick: this.changeToAddHall},{id: 5, text: 'Add checkups',onClick: this.changeToOneClickForm},{id: 6, text: 'Checkups',onClick: this.changeToOneClick}]}/>
+
+                    <div className="col">{this.state.main}</div>
                 </div>
-                <div className="col">{this.state.main}</div>
             </div>
         );
     }

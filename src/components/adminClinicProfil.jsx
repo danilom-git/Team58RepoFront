@@ -19,13 +19,15 @@ class AdminClinicProfil extends Component {
   render() {
       //<ClinicAdminNav changeToClinic={this.props.changeToClinic} />
     return (
+        <div className="container-fluid pt-2">
       <div className="row">
-        <div className="col-sm-2">
+
           <Sidebar links={[{id:1,text:"User profile"},{id:2,text:"Clinic profile",onClick:this.props.changeToClinic},{id:3,text:"Clinic report"}]}
           />
-        </div>
+
         <div className="col">{this.state.main}</div>
       </div>
+        </div>
     );
   }
 }
