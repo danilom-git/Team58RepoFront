@@ -47,7 +47,7 @@ class Halls extends React.Component{
                 </tr>
                 </thead>
                 <tbody>
-                {halls}
+                    {halls}
                 </tbody>
             </table>
 

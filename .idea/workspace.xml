@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/oneClickForm.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/clinicProfil.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clinicProfil.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/halls.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/halls.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generic_components/sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/generic_components/sidebar.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +122,7 @@
       <workItem from="1575008938770" duration="984000" />
       <workItem from="1575480589888" duration="1854000" />
       <workItem from="1575485656018" duration="7681000" />
-      <workItem from="1575564580432" duration="4684000" />
+      <workItem from="1575564580432" duration="23099000" />
     </task>
     <task id="LOCAL-00001" summary="Deleted unused initial files">
       <created>1574781157823</created>
@@ -241,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575567337271</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="hall delete update">
+      <created>1575571681857</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1575571681857</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,10 +282,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="hall delete update" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1575567336921">
+    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1575571681420">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2/70.27.1296.741@70.27.1296.741" timestamp="1575567336921" />
+    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2/70.27.1296.741@70.27.1296.741" timestamp="1575571681420" />
     <state width="1139" height="142" key="GridCell.Tab.0.bottom" timestamp="1575493499427">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
@@ -297,10 +306,10 @@
       <screen x="70" y="27" width="1296" height="741" />
     </state>
     <state x="306" y="131" width="824" height="515" key="IDE.errors.dialog/70.27.1296.741@70.27.1296.741" timestamp="1575500418026" />
-    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1575567344545">
+    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1575571687042">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2/70.27.1296.741@70.27.1296.741" timestamp="1575567344545" />
+    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2/70.27.1296.741@70.27.1296.741" timestamp="1575571687042" />
     <state x="382" y="233" key="com.intellij.ide.util.TipDialog" timestamp="1575564591684">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
@@ -309,9 +318,13 @@
       <screen x="70" y="27" width="1296" height="741" />
     </state>
     <state x="450" y="99" width="537" height="579" key="git4idea.branch.GitSmartOperationDialog/70.27.1296.741@70.27.1296.741" timestamp="1575499021332" />
-    <state x="457" y="124" width="672" height="678" key="search.everywhere.popup" timestamp="1575567342676">
+    <state x="416" y="182" key="run.anything.popup" timestamp="1575581893297">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state x="457" y="124" width="672" height="678" key="search.everywhere.popup/70.27.1296.741@70.27.1296.741" timestamp="1575567342676" />
+    <state x="416" y="182" key="run.anything.popup/70.27.1296.741@70.27.1296.741" timestamp="1575581893297" />
+    <state x="457" y="124" width="672" height="678" key="search.everywhere.popup" timestamp="1575588694416">
+      <screen x="70" y="27" width="1296" height="741" />
+    </state>
+    <state x="457" y="124" width="672" height="678" key="search.everywhere.popup/70.27.1296.741@70.27.1296.741" timestamp="1575588694416" />
   </component>
 </project>
