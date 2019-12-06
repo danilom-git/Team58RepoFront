@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="checking hall and doctor">
+    <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/oneClickForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/oneClickForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +34,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="t36_edit_doctors" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -118,7 +118,7 @@
       <workItem from="1575008938770" duration="984000" />
       <workItem from="1575480589888" duration="1854000" />
       <workItem from="1575485656018" duration="7681000" />
-      <workItem from="1575564580432" duration="33393000" />
+      <workItem from="1575564580432" duration="33873000" />
     </task>
     <task id="LOCAL-00001" summary="Deleted unused initial files">
       <created>1574781157823</created>
@@ -260,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575599510692</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="checking hall and doctor">
+      <created>1575603195908</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1575603195908</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,10 +301,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="checking hall and doctor" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1575603173349">
+    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1575603195580">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2/70.27.1296.741@70.27.1296.741" timestamp="1575603173349" />
+    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2/70.27.1296.741@70.27.1296.741" timestamp="1575603195580" />
     <state width="1139" height="142" key="GridCell.Tab.0.bottom" timestamp="1575493499427">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
@@ -318,10 +325,10 @@
       <screen x="70" y="27" width="1296" height="741" />
     </state>
     <state x="306" y="131" width="824" height="515" key="IDE.errors.dialog/70.27.1296.741@70.27.1296.741" timestamp="1575500418026" />
-    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1575599519622">
+    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1575603202973">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2/70.27.1296.741@70.27.1296.741" timestamp="1575599519622" />
+    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2/70.27.1296.741@70.27.1296.741" timestamp="1575603202973" />
     <state x="382" y="233" key="com.intellij.ide.util.TipDialog" timestamp="1575564591684">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
@@ -338,9 +345,9 @@
       <screen x="70" y="27" width="1296" height="741" />
     </state>
     <state x="416" y="182" width="672" height="677" key="run.anything.popup/70.27.1296.741@70.27.1296.741" timestamp="1575598236120" />
-    <state x="457" y="124" width="672" height="678" key="search.everywhere.popup" timestamp="1575603130244">
+    <state x="457" y="124" width="672" height="678" key="search.everywhere.popup" timestamp="1575603201258">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state x="457" y="124" width="672" height="678" key="search.everywhere.popup/70.27.1296.741@70.27.1296.741" timestamp="1575603130244" />
+    <state x="457" y="124" width="672" height="678" key="search.everywhere.popup/70.27.1296.741@70.27.1296.741" timestamp="1575603201258" />
   </component>
 </project>
