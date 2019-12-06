@@ -31,7 +31,7 @@ class App extends Component {
     render() {
         return (
             <>
-                <Navbar title='Title' links={[{id: 1, text: 'Link',onClick:this.changeToClinicAdmin}, {id: 2, text: 'Other Link',onClick:this.changeToPatientPage}]}/>
+                <Navbar title='Title' links={[{id: 1, text: 'djoda',onClick:this.changeToClinicAdmin}, {id: 2, text: 'djanilo',onClick:this.changeToPatientPage}]}/>
                 {this.state.profil}
             </>
         );
