@@ -42,9 +42,7 @@ class Doctors extends React.Component {
              <thead>
                 <tr>
                     <th scope="col">id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">LastName</th>
-                    <th scope="col">WorkingTime</th>
+                    <th scope="col">Price</th>
                 </tr>
              </thead>
              <tbody>

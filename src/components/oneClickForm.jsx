@@ -176,7 +176,7 @@ class OneClickForm extends Component{
             const postCheck = {
                 startTime: this.state.startDate,
                 endTime: this.state.endDate,
-                duration:0,
+                duration: 0,
                 price:this.state.price,
                 checkupTypeId:this.state.type,
                 hallId:this.state.hall,

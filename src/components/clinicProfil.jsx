@@ -8,6 +8,7 @@ import ShowDoctor from "./showDoctor";
 import Sidebar from "../generic_components/sidebar";
 import ShowHall from "./showHall";
 import OneClickForm from "./oneClickForm";
+import OneClicks from "./OneClicks";
 
 class ClinicProfil extends Component {
     state = { main: <div/> };
@@ -40,13 +41,17 @@ class ClinicProfil extends Component {
         this.setState({ main: <OneClickForm /> });
     }
 
+    changeToOneClick = () => {
+        this.setState({ main: <OneClicks /> });
+    }
+
     render() {
         //<ClinicProfilNav showHalls={this.showHalls} changeToAddHall={this.changeToAddHall} showDoctors={this.showDoctors} changeToAddDoctor={this.changeToAddDoctor} />
         return (
             <div className="row">
                 <div className="col-sm-2">
                     <Sidebar
-                        links={[{id: 1, text: 'Doctors', onClick: this.showDoctors}, {id: 2, text: 'Add doctor',onClick: this.changeToAddDoctor}, {id: 3, text: 'Halls',onClick: this.showHalls}, {id: 4, text: 'Add hall',onClick: this.changeToAddHall},{id: 5, text: 'Available checkups',onClick: this.changeToOneClickForm}]}/>
+                        links={[{id: 1, text: 'Doctors', onClick: this.showDoctors}, {id: 2, text: 'Add doctor',onClick: this.changeToAddDoctor}, {id: 3, text: 'Halls',onClick: this.showHalls}, {id: 4, text: 'Add hall',onClick: this.changeToAddHall},{id: 5, text: 'Add checkups',onClick: this.changeToOneClickForm},{id: 6, text: 'Checkups',onClick: this.changeToOneClick}]}/>
                 </div>
                 <div className="col">{this.state.main}</div>
             </div>
