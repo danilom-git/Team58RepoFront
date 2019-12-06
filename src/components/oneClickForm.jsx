@@ -176,18 +176,19 @@ class OneClickForm extends Component{
             const postCheck = {
                 startTime: this.state.startDate,
                 endTime: this.state.endDate,
-                duration:this.state.startDate.getTime()- this.state.endDate.getTime(),
+                duration:0,
                 price:this.state.price,
                 checkupTypeId:this.state.type,
                 hallId:this.state.hall,
                 doctorId:this.state.doctor,
                 clinicId: 1
             }
-            /*Axios.post("http://localhost:8080/api/oneClickCheckup", postCheck).then(function (
+            console.log("za slanje",postCheck);
+            Axios.post("http://localhost:8080/api/oneClickCheckup", postCheck).then(function (
                 res
             ) {
                 console.log("posle posta", res);
-            });*/
+            });
         }
     }
 
