@@ -20,7 +20,7 @@ class Patients extends Component{
             //console.log(res.data);
             this.setState({patients: res.data});
         });
-    }
+    };
 
     render() {
         let headers = [
@@ -45,9 +45,9 @@ class Patients extends Component{
                     headers={headers}
                     rows={formatted}
                     emptyListMsg={"Cannot render patients"}
+                    onRowClick={this.props.changeToPatient}
                 />
             </div>
-
         );
     }
 

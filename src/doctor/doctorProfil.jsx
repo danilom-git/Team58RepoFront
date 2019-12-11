@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Sidebar from "../generic_components/sidebar";
 import Patients from "../patient/patients";
+import Patient from "../patient/patient";
 
 class DoctorProfil extends Component {
   state = {
@@ -8,8 +9,12 @@ class DoctorProfil extends Component {
   };
 
   showPatients = () => {
-      this.setState({main:<Patients />});
-  }
+      this.setState({main:<Patients changeToPatient={this.showPatient}/>});
+  };
+
+  showPatient = (e,patient) => {
+      this.setState({main:<Patient patient={patient}/>});
+  };
 
   render() {
     return (
@@ -20,9 +25,7 @@ class DoctorProfil extends Component {
                 />
                 {this.state.main}
             </div>
-
         </div>
-
     );
   }
 }
