@@ -1,10 +1,4 @@
 import React, { Component } from "react";
-import ClinicAdminNav from "./clinicAdminNav";
-import Doctors from "./doctors";
-import DoctorAddForm from "./doctorAddForm";
-import Halls from "./halls";
-import HallAddForm from "./hallAddForm";
-import ShowDoctor from "./showDoctor";
 import Sidebar from "../generic_components/sidebar";
 
 class AdminClinicProfil extends Component {
@@ -17,7 +11,7 @@ class AdminClinicProfil extends Component {
 
 
   render() {
-      //<ClinicAdminNav changeToClinic={this.props.changeToClinic} />
+
     return (
         <div className="container-fluid pt-2">
       <div className="row">
