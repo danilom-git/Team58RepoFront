@@ -44,7 +44,7 @@ class HallAddForm extends React.Component{
                         <label>Name:</label>
                     </div>
                     <div col="col-sm-4">
-                        <input type="text" onChange={this.handleChangeName} />
+                        <input className="form-control" type="text" onChange={this.handleChangeName} />
                     </div>
                 </div>
                 <div className="row">
@@ -52,7 +52,7 @@ class HallAddForm extends React.Component{
                         <label>Number:</label>
                     </div>
                     <div col="col-sm-4">
-                        <input type="text" onChange={this.handleChangeNumber} />
+                        <input className="form-control" type="text" onChange={this.handleChangeNumber} />
                     </div>
                 </div>
 
