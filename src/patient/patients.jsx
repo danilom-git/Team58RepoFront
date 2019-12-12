@@ -47,7 +47,7 @@ class Patients extends Component{
     };
 
     changeCity = (e) => {
-        console.log(e.target.value);
+        //console.log(e.target.value);
         if(e.target.value !== "") {
             this.setState({city: e.target.value});
             let newPatients = [];
@@ -71,7 +71,7 @@ class Patients extends Component{
     };
 
     changeCountry = (e) => {
-        console.log(e.target.value);
+        //console.log(e.target.value);
         if(e.target.value !== "") {
             this.setState({country: e.target.value});
             let newPatients = [];
