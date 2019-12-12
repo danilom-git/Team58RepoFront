@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/patient/patient.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/doctor/doctorProfil.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/doctor/doctorProfil.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generic_components/table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/generic_components/table.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/patient/patients.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/patient/patients.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -128,7 +125,8 @@
       <workItem from="1575564580432" duration="36851000" />
       <workItem from="1575612547708" duration="3432000" />
       <workItem from="1575874158233" duration="1129000" />
-      <workItem from="1576081630548" duration="15931000" />
+      <workItem from="1576081630548" duration="16438000" />
+      <workItem from="1576174243277" duration="2262000" />
     </task>
     <task id="LOCAL-00001" summary="Deleted unused initial files">
       <created>1574781157823</created>
@@ -347,7 +345,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576103034305</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="added links and get request">
+      <created>1576106860413</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1576106860413</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,17 +385,19 @@
     <MESSAGE value="checking hall and doctor" />
     <MESSAGE value="app promenjen" />
     <MESSAGE value="show all patients" />
-    <option name="LAST_COMMIT_MESSAGE" value="show all patients" />
+    <MESSAGE value="added links" />
+    <MESSAGE value="added links and get request" />
+    <option name="LAST_COMMIT_MESSAGE" value="added links and get request" />
   </component>
   <component name="WindowStateProjectService">
     <state x="451" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1576096182639">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
     <state x="451" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/70.27.1296.741@70.27.1296.741" timestamp="1576096182639" />
-    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1576103033977">
+    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1576106860219">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2/70.27.1296.741@70.27.1296.741" timestamp="1576103033977" />
+    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2/70.27.1296.741@70.27.1296.741" timestamp="1576106860219" />
     <state width="1139" height="142" key="GridCell.Tab.0.bottom" timestamp="1575493499427">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
@@ -411,10 +418,10 @@
       <screen x="70" y="27" width="1296" height="741" />
     </state>
     <state x="306" y="131" width="824" height="515" key="IDE.errors.dialog/70.27.1296.741@70.27.1296.741" timestamp="1575500418026" />
-    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1576103039396">
+    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1576106865237">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2/70.27.1296.741@70.27.1296.741" timestamp="1576103039396" />
+    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2/70.27.1296.741@70.27.1296.741" timestamp="1576106865237" />
     <state x="382" y="233" key="com.intellij.ide.util.TipDialog" timestamp="1575874161909">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
@@ -431,9 +438,9 @@
       <screen x="70" y="27" width="1296" height="741" />
     </state>
     <state x="416" y="182" width="672" height="677" key="run.anything.popup/70.27.1296.741@70.27.1296.741" timestamp="1575598236120" />
-    <state x="457" y="124" width="672" height="678" key="search.everywhere.popup" timestamp="1576103037592">
+    <state x="457" y="124" width="672" height="678" key="search.everywhere.popup" timestamp="1576106863401">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state x="457" y="124" width="672" height="678" key="search.everywhere.popup/70.27.1296.741@70.27.1296.741" timestamp="1576103037592" />
+    <state x="457" y="124" width="672" height="678" key="search.everywhere.popup/70.27.1296.741@70.27.1296.741" timestamp="1576106863401" />
   </component>
 </project>
