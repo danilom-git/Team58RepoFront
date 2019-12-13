@@ -18,9 +18,9 @@ class Halls extends React.Component{
 
 
     loadHalls = () => {
-        fetch("http://localhost:8080/api/halls/all")
-            .then(res => res.json())
-            .then(halls => this.setState({ halls: halls }));
+        Axios.get("http://localhost:8080/api/halls/all/clinic:"+this.props.admin.clinicId).then(res => {
+            this.setState({halls:res.data});
+        });
     }
 
     componentDidMount() {

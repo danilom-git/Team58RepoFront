@@ -11,9 +11,10 @@ class Doctors extends React.Component {
   };
 
   loadDoctors = () => {
-      fetch("http://localhost:8080/api/doctors/all")
-          .then(res => res.json())
-          .then(doctors => this.setState({ doctors: doctors }));
+      Axios.get("http://localhost:8080/api/doctors/all/clinic:" + this.props.admin.clinicId).then(res => {
+            this.setState({doctors:res.data});
+            console.log(res.data);
+      });
   };
 
   handleDelete = (e,id) => {

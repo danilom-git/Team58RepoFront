@@ -24,7 +24,8 @@ class HallAddForm extends React.Component{
         if(this.state.name) {
             const postHall = {
                 name: this.state.name,
-                number: this.state.number
+                number: this.state.number,
+                clinicId:this.props.admin.clinicId
             };
             console.log("pre posta", postHall);
             Axios.post("http://localhost:8080/api/halls", postHall).then(function (

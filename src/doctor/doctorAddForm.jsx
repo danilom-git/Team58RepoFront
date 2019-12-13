@@ -27,7 +27,10 @@ class DoctorAddForm extends Component {
       const postDoctor = {
         name: this.state.ime,
         lastName: this.state.prezime,
-        workingTime: this.state.workingTime
+        workingTime: this.state.workingTime,
+        clinicId:this.props.admin.clinicId
+
+
       };
       console.log("pre posta", postDoctor);
       Axios.post("http://localhost:8080/api/doctors", postDoctor).then(function (
