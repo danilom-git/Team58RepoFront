@@ -22,17 +22,18 @@ class OneClicks extends Component{
     };
 
     render() {
-        const clicks = this.state.oneClicks.map(click => (
+        let clicks = this.state.oneClicks.map(click => (
             <tr   key={click.id}>
                 <td>{click.id}</td>
                 <td>{click.price}</td>
                 <td>{click.doctorId}</td>
                 <td>{click.hallId}</td>
                 <td>{click.checkupTypeId}</td>
-                <td>{ click.startTime}</td>
+                <td>{click.startTime}</td>
 
             </tr>
         ));
+
         return (
 
             <table className="table">
@@ -42,7 +43,7 @@ class OneClicks extends Component{
                     <th scope="col">Price</th>
                     <th scope="col">Doctor id</th>
                     <th scope="col">Hall id</th>
-                    <th scope="col">Checkup type</th>
+                    <th scope="col">Checkup type id</th>
                     <th scope="col">Date</th>
 
                 </tr>
