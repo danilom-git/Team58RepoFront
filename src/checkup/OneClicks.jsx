@@ -23,14 +23,13 @@ class OneClicks extends Component{
 
     render() {
         let clicks = this.state.oneClicks.map(click => (
-            <tr   key={click.id}>
+            <tr key={click.id}>
                 <td>{click.id}</td>
                 <td>{click.price}</td>
                 <td>{click.doctorId}</td>
                 <td>{click.hallId}</td>
                 <td>{click.checkupTypeId}</td>
                 <td>{click.startTime}</td>
-
             </tr>
         ));
 
