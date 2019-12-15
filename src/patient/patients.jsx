@@ -26,7 +26,12 @@ class Patients extends Component{
     }
 
     loadPatients = () => {
-        Axios.get("http://localhost:8080/api/patients/all").then((res)=>{
+        Axios.get("http://localhost:8080/api/patients/all",
+            {
+                headers: {
+                    Authorization: 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJoZWFsdGh5LWFwcCIsInN1YiI6InBhdGllbnQwMUBzb21lbWFpbC5jb20iLCJhdWQiOiJ3ZWIiLCJpYXQiOjE1NzYyMTkyNjQsImV4cCI6MTU3ODgxMTI2NH0.0eSK1sd_Qoks0_W0zRWnj3yOKXUI3H5TJkIlXZ2nfa_AljSV_B4KSJCAEXyKYYeRgn2tIQxU0HxfOE_LCgoypQ"
+                }
+            }).then((res)=>{
             //console.log(res.data);
             this.setState({patientsShow: res.data});
             this.setState({patients: res.data});
@@ -98,7 +103,11 @@ class Patients extends Component{
 
     handleSearch = (e) => {
         e.preventDefault();
-        Axios.get("http://localhost:8080/api/patients/name:"+this.state.name+",lastName:"+this.state.lastName+",healthInsuranceId:"+this.state.healthInsuranceId).then((res)=> {
+        Axios.get("http://localhost:8080/api/patients/name:"+this.state.name+",lastName:"+this.state.lastName+",healthInsuranceId:"+this.state.healthInsuranceId,{
+            headers: {
+                Authorization: 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJoZWFsdGh5LWFwcCIsInN1YiI6InBhdGllbnQwMUBzb21lbWFpbC5jb20iLCJhdWQiOiJ3ZWIiLCJpYXQiOjE1NzYyMTkyNjQsImV4cCI6MTU3ODgxMTI2NH0.0eSK1sd_Qoks0_W0zRWnj3yOKXUI3H5TJkIlXZ2nfa_AljSV_B4KSJCAEXyKYYeRgn2tIQxU0HxfOE_LCgoypQ"
+            }
+        }).then((res)=> {
                 //console.log(res.data);
                 this.setState({patientsSearch: res.data});
                 this.setState({patientsShow: res.data});

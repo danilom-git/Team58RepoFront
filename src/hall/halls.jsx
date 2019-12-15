@@ -12,13 +12,21 @@ class Halls extends React.Component{
 
     handleDelete (e,id){
         console.log(id);
-        Axios.delete("http://localhost:8080/api/halls/" + id.toString() ).then(() => this.loadHalls());
+        Axios.delete("http://localhost:8080/api/halls/" + id.toString() ,{
+            headers: {
+                Authorization: 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJoZWFsdGh5LWFwcCIsInN1YiI6InBhdGllbnQwMUBzb21lbWFpbC5jb20iLCJhdWQiOiJ3ZWIiLCJpYXQiOjE1NzYyMTkyNjQsImV4cCI6MTU3ODgxMTI2NH0.0eSK1sd_Qoks0_W0zRWnj3yOKXUI3H5TJkIlXZ2nfa_AljSV_B4KSJCAEXyKYYeRgn2tIQxU0HxfOE_LCgoypQ"
+            }
+        }).then(() => this.loadHalls());
         e.stopPropagation();
     }
 
 
     loadHalls = () => {
-        Axios.get("http://localhost:8080/api/halls/all/clinic:"+this.props.admin.clinicId).then(res => {
+        Axios.get("http://localhost:8080/api/halls/all/clinic:"+this.props.admin.clinicId,{
+            headers: {
+                Authorization: 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJoZWFsdGh5LWFwcCIsInN1YiI6InBhdGllbnQwMUBzb21lbWFpbC5jb20iLCJhdWQiOiJ3ZWIiLCJpYXQiOjE1NzYyMTkyNjQsImV4cCI6MTU3ODgxMTI2NH0.0eSK1sd_Qoks0_W0zRWnj3yOKXUI3H5TJkIlXZ2nfa_AljSV_B4KSJCAEXyKYYeRgn2tIQxU0HxfOE_LCgoypQ"
+            }
+        }).then(res => {
             this.setState({halls:res.data});
         });
     }
