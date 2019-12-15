@@ -11,7 +11,11 @@ class Patient extends Component{
     };
 
     componentDidMount() {
-        Axios.get("http://localhost:8080/api/patients/id:" + this.props.patient).then(res => {
+        Axios.get("http://localhost:8080/api/patients/id:" + this.props.patient,{
+            headers: {
+                Authorization: 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJoZWFsdGh5LWFwcCIsInN1YiI6ImRvY3RvcjAxQHNvbWVtYWlsLmNvbSIsImF1ZCI6IndlYiIsImlhdCI6MTU3NjQyNDI2OSwiZXhwIjoxNTc5MDE2MjY5fQ.alvmCZRVm_FctN7kVoknRETlJAmKWCmqoU3jbUmr8MRi0DkbWjX6z-rKfxV7NnkPzPiyhHn4_NWqxVoMW3euXQ"
+            }
+        }).then(res => {
             this.setState((prevState) => ({patient: res.data}));
             console.log(this.state.patient);
         });

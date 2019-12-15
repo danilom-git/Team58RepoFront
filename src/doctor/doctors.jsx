@@ -34,6 +34,7 @@ class Doctors extends React.Component {
           <td>{doctor.name}</td>
           <td>{doctor.lastName}</td>
           <td>{doctor.workingTime}</td>
+          <td>{doctor.email}</td>
           <td><button data-naziv="" onClick={(e) => this.handleDelete(e,doctor.id)} type="button" className="btn btn-light">Delete</button></td>
       </tr>
     ));
@@ -43,7 +44,10 @@ class Doctors extends React.Component {
              <thead>
                 <tr>
                     <th scope="col">id</th>
-                    <th scope="col">Price</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Work hours</th>
+                    <th scope="col">Email</th>
                 </tr>
              </thead>
              <tbody>
