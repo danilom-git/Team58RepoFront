@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="">
+    <list default="true" id="b1ebf197-b129-41ca-bda1-f5b25d706d03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/checkup/OneClicks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/checkup/OneClicks.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/checkup/oneClickForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/checkup/oneClickForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/doctor/doctorAddForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/doctor/doctorAddForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/doctor/showDoctor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/doctor/showDoctor.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hall/showHall.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hall/showHall.jsx" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +66,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -69,6 +76,18 @@
       <recent name="$PROJECT_DIR$/src/clinic" />
       <recent name="D:\Personal\Danilo\prog shit\healthy_frontend\src\app" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
@@ -85,18 +104,6 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
   <component name="StructuralSearchPlugin">
     <searchConfiguration name="user defined" created="1574965890241" text="halls" recursive="true" caseInsensitive="true" type="JAVA" pattern_context="default" scope_type="DIRECTORY" scope_descriptor="*D:\Personal\Danilo\prog shit\healthy_frontend\src" history="1">
       <constraint name="__context__" within="" contains="" />
@@ -107,7 +114,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="dcbd4189-c72f-4084-86e4-fb49fd322002" name="Default Changelist" comment="" />
+      <changelist id="b1ebf197-b129-41ca-bda1-f5b25d706d03" name="Default Changelist" comment="" />
       <created>1574337507497</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -128,6 +135,7 @@
       <workItem from="1576081630548" duration="16438000" />
       <workItem from="1576174243277" duration="15892000" />
       <workItem from="1576418884417" duration="14727000" />
+      <workItem from="1579169386914" duration="962000" />
     </task>
     <task id="LOCAL-00001" summary="Deleted unused initial files">
       <created>1574781157823</created>
@@ -449,61 +457,33 @@
     <option name="LAST_COMMIT_MESSAGE" value="filter search results" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="451" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1576096182639">
-      <screen x="70" y="27" width="1296" height="741" />
-    </state>
-    <state x="451" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/70.27.1296.741@70.27.1296.741" timestamp="1576096182639" />
-    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1576437234756">
-      <screen x="70" y="27" width="1296" height="741" />
-    </state>
-    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2/70.27.1296.741@70.27.1296.741" timestamp="1576437234756" />
-    <state width="1139" height="142" key="GridCell.Tab.0.bottom" timestamp="1575493499427">
-      <screen x="70" y="27" width="1296" height="741" />
-    </state>
-    <state width="1139" height="142" key="GridCell.Tab.0.bottom/70.27.1296.741@70.27.1296.741" timestamp="1575493499427" />
-    <state width="1139" height="142" key="GridCell.Tab.0.center" timestamp="1575493499423">
-      <screen x="70" y="27" width="1296" height="741" />
-    </state>
-    <state width="1139" height="142" key="GridCell.Tab.0.center/70.27.1296.741@70.27.1296.741" timestamp="1575493499423" />
-    <state width="1139" height="142" key="GridCell.Tab.0.left" timestamp="1575493499421">
-      <screen x="70" y="27" width="1296" height="741" />
-    </state>
-    <state width="1139" height="142" key="GridCell.Tab.0.left/70.27.1296.741@70.27.1296.741" timestamp="1575493499421" />
-    <state width="1139" height="142" key="GridCell.Tab.0.right" timestamp="1575493499423">
-      <screen x="70" y="27" width="1296" height="741" />
-    </state>
-    <state width="1139" height="142" key="GridCell.Tab.0.right/70.27.1296.741@70.27.1296.741" timestamp="1575493499423" />
-    <state x="306" y="131" width="824" height="515" key="IDE.errors.dialog" timestamp="1575500418026">
-      <screen x="70" y="27" width="1296" height="741" />
-    </state>
-    <state x="306" y="131" width="824" height="515" key="IDE.errors.dialog/70.27.1296.741@70.27.1296.741" timestamp="1575500418026" />
-    <state x="478" y="165" width="580" height="571" key="MultipleFileMergeDialog" timestamp="1576424717575">
-      <screen x="70" y="27" width="1296" height="741" />
-    </state>
-    <state x="478" y="165" width="580" height="571" key="MultipleFileMergeDialog/70.27.1296.741@70.27.1296.741" timestamp="1576424717575" />
-    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1576437239349">
-      <screen x="70" y="27" width="1296" height="741" />
-    </state>
-    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2/70.27.1296.741@70.27.1296.741" timestamp="1576437239349" />
-    <state x="382" y="233" key="com.intellij.ide.util.TipDialog" timestamp="1576418883266">
-      <screen x="70" y="27" width="1296" height="741" />
-    </state>
-    <state x="382" y="233" key="com.intellij.ide.util.TipDialog/70.27.1296.741@70.27.1296.741" timestamp="1576418883266" />
-    <state x="450" y="99" width="537" height="579" key="git4idea.branch.GitSmartOperationDialog" timestamp="1576424714146">
-      <screen x="70" y="27" width="1296" height="741" />
-    </state>
-    <state x="450" y="99" width="537" height="579" key="git4idea.branch.GitSmartOperationDialog/70.27.1296.741@70.27.1296.741" timestamp="1576424714145" />
-    <state x="293" y="172" width="716" height="427" key="git4idea.merge.GitPullDialog" timestamp="1576420521035">
-      <screen x="70" y="27" width="1296" height="741" />
-    </state>
-    <state x="293" y="172" width="716" height="427" key="git4idea.merge.GitPullDialog/70.27.1296.741@70.27.1296.741" timestamp="1576420521035" />
-    <state x="416" y="182" width="672" height="677" key="run.anything.popup" timestamp="1575598236120">
-      <screen x="70" y="27" width="1296" height="741" />
-    </state>
-    <state x="416" y="182" width="672" height="677" key="run.anything.popup/70.27.1296.741@70.27.1296.741" timestamp="1575598236120" />
-    <state x="457" y="124" width="672" height="678" key="search.everywhere.popup" timestamp="1576437238058">
-      <screen x="70" y="27" width="1296" height="741" />
-    </state>
-    <state x="457" y="124" width="672" height="678" key="search.everywhere.popup/70.27.1296.741@70.27.1296.741" timestamp="1576437238058" />
+    <state x="451" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" />
+    <state x="451" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/70.27.1296.741@70.27.1296.741" />
+    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2" />
+    <state x="370" y="27" width="860" height="741" key="CommitChangelistDialog2/70.27.1296.741@70.27.1296.741" />
+    <state width="1139" height="142" key="GridCell.Tab.0.bottom" />
+    <state width="1139" height="142" key="GridCell.Tab.0.bottom/70.27.1296.741@70.27.1296.741" />
+    <state width="1139" height="142" key="GridCell.Tab.0.center" />
+    <state width="1139" height="142" key="GridCell.Tab.0.center/70.27.1296.741@70.27.1296.741" />
+    <state width="1139" height="142" key="GridCell.Tab.0.left" />
+    <state width="1139" height="142" key="GridCell.Tab.0.left/70.27.1296.741@70.27.1296.741" />
+    <state width="1139" height="142" key="GridCell.Tab.0.right" />
+    <state width="1139" height="142" key="GridCell.Tab.0.right/70.27.1296.741@70.27.1296.741" />
+    <state x="306" y="131" width="824" height="515" key="IDE.errors.dialog" />
+    <state x="306" y="131" width="824" height="515" key="IDE.errors.dialog/70.27.1296.741@70.27.1296.741" />
+    <state x="478" y="165" width="580" height="571" key="MultipleFileMergeDialog" />
+    <state x="478" y="165" width="580" height="571" key="MultipleFileMergeDialog/70.27.1296.741@70.27.1296.741" />
+    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2" />
+    <state x="339" y="179" width="800" height="535" key="Vcs.Push.Dialog.v2/70.27.1296.741@70.27.1296.741" />
+    <state x="382" y="233" key="com.intellij.ide.util.TipDialog" />
+    <state x="382" y="233" key="com.intellij.ide.util.TipDialog/70.27.1296.741@70.27.1296.741" />
+    <state x="450" y="99" width="537" height="579" key="git4idea.branch.GitSmartOperationDialog" />
+    <state x="450" y="99" width="537" height="579" key="git4idea.branch.GitSmartOperationDialog/70.27.1296.741@70.27.1296.741" />
+    <state x="293" y="172" width="716" height="427" key="git4idea.merge.GitPullDialog" />
+    <state x="293" y="172" width="716" height="427" key="git4idea.merge.GitPullDialog/70.27.1296.741@70.27.1296.741" />
+    <state x="416" y="182" width="672" height="677" key="run.anything.popup" />
+    <state x="416" y="182" width="672" height="677" key="run.anything.popup/70.27.1296.741@70.27.1296.741" />
+    <state x="457" y="124" width="672" height="678" key="search.everywhere.popup" />
+    <state x="457" y="124" width="672" height="678" key="search.everywhere.popup/70.27.1296.741@70.27.1296.741" />
   </component>
 </project>

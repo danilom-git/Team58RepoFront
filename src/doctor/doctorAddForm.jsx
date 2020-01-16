@@ -95,7 +95,7 @@ class DoctorAddForm extends Component {
           </div>
         </div>
 
-        {this.state.modal && <div id="myModal" className="modal fade" role="dialog">
+        <div id="myModal" className="modal fade" role="dialog">
           <div className="modal-dialog modal-sm">
             <div className="modal-content">
               <div className="modal-header">
@@ -110,7 +110,7 @@ class DoctorAddForm extends Component {
               </div>
             </div>
           </div>
-        </div>}
+        </div>
 
       </form>
     );

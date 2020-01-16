@@ -1,6 +1,5 @@
 import React, {Component,} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.js';
 import Navbar from "../generic_components/navbar";
 import AdminClinicProfil from "../clinic/adminClinicProfil";
 import ClinicProfil from "../clinic/clinicProfil";

@@ -92,14 +92,14 @@ class ShowDoctor extends Component{
                     <input type="text" onChange={this.handleChangeRadnoVreme} value={this.state.doctor.workingTime}/>
                 </div>
             </div>
-            <div className="row">
-                <div className="col-sm-2">
-                    <label>Email:</label>
-                </div>
-                <div col="col-sm-4">
-                    <input className="form-control" type="email" value={this.state.doctor.email} onChange={this.handleChangeEmail} />
-                </div>
-            </div>
+            {/*<div className="row">*/}
+            {/*    <div className="col-sm-2">*/}
+            {/*        <label>Email:</label>*/}
+            {/*    </div>*/}
+            {/*    <div col="col-sm-4">*/}
+            {/*        <input className="form-control" type="email" value={this.state.doctor.email} onChange={this.handleChangeEmail} />*/}
+            {/*    </div>*/}
+            {/*</div>*/}
             <div className="row">
                 <div className="col-sm-2">
                     <button  className="btn btn btn-primary" type="button" onClick={this.handleSubmit} >Change</button>

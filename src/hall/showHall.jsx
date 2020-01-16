@@ -52,7 +52,7 @@ class ShowHall extends Component{
                         <label>Name:</label>
                     </div>
                     <div col="col-sm-4">
-                        <input type="text" value={this.state.hall.name} onChange={this.handleChangeName} />
+                        <input type="text" className='form-control' value={this.state.hall.name} onChange={this.handleChangeName} />
                     </div>
                 </div>
                 <div className="row">
@@ -60,13 +60,13 @@ class ShowHall extends Component{
                         <label>Number:</label>
                     </div>
                     <div col="col-sm-4">
-                        <input type="text" value={this.state.hall.number} onChange={this.handleChangeNumber} />
+                        <input type="text" className='form-control' value={this.state.hall.number} onChange={this.handleChangeNumber} />
                     </div>
                 </div>
 
                 <div className="row">
                     <div className="col-sm-2">
-                        <button onClick={(e) => this.handleSubmit(e)}>Change</button>
+                        <button className='btn btn-primary' onClick={(e) => this.handleSubmit(e)}>Change</button>
                     </div>
                 </div>
             </form>
