@@ -46,7 +46,7 @@ class DoctorAddForm extends Component {
             <label>Name:</label>
           </div>
           <div col="col-sm-4">
-            <input type="text" onChange={this.handleChangeIme} />
+            <input className="form-control" type="text" onChange={this.handleChangeIme} />
           </div>
         </div>
         <div className="row">
@@ -54,7 +54,7 @@ class DoctorAddForm extends Component {
             <label>Last name:</label>
           </div>
           <div col="col-sm-4">
-            <input type="text" onChange={this.handleChangePrezime} />
+            <input className="form-control" type="text" onChange={this.handleChangePrezime} />
           </div>
         </div>
         <div className="row">
@@ -62,7 +62,7 @@ class DoctorAddForm extends Component {
             <label>Working time:</label>
           </div>
           <div col="col-sm-4">
-            <input type="text" onChange={this.handleWorkingTime} />
+            <input className="form-control" type="text" onChange={this.handleWorkingTime} />
           </div>
         </div>
         <div className="row">
