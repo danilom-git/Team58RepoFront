@@ -7,20 +7,17 @@ class AdminClinicProfil extends Component {
   }
   state = { main: <div></div> };
 
-
-
-
   render() {
 
     return (
         <div className="container-fluid pt-2">
-      <div className="row">
+          <div className="row">
 
-          <Sidebar links={[{id:1,text:"User profile"},{id:2,text:"Clinic profile",onClick:this.props.changeToClinic},{id:3,text:"Clinic report"}]}
-          />
+            <Sidebar links={[{id:1,text:"User profile"},{id:2,text:"Clinic profile",onClick:this.props.changeToClinic},{id:3,text:"Clinic report"}]}
+            />
 
-        <div className="col">{this.state.main}</div>
-      </div>
+            <div className="col">{this.state.main}</div>
+          </div>
         </div>
     );
   }

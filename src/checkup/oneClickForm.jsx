@@ -261,7 +261,7 @@ class OneClickForm extends Component{
             </div>
             <div className="row">
                 <div className="col-sm-2 m-1">
-                    <button  onClick={(e) => this.handleSubmit(e)}>Set checkup</button>
+                    <button className='btn btn-primary' onClick={(e) => this.handleSubmit(e)}>Set checkup</button>
                 </div>
             </div>
         </form>);

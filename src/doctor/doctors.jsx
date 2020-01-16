@@ -11,9 +11,10 @@ class Doctors extends React.Component {
   };
 
   loadDoctors = () => {
-      fetch("http://localhost:8080/api/doctors/all")
-          .then(res => res.json())
-          .then(doctors => this.setState({ doctors: doctors }));
+      Axios.get("http://localhost:8080/api/doctors/all/clinic:" + this.props.admin.clinicId).then(res => {
+            this.setState({doctors:res.data});
+            console.log(res.data);
+      });
   };
 
   handleDelete = (e,id) => {
@@ -33,6 +34,7 @@ class Doctors extends React.Component {
           <td>{doctor.name}</td>
           <td>{doctor.lastName}</td>
           <td>{doctor.workingTime}</td>
+          <td>{doctor.email}</td>
           <td><button data-naziv="" onClick={(e) => this.handleDelete(e,doctor.id)} type="button" className="btn btn-light">Delete</button></td>
       </tr>
     ));
@@ -42,7 +44,10 @@ class Doctors extends React.Component {
              <thead>
                 <tr>
                     <th scope="col">id</th>
-                    <th scope="col">Price</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Work hours</th>
+                    <th scope="col">Email</th>
                 </tr>
              </thead>
              <tbody>

@@ -32,7 +32,6 @@ class PatientPage extends Component {
                             {id: 2, text: 'View Medical Record'},
                             {id: 3, text: 'View Profile'}
                             ]}/>
-
                     <div className='col'>
                         {this.state.cuboid}
                     </div>

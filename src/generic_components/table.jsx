@@ -17,6 +17,7 @@ class Table extends Component {
             return <p className='text-warning font-weight-bold'>{this.props.emptyListMsg ? this.props.emptyListMsg : defaultEmptyListMsg}</p>;
         }
         else {
+            //(e) => this.props.onRowClick(e,row.rowId)
             return (
                 <table className='table table-hover table-bordered table-secondary'>
                     <thead className='thead-dark'>
@@ -28,7 +29,7 @@ class Table extends Component {
                     </thead>
                     <tbody>
                     {this.props.rows.map(row =>
-                        <tr key={row.rowId} id={row.rowId} onClick={this.props.onRowClick}>
+                        <tr key={row.rowId} id={row.rowId} onClick={(e) => this.props.onRowClick(e,row.rowId)}>
                             {this.props.headers.map(header => {
                                 let value = row[header.headId];
                                 value = isNaN(value) ? value : (Math.round(value * 100) / 100).toFixed(2);
