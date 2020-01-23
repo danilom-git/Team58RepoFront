@@ -6,7 +6,6 @@ import ClinicProfil from "../clinic/clinicProfil";
 import DoctorProfil from "../doctor/doctorProfil";
 import PatientPage from "../patient/patientPage";
 import LoginPage from "./loginPage";
-import DoctorProfil from "../components/doctorProfil";
 import Axios from "axios";
 
 class App extends Component {
@@ -19,7 +18,18 @@ class App extends Component {
 
     usrLoggedOut = 'loggedOut';
     usrPatient = 'patient';
+    usrDoctor = 'doctor';
+    usrClinicAdmin = 'clinicAdmin';
 
+    getTitle = (userType) => {
+        switch (userType) {
+            case this.usrPatient: return 'Patient';
+            case this.usrDoctor: return 'Doctor';
+            case this.usrClinicAdmin: return 'Clinic Admin';
+
+            default: return 'Logged out';
+        }
+    };
 
     componentDidMount() {
         let userType = localStorage.getItem('userType');
@@ -64,29 +74,29 @@ class App extends Component {
 
     onLogIn = (userType, token) => {
         this.setState({ userType: userType });
-        localStorage.setItem('userType', userType)
+        localStorage.setItem('userType', userType);
         localStorage.setItem('token', token);
+        let title;
+
     };
 
     render() {
         return (
             <>
-                <Navbar title={this.state.title}
-                        links={[{id: 1, text: 'Clinic Admin', onClick: this.changeToClinicAdmin}, {
-                            id: 2,
-                            text: 'Patient',
-                            onClick: this.changeToPatientPage
-                        }, {id: 3, text: 'Doctor', onClick: this.changeToDocotorPage}]}/>
-                {this.state.profil}
-                <Navbar title='Title' links={[{id: 1, text: 'djoda',onClick:this.changeToClinicAdmin}, {id: 2, text: 'djanilo',onClick:this.changeToPatientPage}]}/>
+                <Navbar title={this.getTitle(this.state.userType)}
+                        links={[
+                            {id: 1, text: 'Clinic Admin', onClick: this.changeToClinicAdmin},
+                            {id: 2, text: this.getTitle(this.state.userType), onClick: this.changeToPatientPage},
+                            {id: 3, text: 'Doctor', onClick: this.changeToDocotorPage}]}/>
                 {
-                    this.state.userType === this.usrLoggedOut ?
-                        <LoginPage onLogIn={this.onLogIn}/>
-                    :
                     this.state.userType === this.usrPatient ?
                         <PatientPage/>
+                    : this.state.userType === this.usrDoctor ?
+                        <DoctorProfil/>
+                    : this.state.userType === this.usrClinicAdmin ?
+                        <ClinicProfil changeToClinic={this.changeToClinic} />
                     :
-                        <ClinicProfil/>
+                        <LoginPage onLogIn={this.onLogIn}/>
                 }
             </>
         );
