@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Axios from 'axios';
 
 
 // getUlogovani = (token) => {
@@ -24,8 +25,22 @@ import React, {Component} from 'react';
 //         }
 //     });
 
+class LoginPage extends Component {
 
-    class LoginPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            password: ''
+        };
+    }
+
+    sendLoginRequest = (e) => {
+        e.preventDefault();
+        Axios.post('http://localhost:8080/auth/login', this.state)
+            .then(result => this.props.onLogIn(result.data.userType, result.data.token))
+    };
+
     render() {
         return (
             <div className='container-fluid pt-2'>
@@ -37,7 +52,8 @@ import React, {Component} from 'react';
                                 <div className='col'>
                                     <div className='form-group'>
                                         <label htmlFor='txtEmail'>Email:</label>
-                                        <input type='email' className='form-control' id='txtEmail'/>
+                                        <input type='email' className='form-control' id='txtEmail'
+                                               onChange={(e) => this.setState( { username: e.target.value })}/>
                                     </div>
                                 </div>
                             </div>
@@ -45,13 +61,14 @@ import React, {Component} from 'react';
                                 <div className='col'>
                                     <div className='form-group'>
                                         <label htmlFor='txtPass'>Password:</label>
-                                        <input type='password' className='form-control' id='txtPass'/>
+                                        <input type='password' className='form-control' id='txtPass'
+                                               onChange={(e) => this.setState( { password: e.target.value })}/>
                                     </div>
                                 </div>
                             </div>
                             <div className='row'>
                                 <div className='col'>
-                                    <button className='btn btn-primary'>
+                                    <button className='btn btn-primary' onClick={this.sendLoginRequest}>
                                         Log In
                                     </button>
                                 </div>
