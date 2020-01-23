@@ -71,9 +71,14 @@ class ClinicsCuboid extends Component {
     };
 
     loadClinics = (ending) => {
-        fetch('http://localhost:8080/api/clinics/' + ending)
-            .then(result => result.json())
+        Axios({
+            method: 'get',
+            url: 'http://localhost:8080/api/clinics/' + ending,
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')}
+        })
+            .then(result => result.data)
             .then(clinics => {
+                // console.log(clinics);
                 let headers = [
                     {headId: 'name', text: 'Name'},
                     {headId: 'country', text: 'Country'},
@@ -113,8 +118,12 @@ class ClinicsCuboid extends Component {
     };
 
     loadDoctors = (ending) => {
-        fetch('http://localhost:8080/api/doctors/' + ending)
-            .then(result => result.json())
+        Axios({
+            method: 'get',
+            url: 'http://localhost:8080/api/doctors/' + ending,
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')}
+        })
+            .then(result => result.data)
             .then(doctors => {
                 let headers = [
                     {headId: 'name', text: 'Name'},
@@ -136,8 +145,12 @@ class ClinicsCuboid extends Component {
     };
 
     loadCheckupTypes = () => {
-        fetch('http://localhost:8080/api/checkupTypes/all')
-            .then(result => result.json())
+        Axios({
+            method: 'get',
+            url: 'http://localhost:8080/api/checkupTypes/all',
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')}
+        })
+            .then(result => result.data)
             .then(checkupTypes => {
                 let formatted = checkupTypes.map(checkupType => { return {id: checkupType.id, text: checkupType.name}; });
                 this.setState({chkTypeAll: formatted});
@@ -217,13 +230,13 @@ class ClinicsCuboid extends Component {
 
     startTimeChange = (e) => {
         let startTime = e.target.value;
-        console.log(startTime);
+        // console.log(startTime);
         this.setState( { startTime } );
     };
 
     endTimeChange = (e) => {
         let endTime = e.target.value;
-        console.log(endTime);
+        // console.log(endTime);
         this.setState( { endTime } );
     };
 
@@ -245,8 +258,13 @@ class ClinicsCuboid extends Component {
                 doctorId: this.state.doctorSelected,
                 checkupTypeId: this.state.chkTypeSelected
             };
-            Axios.post("http://localhost:8080/api/checkupRequests", checkupRequest)
-                .then(result => { console.log('posted checkup request'); console.log(result); } )
+            Axios({
+                method: 'post',
+                url: 'http://localhost:8080/api/checkupRequests',
+                headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')},
+                data: checkupRequest
+            })
+                .then(result => { console.log('posted checkup request'); console.log(result.data); } )
                 .then(() => { this.props.openEmptyCuboid(); });
         }
     };

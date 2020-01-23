@@ -5,17 +5,26 @@ import AdminClinicProfil from "../clinic/adminClinicProfil";
 import ClinicProfil from "../clinic/clinicProfil";
 import DoctorProfil from "../doctor/doctorProfil";
 import PatientPage from "../patient/patientPage";
+import LoginPage from "./loginPage";
+import DoctorProfil from "../components/doctorProfil";
 import Axios from "axios";
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            profil: <div></div>,
-            title: "",
-            user: {}
+            userType: this.usrLoggedOut
         };
+    }
 
+    usrLoggedOut = 'loggedOut';
+    usrPatient = 'patient';
+
+
+    componentDidMount() {
+        let userType = localStorage.getItem('userType');
+        if (userType)
+            this.setState({ userType: userType });
     }
 
     changeToClinic = () => {
@@ -53,6 +62,12 @@ class App extends Component {
 
     };
 
+    onLogIn = (userType, token) => {
+        this.setState({ userType: userType });
+        localStorage.setItem('userType', userType)
+        localStorage.setItem('token', token);
+    };
+
     render() {
         return (
             <>
@@ -63,6 +78,16 @@ class App extends Component {
                             onClick: this.changeToPatientPage
                         }, {id: 3, text: 'Doctor', onClick: this.changeToDocotorPage}]}/>
                 {this.state.profil}
+                <Navbar title='Title' links={[{id: 1, text: 'djoda',onClick:this.changeToClinicAdmin}, {id: 2, text: 'djanilo',onClick:this.changeToPatientPage}]}/>
+                {
+                    this.state.userType === this.usrLoggedOut ?
+                        <LoginPage onLogIn={this.onLogIn}/>
+                    :
+                    this.state.userType === this.usrPatient ?
+                        <PatientPage/>
+                    :
+                        <ClinicProfil/>
+                }
             </>
         );
     }
