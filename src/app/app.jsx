@@ -1,6 +1,5 @@
 import React, {Component,} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.js';
 import Navbar from "../generic_components/navbar";
 import AdminClinicProfil from "../clinic/adminClinicProfil";
 import ClinicProfil from "../clinic/clinicProfil";
@@ -27,7 +26,7 @@ class App extends Component {
     changeToClinicAdmin = () => {
         Axios.get("http://localhost:8080/api/clinicAdmins/1",{
             headers: {
-                Authorization: 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJoZWFsdGh5LWFwcCIsInN1YiI6InBhdGllbnQwMUBzb21lbWFpbC5jb20iLCJhdWQiOiJ3ZWIiLCJpYXQiOjE1NzYyMTkyNjQsImV4cCI6MTU3ODgxMTI2NH0.0eSK1sd_Qoks0_W0zRWnj3yOKXUI3H5TJkIlXZ2nfa_AljSV_B4KSJCAEXyKYYeRgn2tIQxU0HxfOE_LCgoypQ"
+                Authorization: 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJoZWFsdGh5LWFwcCIsInN1YiI6InBhdGllbnQwMUBzb21lbWFpbC5jb20iLCJhdWQiOiJ3ZWIiLCJpYXQiOjE1NzYyMTkyNjQsImV4cCI6MTU3ODgxMTI2NH0.0eSK1sd_Qoks0_W0zRWnj3yOKXUI3H5TJkIlXZ2nfa_AljSV_B4KSJCAEXyKYYeRgn2tIQxU0HxfOE_LCgoypQ'
             }
         }).then((res) => {
             this.setState({user: res.data});
@@ -51,7 +50,6 @@ class App extends Component {
             profil: <DoctorProfil doctor={this.state.user}/>,
             title: "Doctor"
         }));
-
     };
 
     render() {

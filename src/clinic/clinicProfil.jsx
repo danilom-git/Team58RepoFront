@@ -48,7 +48,7 @@ class ClinicProfil extends Component {
         //<ClinicProfilNav showHalls={this.showHalls} changeToAddHall={this.changeToAddHall} showDoctors={this.showDoctors} changeToAddDoctor={this.changeToAddDoctor} />
         return (
             <div className="container-fluid pt-2">
-                <div className="row">
+                <div id="mainRow" className="row">
                     <Sidebar
                         links={[{id: 1, text: 'Doctors', onClick: this.showDoctors}, {
                             id: 2,
