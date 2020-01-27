@@ -1,6 +1,13 @@
 import React, {Component,} from 'react';
 import Axios from "axios";
 import DatePicker from "../generic_components/datepicker";
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
+
+const customStyles = {
+    overlay: {zIndex: 10000}
+};
 
 
 class OneClickForm extends Component {
@@ -9,14 +16,14 @@ class OneClickForm extends Component {
     };
 
     state = {
-        checkupsOneDay: [],
+        responseText: "Checkup cannot be added.",
         doctors: [],
         halls: [],
         types: [],
         type: {},
         oneClickCheckup: {},
         date: {},
-        duration: {},
+        duration: "",
         startDate: "",
         endDate: "",
         doctor: {},
@@ -24,6 +31,14 @@ class OneClickForm extends Component {
         price: 0,
         disable: true,
         disableTime: true
+    };
+
+    showModal = () => {
+        this.setState({modal: true});
+    };
+
+    handleModalCloseRequest = () => {
+        this.setState({modal: false});
     };
 
     componentDidMount() {//get doctors,halls,types
@@ -43,115 +58,92 @@ class OneClickForm extends Component {
         });
     }
 
-    getCheckupsOnDay = (e) => {//checkups for one day
+    getCheckupsOnDay = (e) => {//checkup date
         if (e.target.value) {
-            Axios.get("http://localhost:8080/api/checkups/allOnDate/" + e.target.value).then((res) => {
-                this.setState({checkupsOneDay: res.data});
-                this.setState({disableTime: false});
-                console.log(this.state.checkupsOneDay);
-
-            });
-            this.setState({date: e.target.value});
+            this.setState({disable: true});
+            this.setState({disableTime: false});
+            let newDate  = new Date(e.target.value);
+            this.setState({date: newDate});
+            console.log(newDate);
         } else {
             this.setState({disable: true});
             this.setState({disableTime: true});
+            this.setState({date: "" });
+
         }
     };
 
     changePrice = (e) => {  //SET PRICE
         console.log(e.target.value);
+        if(Number(e.target.value) > 0)
         this.setState({price: Number(e.target.value)});
     };
 
     handleDoctors = (e) => {// SET DOCTOR ID
         this.setState({doctor: e.target.value});
-        this.checkDoctor(e.target.value);
+        //this.checkDoctor(e.target.value);
     };
 
     handleHalls = (e) => {// SET HALL ID
         this.setState({hall: e.target.value});
-        this.checkHall(e.target.value);
+       // this.checkHall(e.target.value);
     };
 
     handleTypes = (e) => {// SET TYPE ID s
         this.setState({type: e.target.value});
     };
 
-    checkDoctor = (id) => {
-
-        for (let d of this.state.checkupsOneDay) {
-            if (id === d.doctorId.toString()) {
-                console.log(d.doctorId);
-                let sp1 = d.startDate.split(".");
-                let dStartDate = new Date(sp1[0]);
-                let sp2 = d.endDate.split(".");
-                let dEndDate = new Date(sp2[0]);
-
-                console.log(dStartDate.getTime(), "za ", dStartDate, this.state.startDate.getTime(), "za", this.state.startDate);
-
-                if ((this.state.startDate.getTime() <= dStartDate.getTime() && this.state.endDate.getTime() <= dStartDate.getTime()) || (this.state.startDate.getTime() >= dEndDate.getTime() && this.state.endDate.getTime() >= dEndDate.getTime())) {
-                    console.log("OK DOCTOR");
-                } else {
-                    this.setState({doctor: false});
-                    console.log("NIJE OK DOCTOR");
-                    break;
-                }
-            } else {
-                console.log("NIJE ID");
-            }
-        }
-
-    };
-
-    checkHall = (id) => {
-        for (let d of this.state.checkupsOneDay) {
-            if (id === d.hallId.toString()) {
-                console.log(d.hallId);
-
-                let sp1 = d.startDate.split(".");
-                let dStartDate = new Date(sp1[0]);
-                let sp2 = d.endDate.split(".");
-                let dEndDate = new Date(sp2[0]);
-
-                console.log(dStartDate.getTime(), this.state.startDate.getTime());
-
-                if ((this.state.startDate.getTime() <= dStartDate.getTime() && this.state.endDate.getTime() <= dStartDate.getTime()) || (this.state.startDate.getTime() >= dEndDate.getTime() && this.state.endDate.getTime() >= dEndDate.getTime())) {
-                    console.log("OK SALA");
-                } else {
-                    this.setState({hall: false});
-                    console.log("NIJE OK SALA");
-                    break;
-                }
-            } else {
-                console.log("NIJE ID");
-            }
-        }
-    };
-
-    trigDisableTrue = () => {
-        this.setState({disable: false});
-    };
-
     changeStartTime = (e) => {
-        //(this.state.date + "T" + e.target.value + ":00.000+0000")
-        let dateString = this.state.date + "T" + e.target.value + ":00";
-        console.log(dateString);
         if (e.target.value) {
-            this.setState({startDate: new Date(dateString)});
-            if (this.state.endDate) {
-                this.trigDisableTrue();
+            let str = e.target.value.toString();
+            let minsSeks = str.split(':');
+            let startTime = new Date(this.state.date.getFullYear(),this.state.date.getMonth(),this.state.date.getDate(),minsSeks[0],minsSeks[1]);
+            console.log(this.state.date.getFullYear(),this.state.date.getMonth(),this.state.date.getDate());
+            this.setState({startDate:startTime});
+
+            if(this.state.endDate) {
+                this.setState((prev) => ({disable: false}));
+                let hdur = Number(this.state.endDate.getHours()) - Number(startTime.getHours());
+                if(hdur !== 0)
+                    hdur = hdur.toString() + "h";
+                console.log(hdur);
+                let mdur = Number(this.state.endDate.getMinutes()) - Number(startTime.getMinutes());
+                if(mdur !== 0)
+                    hdur = hdur.toString() + mdur.toString() + "min";
+                console.log(hdur);
+                this.setState((prev) => ({duration:hdur}));
             }
+            else
+                this.setState({disable: true});
+
         } else {
             this.setState({disable: true});
         }
     };
 
     changeEndTime = (e) => {
-        let dateString = this.state.date + "T" + e.target.value + ":00";
-        if (e.target.value) {
-            this.setState({endDate: new Date(dateString)});
-            if (this.state.startDate)
-                this.trigDisableTrue();
+        if (e.target.value ) {
+            let str = e.target.value.toString();
+            let minsSeks = str.split(':');
+            let endTime = new Date(this.state.date.getFullYear(),this.state.date.getMonth(),this.state.date.getDate(),minsSeks[0],minsSeks[1]);
+            console.log(endTime);
+            this.setState({endDate: endTime});
+
+            if(this.state.startDate) {
+                this.setState((prev) => ({disable: false}));
+                let hdur = Number(endTime.getHours()) - Number(this.state.startDate.getHours());
+                if(hdur !== 0)
+                    hdur = hdur.toString() + "h";
+                console.log(hdur);
+                let mdur = Number(endTime.getMinutes()) - Number(this.state.startDate.getMinutes());
+                if(mdur !== 0)
+                    hdur = hdur.toString() + mdur.toString() + "min";
+                console.log(hdur);
+                this.setState((prev) => ({duration:hdur}));
+            }
+            else
+                this.setState({disable: true});
+
         } else {
             this.setState({disable: true});
         }
@@ -159,25 +151,26 @@ class OneClickForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-
-        if ((!this.state.disable) && (!this.state.disableTime) && this.state.price && this.state.doctor && this.state.hall) {
-            console.log("state iz submita", this.state);
-            const postCheck = {
-                startTime: this.state.startDate,
-                endTime: this.state.endDate,
-                duration: 0,
-                price: this.state.price,
-                checkupTypeId: this.state.type,
-                hallId: this.state.hall,
-                doctorId: this.state.doctor,
-                clinicId: 1
-            };
-            console.log("za slanje", postCheck);
-            Axios.post("http://localhost:8080/api/oneClickCheckup", postCheck).then(function (
-                res
-            ) {
-                console.log("posle posta", res);
-            });
+        if(this.state.endDate > this.state.startDate) {
+            if ((!this.state.disable) && (!this.state.disableTime) && this.state.price && this.state.doctor && this.state.hall) {
+                console.log("state iz submita", this.state);
+                const postCheck = {
+                    startTime: this.state.startDate,
+                    endTime: this.state.endDate,
+                    duration: this.state.duration,
+                    price: this.state.price,
+                    checkupTypeId: this.state.type,
+                    hallId: this.state.hall,
+                    doctorId: this.state.doctor,
+                    clinicId: 1
+                };
+                console.log("za slanje", postCheck);
+                Axios.post("http://localhost:8080/api/oneClickCheckup", postCheck).then((res)=>{
+                    console.log(res.data);
+                },(error)=>{
+                    this.showModal();
+                });
+            }
         }
     };
 
@@ -263,6 +256,32 @@ class OneClickForm extends Component {
                     <button className="btn btn-primary" onClick={(e) => this.handleSubmit(e)}>Set checkup</button>
                 </div>
             </div>
+
+            <Modal
+                className="Modal__Bootstrap modal-dialog"
+                closeTimeoutMS={150}
+                isOpen={this.state.modal}
+                style={customStyles}
+                onRequestClose={this.handleModalCloseRequest}
+            >
+                <div className="modal-content" role="dialog">
+                    <div className="modal-header">
+                        <h4 className="modal-title">Notification</h4>
+                        <button type="button" className="close" onClick={this.handleModalCloseRequest}>
+                            <span aria-hidden="true">&times;</span>
+                            <span className="sr-only">Close</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        <p>{this.state.responseText}</p>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary"
+                                onClick={this.handleModalCloseRequest}>Close
+                        </button>
+                    </div>
+                </div>
+            </Modal>
         </form>);
     }
 }

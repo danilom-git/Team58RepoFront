@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import Axios from "axios";
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
+
+const customStyles = {
+    overlay: {zIndex: 10000}
+};
 
 class Doctors extends Component {
   constructor(props) {
@@ -7,19 +14,31 @@ class Doctors extends Component {
   }
 
   state = {
-    doctors: []
+    doctors: [],
+      modal: false,
+      responseText:"Doctors with scheduled checkups can't be deleted."
   };
+
+    showModal = () => {
+        this.setState({modal: true});
+    };
+
+    handleModalCloseRequest = () => {
+        this.setState({modal: false});
+    };
 
   loadDoctors = () => {
       Axios.get("http://localhost:8080/api/doctors/all/clinic:" + this.props.admin.clinicId).then(res => {
             this.setState({doctors:res.data});
-            console.log(res.data);
+            //console.log(res.data);
       });
   };
 
   handleDelete = (e,id) => {
     Axios.delete("http://localhost:8080/api/doctors/" + id.toString())
-        .then(() => this.loadDoctors());
+        .then((res) => {
+            this.loadDoctors();
+        },(error) => {this.showModal();});
     e.stopPropagation();
   };
 
@@ -39,7 +58,7 @@ class Doctors extends Component {
       </tr>
     ));
     return (
-
+        <>
          <table className="table">
              <thead>
                 <tr>
@@ -53,8 +72,34 @@ class Doctors extends Component {
              <tbody>
                 {doctors}
              </tbody>
-            </table>
 
+            </table>
+            <Modal
+                className="Modal__Bootstrap modal-dialog"
+                closeTimeoutMS={150}
+                isOpen={this.state.modal}
+                style={customStyles}
+                onRequestClose={this.handleModalCloseRequest}
+            >
+                <div className="modal-content" role="dialog">
+                    <div className="modal-header">
+                        <h4 className="modal-title">Notification</h4>
+                        <button type="button" className="close" onClick={this.handleModalCloseRequest}>
+                            <span aria-hidden="true">&times;</span>
+                            <span className="sr-only">Close</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        <p>{this.state.responseText}</p>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary"
+                                onClick={this.handleModalCloseRequest}>Close
+                        </button>
+                    </div>
+                </div>
+            </Modal>
+            </>
     );
   }
 }
