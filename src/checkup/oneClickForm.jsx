@@ -75,7 +75,6 @@ class OneClickForm extends Component {
 
     changePrice = (e) => {  //SET PRICE
         console.log(e.target.value);
-        if(Number(e.target.value) > 0)
         this.setState({price: Number(e.target.value)});
     };
 
@@ -152,7 +151,7 @@ class OneClickForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         if(this.state.endDate > this.state.startDate) {
-            if ((!this.state.disable) && (!this.state.disableTime) && this.state.price && this.state.doctor && this.state.hall) {
+            if ((!this.state.disable) && (!this.state.disableTime) && (this.state.price > 0) && this.state.doctor && this.state.hall) {
                 console.log("state iz submita", this.state);
                 const postCheck = {
                     startTime: this.state.startDate,
@@ -168,9 +167,17 @@ class OneClickForm extends Component {
                 Axios.post("http://localhost:8080/api/oneClickCheckup", postCheck).then((res)=>{
                     console.log(res.data);
                 },(error)=>{
+                    this.setState(()=>({responseText: "Checkup cannot be added."}));
                     this.showModal();
                 });
+            }else
+            {
+                this.setState(()=>({responseText: "Form is not filed correctly."}));
+                this.showModal();
             }
+        }else {
+            this.setState(()=>({responseText: "End time have to come after start time."}));
+            this.showModal();
         }
     };
 
