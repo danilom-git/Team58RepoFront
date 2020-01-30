@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Sidebar from "../generic_components/sidebar";
-import Patients from "../patient/patients";
-import Patient from "../patient/patient";
+import Patients from "./patients";
+import Patient from "./patient";
 
 class DoctorProfil extends Component {
   state = {

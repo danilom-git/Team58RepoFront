@@ -45,7 +45,7 @@ class App extends Component {
     changeToClinicAdmin = () => {
         Axios.get("http://localhost:8080/api/clinicAdmins/1",{
             headers: {
-                Authorization: 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJoZWFsdGh5LWFwcCIsInN1YiI6InBhdGllbnQwMUBzb21lbWFpbC5jb20iLCJhdWQiOiJ3ZWIiLCJpYXQiOjE1NzYyMTkyNjQsImV4cCI6MTU3ODgxMTI2NH0.0eSK1sd_Qoks0_W0zRWnj3yOKXUI3H5TJkIlXZ2nfa_AljSV_B4KSJCAEXyKYYeRgn2tIQxU0HxfOE_LCgoypQ"
+                Authorization: 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJoZWFsdGh5LWFwcCIsInN1YiI6InBhdGllbnQwMUBzb21lbWFpbC5jb20iLCJhdWQiOiJ3ZWIiLCJpYXQiOjE1NzYyMTkyNjQsImV4cCI6MTU3ODgxMTI2NH0.0eSK1sd_Qoks0_W0zRWnj3yOKXUI3H5TJkIlXZ2nfa_AljSV_B4KSJCAEXyKYYeRgn2tIQxU0HxfOE_LCgoypQ'
             }
         }).then((res) => {
             this.setState({user: res.data});
@@ -76,8 +76,12 @@ class App extends Component {
         this.setState({ userType: userType });
         localStorage.setItem('userType', userType);
         localStorage.setItem('token', token);
-        let title;
+    };
 
+    onLogOut = () => {
+        localStorage.removeItem('userType');
+        localStorage.removeItem('token');
+        this.setState({ userType: this.usrLoggedOut });
     };
 
     render() {
@@ -85,9 +89,9 @@ class App extends Component {
             <>
                 <Navbar title={this.getTitle(this.state.userType)}
                         links={[
-                            {id: 1, text: 'Clinic Admin', onClick: this.changeToClinicAdmin},
-                            {id: 2, text: this.getTitle(this.state.userType), onClick: this.changeToPatientPage},
-                            {id: 3, text: 'Doctor', onClick: this.changeToDocotorPage}]}/>
+                            {id: 1, text: 'Log Out', onClick: this.onLogOut}
+                            ]}
+                />
                 {
                     this.state.userType === this.usrPatient ?
                         <PatientPage/>

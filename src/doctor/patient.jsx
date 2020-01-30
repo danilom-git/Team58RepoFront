@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import Axios from "axios";
 
 class Patient extends Component{
-    constructor(props) {
-        super(props);
-    }
-
     state = {
         patient : {}
     };
