@@ -75,8 +75,12 @@ class App extends Component {
         this.setState({ userType: userType });
         localStorage.setItem('userType', userType);
         localStorage.setItem('token', token);
-        let title;
+    };
 
+    onLogOut = () => {
+        localStorage.removeItem('userType');
+        localStorage.removeItem('token');
+        this.setState({ userType: this.usrLoggedOut });
     };
 
     render() {
@@ -84,9 +88,9 @@ class App extends Component {
             <>
                 <Navbar title={this.getTitle(this.state.userType)}
                         links={[
-                            {id: 1, text: 'Clinic Admin', onClick: this.changeToClinicAdmin},
-                            {id: 2, text: this.getTitle(this.state.userType), onClick: this.changeToPatientPage},
-                            {id: 3, text: 'Doctor', onClick: this.changeToDocotorPage}]}/>
+                            {id: 1, text: 'Log Out', onClick: this.onLogOut}
+                            ]}
+                />
                 {
                     this.state.userType === this.usrPatient ?
                         <PatientPage/>

@@ -3,10 +3,6 @@ import Axios from "axios";
 import Table from "../generic_components/table";
 
 class Patients extends Component{
-    constructor(props) {
-        super(props);
-    }
-
     state = {
         patients: [],
         patientsSearch:[],
@@ -33,8 +29,8 @@ class Patients extends Component{
                 }
             }).then((res)=>{
             //console.log(res.data);
-            this.setState({patientsShow: res.data});
-            this.setState({patients: res.data});
+            this.setState({ patientsShow: res.data });
+            this.setState({ patients: res.data });
 
         });
     };
