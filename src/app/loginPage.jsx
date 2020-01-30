@@ -1,30 +1,6 @@
 import React, {Component} from 'react';
 import Axios from 'axios';
 
-
-// getUlogovani = (token) => {
-//     let AuthStr = 'Bearer '.concat(token);
-//     let data = token
-//
-//     axios({
-//         method: 'get' ,
-//         url: 'http://localhost:8099/getUser' ,
-//         headers: { "Authorization": AuthStr }
-//     }).then((response) => {
-//         if (response.data != null)
-//         {
-//             if(response.data.type === "PACIJENT"){
-//                 this.redirect();
-//             }
-//
-//         }
-//
-//     }, (error) => {
-//         {
-//             this.setState({message: "Neuspesno dobavljanje korisnika.", showResponse: true}) ;
-//         }
-//     });
-
 class LoginPage extends Component {
 
     constructor(props) {
