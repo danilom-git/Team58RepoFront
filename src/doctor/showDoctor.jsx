@@ -1,9 +1,14 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import Axios from "axios";
-import Modal from "bootstrap/js/src/modal";
-import Button from "bootstrap/js/src/button";
+import Modal from 'react-modal';
 
-class ShowDoctor extends Component{
+Modal.setAppElement('#root');
+
+const customStyles = {
+    overlay: {zIndex: 10000}
+};
+
+class ShowDoctor extends Component {
     constructor(props) {
         super(props);
         this.state.id = this.props.doctor.id;
@@ -11,120 +16,116 @@ class ShowDoctor extends Component{
     }
 
     state = {
-        id : "",
+        id: "",
         doctor: {},
         modal: false
-    }
+    };
+
+    showModal = () => {
+        this.setState({modal: true});
+    };
+
+    handleModalCloseRequest = () => {
+        this.setState({modal: false});
+    };
 
     componentDidMount() {
         Axios.get("http://localhost:8080/api/doctors/" + this.state.id).then(res => {
-            this.setState({doctor:res.data});
+            this.setState({doctor: res.data});
         });
     }
 
     handleChangeIme = event => {
-        this.setState({ doctor : {...this.state.doctor,name : event.target.value} });
+        this.setState({doctor: {...this.state.doctor, name: event.target.value}});
     };
 
     handleChangePrezime = event => {
-        this.setState({ doctor : {...this.state.doctor,lastName : event.target.value} });
+        this.setState({doctor: {...this.state.doctor, lastName: event.target.value}});
     };
 
     handleChangeRadnoVreme = event => {
-        this.setState({ doctor : {...this.state.doctor,workingTime : event.target.value} });
-    };
-
-    handleChangeEmail = event => {
-        this.setState({ doctor : {...this.state.doctor,email : event.target.value} });
-    };
-
-    showModal = () => {
-        this.setState({modal:true});
-    };
-
-    exitModal = () => {
-        this.setState({modal:true});
+        this.setState({doctor: {...this.state.doctor, workingTime: event.target.value}});
     };
 
     handleSubmit = (e) => {
         e.preventDefault();
         //name,lastName moraju da odgovaraju dto
-        console.log( this.state.doctor);
-        if(this.state.doctor.name && this.state.doctor.lastName && this.state.doctor.workingTime != 0) {
-            this.setState((prev) => ({modal:true}));
+        console.log(this.state.doctor);
+        if (this.state.doctor.name && this.state.doctor.lastName && this.state.doctor.workingTime !== 0) {
+            this.setState((prev) => ({modal: true}));
             const postDoctor = this.state.doctor;
             console.log("pre posta", postDoctor);
-            Axios.put("http://localhost:8080/api/doctors", postDoctor).then(function (
-                res
-            ) {
-                console.log("posle posta", res);
-
-            });
+            Axios.put("http://localhost:8080/api/doctors", postDoctor).then(res => {
+                    this.showModal();
+                }
+            );
         }
-
     };
-
     render() {
         return (
 
-                <form>
-            <div className="row">
-                <div className="col-sm-2">
-                    <label>Name:</label>
+            <form>
+                <div className="row">
+                    <div className="col-sm-2">
+                        <label>Name:</label>
+                    </div>
+                    <div className="col-sm-4">
+                        <input type="text" onChange={this.handleChangeIme} value={this.state.doctor.name}/>
+                    </div>
                 </div>
-                <div col="col-sm-4">
-                    <input type="text" onChange={this.handleChangeIme} value={this.state.doctor.name}/>
+                <div className="row">
+                    <div className="col-sm-2">
+                        <label>Last name:</label>
+                    </div>
+                    <div className="col-sm-4">
+                        <input type="text" onChange={this.handleChangePrezime} value={this.state.doctor.lastName}/>
+                    </div>
                 </div>
-            </div>
-            <div className="row">
-                <div className="col-sm-2">
-                    <label>Last name:</label>
+                <div className="row">
+                    <div className="col-sm-2">
+                        <label>Working time:</label>
+                    </div>
+                    <div className="col-sm-4">
+                        <input type="text" onChange={this.handleChangeRadnoVreme}
+                               value={this.state.doctor.workingTime}/>
+                    </div>
                 </div>
-                <div col="col-sm-4">
-                    <input type="text" onChange={this.handleChangePrezime} value={this.state.doctor.lastName}/>
+
+                <div className="row">
+                    <div className="col-sm-2">
+                        <button className="btn btn btn-primary" type="button" onClick={this.handleSubmit}>Change
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div className="row">
-                <div className="col-sm-2">
-                    <label>Working time:</label>
-                </div>
-                <div col="col-sm-4">
-                    <input type="text" onChange={this.handleChangeRadnoVreme} value={this.state.doctor.workingTime}/>
-                </div>
-            </div>
-            {/*<div className="row">*/}
-            {/*    <div className="col-sm-2">*/}
-            {/*        <label>Email:</label>*/}
-            {/*    </div>*/}
-            {/*    <div col="col-sm-4">*/}
-            {/*        <input className="form-control" type="email" value={this.state.doctor.email} onChange={this.handleChangeEmail} />*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-            <div className="row">
-                <div className="col-sm-2">
-                    <button  className="btn btn btn-primary" type="button" onClick={this.handleSubmit} >Change</button>
-                </div>
-            </div>
-                    {this.state.modal && <div id="myModal" className="modal fade" role="dialog">
-                        <div className="modal-dialog modal-sm">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h4 className="modal-title">Info</h4>
-                                    <button type="button" className="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <div className="modal-body">
-                                    <p>Changes sent</p>
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
+
+                <Modal
+                    className="Modal__Bootstrap modal-dialog"
+                    closeTimeoutMS={150}
+                    isOpen={this.state.modal}
+                    style={customStyles}
+                    onRequestClose={this.handleModalCloseRequest}
+                >
+                    <div className="modal-content" role="dialog">
+                        <div className="modal-header">
+                            <h4 className="modal-title">Notification</h4>
+                            <button type="button" className="close" onClick={this.handleModalCloseRequest}>
+                                <span aria-hidden="true">&times;</span>
+                                <span className="sr-only">Close</span>
+                            </button>
                         </div>
-                    </div>}
-        </form>
+                        <div className="modal-body">
+                            <p>Changes saved</p>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary"
+                                    onClick={this.handleModalCloseRequest}>Close
+                            </button>
+                        </div>
+                    </div>
+                </Modal>
+            </form>
         );
-
-
     }
 }
+
 export default ShowDoctor;

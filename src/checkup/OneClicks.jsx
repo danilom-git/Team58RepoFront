@@ -22,33 +22,43 @@ class OneClicks extends Component{
     };
 
     render() {
-        let clicks = this.state.oneClicks.map(click => (
+        let clicks = this.state.oneClicks;
+        for(let c of clicks)
+        {
+            let spl  = c.startTime.toString().split('T');
+            c.startTime = spl[0] + " " + spl[1].slice(0,5);
+        }
+
+        clicks = clicks.map(click => (
             <tr key={click.id}>
-                <td>{click.id}</td>
-                <td>{click.price}</td>
-                <td>{click.doctorId}</td>
-                <td>{click.hallId}</td>
-                <td>{click.checkupTypeId}</td>
+                <td>{click.doctorName + " " + click.doctorLastName}</td>
+                <td>{click.hallNumber}</td>
+                <td>{click.checkupType}</td>
                 <td>{click.startTime}</td>
+                <td>{click.duration}</td>
+                <td>{click.price}</td>
+                <td><button className="btn btn-light">Schedule</button></td>
             </tr>
         ));
+
+
 
         return (
 
             <table className="table">
                 <thead>
                 <tr>
-                    <th scope="col">id</th>
+                    <th scope="col">Doctor</th>
+                    <th scope="col">Hall</th>
+                    <th scope="col">Checkup type</th>
+                    <th scope="col">Start time</th>
+                    <th scope="col">Duration</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Doctor id</th>
-                    <th scope="col">Hall id</th>
-                    <th scope="col">Checkup type id</th>
-                    <th scope="col">Date</th>
-
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                {clicks}
+                    {clicks}
                 </tbody>
             </table>
 

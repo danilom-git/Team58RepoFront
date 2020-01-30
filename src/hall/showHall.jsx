@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import Axios from "axios";
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
+
+const customStyles = {
+    overlay: {zIndex: 10000}
+};
 
 class ShowHall extends Component{
 
@@ -8,7 +15,17 @@ class ShowHall extends Component{
         this.state.hall = this.props.hall;
     }
     state = {
-        hall :{}
+        hall :{},
+        modal: false,
+        responseText:"Changes saved"
+    };
+
+    showModal = () => {
+        this.setState({modal: true});
+    };
+
+    handleModalCloseRequest = () => {
+        this.setState({modal: false});
     };
 
     componentDidMount() {
@@ -35,10 +52,8 @@ class ShowHall extends Component{
                 headers: {
                     Authorization: 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJoZWFsdGh5LWFwcCIsInN1YiI6ImRvY3RvcjAxQHNvbWVtYWlsLmNvbSIsImF1ZCI6IndlYiIsImlhdCI6MTU3NjQyNDI2OSwiZXhwIjoxNTc5MDE2MjY5fQ.alvmCZRVm_FctN7kVoknRETlJAmKWCmqoU3jbUmr8MRi0DkbWjX6z-rKfxV7NnkPzPiyhHn4_NWqxVoMW3euXQ"
                 }
-            }).then(function (
-                res
-            ) {
-                console.log("posle posta", res);
+            }).then((res) => {
+                this.showModal();
             });
         }
     };
@@ -69,6 +84,32 @@ class ShowHall extends Component{
                         <button className='btn btn-primary' onClick={(e) => this.handleSubmit(e)}>Change</button>
                     </div>
                 </div>
+
+                <Modal
+                    className="Modal__Bootstrap modal-dialog"
+                    closeTimeoutMS={150}
+                    isOpen={this.state.modal}
+                    style={customStyles}
+                    onRequestClose={this.handleModalCloseRequest}
+                >
+                    <div className="modal-content" role="dialog">
+                        <div className="modal-header">
+                            <h4 className="modal-title">Notification</h4>
+                            <button type="button" className="close" onClick={this.handleModalCloseRequest}>
+                                <span aria-hidden="true">&times;</span>
+                                <span className="sr-only">Close</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <p>{this.state.responseText}</p>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary"
+                                    onClick={this.handleModalCloseRequest}>Close
+                            </button>
+                        </div>
+                    </div>
+                </Modal>
             </form>
         );
     }
