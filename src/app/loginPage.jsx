@@ -22,7 +22,7 @@ class LoginPage extends Component {
             <div className='container-fluid pt-2'>
                 <div className='row h-100 justify-content-center'>
                     <div className='col-xl-3 col-lg-4 col-md-5 col-sm-6 m-5'>
-                        <h3 className='justify-content-center'>Log in</h3>
+                        <h3>Log in</h3>
                         <form>
                             <div className='row'>
                                 <div className='col'>
