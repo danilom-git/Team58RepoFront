@@ -12,7 +12,7 @@ class Navbar extends Component {
 
                 <ul className='navbar-nav'>
                     {
-                        this.props.links.map(link =>
+                        this.props.links && this.props.links.map(link =>
                             <li key={link.id} className='nav-item flex-fill'>
                                 <button onClick={link.onClick} className='btn btn-link nav-link'>{link.text}</button>
                             </li>

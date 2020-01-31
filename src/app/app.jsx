@@ -7,12 +7,14 @@ import DoctorProfil from "../doctor/doctorProfil";
 import PatientPage from "../patient/patientPage";
 import LoginPage from "./loginPage";
 import Axios from "axios";
+import RegistrationPage from "./registrationPage";
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userType: this.usrLoggedOut
+            userType: this.usrLoggedOut,
+            registering: false
         };
     }
 
@@ -45,7 +47,7 @@ class App extends Component {
     changeToClinicAdmin = () => {
         Axios.get("http://localhost:8080/api/clinicAdmins/1",{
             headers: {
-                Authorization: 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJoZWFsdGh5LWFwcCIsInN1YiI6InBhdGllbnQwMUBzb21lbWFpbC5jb20iLCJhdWQiOiJ3ZWIiLCJpYXQiOjE1NzYyMTkyNjQsImV4cCI6MTU3ODgxMTI2NH0.0eSK1sd_Qoks0_W0zRWnj3yOKXUI3H5TJkIlXZ2nfa_AljSV_B4KSJCAEXyKYYeRgn2tIQxU0HxfOE_LCgoypQ'
+                Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJoZWFsdGh5LWFwcCIsInN1YiI6InBhdGllbnQwMUBzb21lbWFpbC5jb20iLCJhdWQiOiJ3ZWIiLCJpYXQiOjE1NzYyMTkyNjQsImV4cCI6MTU3ODgxMTI2NH0.0eSK1sd_Qoks0_W0zRWnj3yOKXUI3H5TJkIlXZ2nfa_AljSV_B4KSJCAEXyKYYeRgn2tIQxU0HxfOE_LCgoypQ'
             }
         }).then((res) => {
             this.setState({user: res.data});
@@ -83,13 +85,23 @@ class App extends Component {
         this.setState({ userType: this.usrLoggedOut });
     };
 
+    onRegistration = (message) => {
+        this.setState({ registering: false });
+        console.log(message);
+    };
+
     render() {
+        let link = {};
+        if (this.state.userType !== this.usrLoggedOut)
+            link = {id: 1, text: 'Log Out', onClick: this.onLogOut};
+        else if (this.state.registering === true)
+            link = {id: 1, text: 'Log In', onClick: () => this.setState({ registering: false })};
+        else
+            link = {id: 1, text: 'Register', onClick: () => this.setState({ registering: true })};
         return (
             <>
                 <Navbar title={this.getTitle(this.state.userType)}
-                        links={[
-                            {id: 1, text: 'Log Out', onClick: this.onLogOut}
-                            ]}
+                        links={[ link ]}
                 />
                 {
                     this.state.userType === this.usrPatient ?
@@ -98,6 +110,8 @@ class App extends Component {
                         <DoctorProfil/>
                     : this.state.userType === this.usrClinicAdmin ?
                         <ClinicProfil changeToClinic={this.changeToClinic} />
+                    : this.state.registering ?
+                        <RegistrationPage onRegistration={this.onRegistration}/>
                     :
                         <LoginPage onLogIn={this.onLogIn}/>
                 }
