@@ -17,6 +17,7 @@ class OneClickForm extends Component {
 
     state = {
         responseText: "Checkup cannot be added.",
+        clinicId: "",
         doctors: [],
         halls: [],
         types: [],
@@ -41,21 +42,48 @@ class OneClickForm extends Component {
         this.setState({modal: false});
     };
 
-    componentDidMount() {//get doctors,halls,types
-        Axios.get('http://localhost:8080/api/doctors/all').then((res) => {
-            this.setState({doctors: res.data});
-            //  console.log(this.state.doctors);
+    //localStorage.getItem('token')}
+    componentDidMount() {//get doctors,halls,types\
+        let clinicAdmin;
+        Axios({
+            method: 'post',
+            url: 'http://localhost:8080/api/clinicAdmins/self',
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')},
+            data: {token: localStorage.getItem('token'),expiresIn:0,userType:""}
+        }).then((result) => {
+            console.log(result);
+            clinicAdmin = result.data;
+            this.setState({clinicId:clinicAdmin.id});
+            Axios.get('http://localhost:8080/api/doctors/all/clinic:' + clinicAdmin.id,{
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+            }).then((res) => {
+                this.setState({doctors: res.data});
+                //  console.log(this.state.doctors);
+            });
+
+            Axios.get('http://localhost:8080/api/halls/all/clinic:' + clinicAdmin.id, {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+            }).then((res) => {
+                this.setState({halls: res.data});
+                //  console.log(this.state.halls);
+            });
+
+            Axios.get('http://localhost:8080/api/checkupTypes/all', {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+            }).then((res) => {
+                this.setState({types: res.data});
+                //  console.log(this.state.halls);
+            });
+
         });
 
-        Axios.get('http://localhost:8080/api/halls/all').then((res) => {
-            this.setState({halls: res.data});
-            //  console.log(this.state.halls);
-        });
 
-        Axios.get('http://localhost:8080/api/checkupTypes/all').then((res) => {
-            this.setState({types: res.data});
-            //  console.log(this.state.halls);
-        });
     }
 
     getCheckupsOnDay = (e) => {//checkup date
@@ -161,10 +189,14 @@ class OneClickForm extends Component {
                     checkupTypeId: this.state.type,
                     hallId: this.state.hall,
                     doctorId: this.state.doctor,
-                    clinicId: 1
+                    clinicId: this.state.clinicId
                 };
                 console.log("za slanje", postCheck);
-                Axios.post("http://localhost:8080/api/oneClickCheckup", postCheck).then((res)=>{
+                Axios.post("http://localhost:8080/api/oneClickCheckup", postCheck,{
+                    headers: {
+                        Authorization: 'Bearer ' + localStorage.getItem('token')
+                    }
+                }).then((res)=>{
                     console.log(res.data);
                 },(error)=>{
                     this.setState(()=>({responseText: "Checkup cannot be added."}));

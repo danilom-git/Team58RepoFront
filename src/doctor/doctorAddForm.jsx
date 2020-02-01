@@ -15,8 +15,20 @@ class DoctorAddForm extends Component {
     email: "",
     modal: false,
     responseText: "Fill the form correctly",
-    workingTime: 0
+    workingTime: 0,
+    clinicId: ""
   };
+
+  componentDidMount() {
+    Axios({
+      method:'post',
+      url: 'http://localhost:8080/api/clinicAdmins/self',
+      headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')},
+      data: {token: localStorage.getItem('token'),expiresIn:0,userType:""}
+    }).then((result) => {
+      this.setState({clinicId:result.data.id});
+    });
+  }
 
   showModal = () => {
     this.setState({modal: true});
@@ -55,10 +67,14 @@ class DoctorAddForm extends Component {
         lastName: this.state.prezime,
         workingTime: this.state.workingTime,
         email:this.state.email,
-        clinicId:this.props.admin.clinicId
+        clinicId:this.state.clinicId
       };
       console.log("pre posta", postDoctor);
-      Axios.post("http://localhost:8080/api/doctors", postDoctor).then((res)=>{
+      Axios.post("http://localhost:8080/api/doctors", postDoctor,{
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        }
+      }).then((res)=>{
         this.setState((prev) => ({responseText:"Doctor added"}));
         this.showModal();
       });

@@ -7,14 +7,15 @@ class Halls extends Component{
     }
 
     state = {
-        halls: []
+        halls: [],
+        clinicId:""
     };
 
     handleDelete (e,id){
         console.log(id);
         Axios.delete("http://localhost:8080/api/halls/" + id.toString() ,{
             headers: {
-                Authorization: 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJoZWFsdGh5LWFwcCIsInN1YiI6InBhdGllbnQwMUBzb21lbWFpbC5jb20iLCJhdWQiOiJ3ZWIiLCJpYXQiOjE1NzYyMTkyNjQsImV4cCI6MTU3ODgxMTI2NH0.0eSK1sd_Qoks0_W0zRWnj3yOKXUI3H5TJkIlXZ2nfa_AljSV_B4KSJCAEXyKYYeRgn2tIQxU0HxfOE_LCgoypQ"
+                Authorization: 'Bearer ' + localStorage.getItem('token')
             }
         }).then(() => this.loadHalls());
         e.stopPropagation();
@@ -22,9 +23,9 @@ class Halls extends Component{
 
 
     loadHalls = () => {
-        Axios.get("http://localhost:8080/api/halls/all/clinic:"+this.props.admin.clinicId,{
+        Axios.get("http://localhost:8080/api/halls/all/clinic:"+this.state.clinicId,{
             headers: {
-                Authorization: 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJoZWFsdGh5LWFwcCIsInN1YiI6InBhdGllbnQwMUBzb21lbWFpbC5jb20iLCJhdWQiOiJ3ZWIiLCJpYXQiOjE1NzYyMTkyNjQsImV4cCI6MTU3ODgxMTI2NH0.0eSK1sd_Qoks0_W0zRWnj3yOKXUI3H5TJkIlXZ2nfa_AljSV_B4KSJCAEXyKYYeRgn2tIQxU0HxfOE_LCgoypQ"
+                Authorization: 'Bearer ' + localStorage.getItem('token')
             }
         }).then(res => {
             this.setState({halls:res.data});
@@ -32,7 +33,16 @@ class Halls extends Component{
     }
 
     componentDidMount() {
-      this.loadHalls();
+        Axios({
+            method:'post',
+            url: 'http://localhost:8080/api/clinicAdmins/self',
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')},
+            data: {token: localStorage.getItem('token'),expiresIn:0,userType:""}
+        }).then((result) => {
+            this.setState({clinicId:result.data.id});
+        }).then(()=>{
+            this.loadHalls();
+        });
     }
 
     render() {

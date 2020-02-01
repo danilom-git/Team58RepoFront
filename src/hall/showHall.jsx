@@ -29,7 +29,11 @@ class ShowHall extends Component{
     };
 
     componentDidMount() {
-        Axios.get("http://localhost:8080/api/halls/" + this.state.hall.id).then(res => {
+        Axios.get("http://localhost:8080/api/halls/" + this.state.hall.id,{
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        }).then(res => {
             this.setState({hall:res.data});
         });
     }
@@ -50,7 +54,7 @@ class ShowHall extends Component{
             console.log("pre posta", postHall);
             Axios.put("http://localhost:8080/api/halls", postHall,{
                 headers: {
-                    Authorization: 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJoZWFsdGh5LWFwcCIsInN1YiI6ImRvY3RvcjAxQHNvbWVtYWlsLmNvbSIsImF1ZCI6IndlYiIsImlhdCI6MTU3NjQyNDI2OSwiZXhwIjoxNTc5MDE2MjY5fQ.alvmCZRVm_FctN7kVoknRETlJAmKWCmqoU3jbUmr8MRi0DkbWjX6z-rKfxV7NnkPzPiyhHn4_NWqxVoMW3euXQ"
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
                 }
             }).then((res) => {
                 this.showModal();
