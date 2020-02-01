@@ -8,28 +8,44 @@ class OneClicks extends Component{
 
     state = {
         oneClicks:[]
-    }
+    };
 
     componentDidMount() {
         this.loadOneClicks();
     }
 
     loadOneClicks = () => {
-        Axios.get('http://localhost:8080/api/oneClickCheckup/all').then((res) => {
-            this.setState({oneClicks:res.data});
-            //  console.log(this.state.doctors);
-        })
+        Axios({
+            method: 'post',
+            url: 'http://localhost:8080/api/clinicAdmins/one',
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')},
+            data: {token: localStorage.getItem('token'),expiresIn:0,userType:""}
+        }).then((result) => {
+            Axios.get('http://localhost:8080/api/oneClickCheckup/all/clinic:' + result.data.id,{
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+            }).then((res) => {
+                let clicks = res.data;
+                console.log(clicks);
+                for(let c of clicks)
+                {
+                    c.startTime = new Date(c.startTime);
+                    c.endTime = new Date(c.endTime);
+                    let spl  = c.startTime.toISOString().split('T');
+                    console.log(spl);
+                    c.startTime = spl[0] + " " + spl[1].slice(0,5);
+                }
+                this.setState({oneClicks:clicks});
+                //  console.log(this.state.doctors);
+            });
+        });
+
+
     };
 
     render() {
-        let clicks = this.state.oneClicks;
-        for(let c of clicks)
-        {
-            let spl  = c.startTime.toString().split('T');
-            c.startTime = spl[0] + " " + spl[1].slice(0,5);
-        }
-
-        clicks = clicks.map(click => (
+        let clicks = this.state.oneClicks.map(click => (
             <tr key={click.id}>
                 <td>{click.doctorName + " " + click.doctorLastName}</td>
                 <td>{click.hallNumber}</td>

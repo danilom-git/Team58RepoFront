@@ -42,35 +42,6 @@ class App extends Component {
         this.setState({title: "Clinic"});
     };
 
-    changeToClinicAdmin = () => {
-        Axios.get("http://localhost:8080/api/clinicAdmins/1",{
-            headers: {
-                Authorization: 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJoZWFsdGh5LWFwcCIsInN1YiI6InBhdGllbnQwMUBzb21lbWFpbC5jb20iLCJhdWQiOiJ3ZWIiLCJpYXQiOjE1NzYyMTkyNjQsImV4cCI6MTU3ODgxMTI2NH0.0eSK1sd_Qoks0_W0zRWnj3yOKXUI3H5TJkIlXZ2nfa_AljSV_B4KSJCAEXyKYYeRgn2tIQxU0HxfOE_LCgoypQ'
-            }
-        }).then((res) => {
-            this.setState({user: res.data});
-            console.count(res.data);
-        });
-        this.setState({profil: <AdminClinicProfil admin={this.state.user} changeToClinic={this.changeToClinic}/>});
-        this.setState({title: "Clinic admin"});
-    };
-
-    changeToPatientPage = () => {
-        this.setState({profil: <PatientPage/>});
-        this.setState({title: "Patient"});
-    };
-
-    changeToDocotorPage = () => {
-        Axios.get("http://localhost:8080/api/doctors/1").then((res) => {
-            this.setState({user: res.data});
-            console.count(res.data);
-        });
-        this.setState((prevState) => ({
-            profil: <DoctorProfil doctor={this.state.user}/>,
-            title: "Doctor"
-        }));
-    };
-
     onLogIn = (userType, token) => {
         this.setState({ userType: userType });
         localStorage.setItem('userType', userType);
