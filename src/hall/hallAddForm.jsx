@@ -14,7 +14,19 @@ class HallAddForm extends Component{
         name: "",
         number: "",
         modal: false,
-        responseText:"Fill the form correctly"
+        responseText:"Fill the form correctly",
+        clinicId:""
+    };
+
+    componentDidMount() {
+        Axios({
+            method:'post',
+            url: 'http://localhost:8080/api/clinicAdmins/self',
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')},
+            data: {token: localStorage.getItem('token'),expiresIn:0,userType:""}
+        }).then((result) => {
+            this.setState({clinicId:result.data.id});
+        });
     };
 
     showModal = () => {
@@ -44,12 +56,12 @@ class HallAddForm extends Component{
             const postHall = {
                 name: this.state.name,
                 number: this.state.number,
-                clinicId:this.props.admin.clinicId
+                clinicId:this.state.clinicId
             };
             //console.log("pre posta", postHall);
             Axios.post("http://localhost:8080/api/halls", postHall,{
                 headers: {
-                    Authorization: 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJoZWFsdGh5LWFwcCIsInN1YiI6InBhdGllbnQwMUBzb21lbWFpbC5jb20iLCJhdWQiOiJ3ZWIiLCJpYXQiOjE1NzYyMTkyNjQsImV4cCI6MTU3ODgxMTI2NH0.0eSK1sd_Qoks0_W0zRWnj3yOKXUI3H5TJkIlXZ2nfa_AljSV_B4KSJCAEXyKYYeRgn2tIQxU0HxfOE_LCgoypQ"
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
                 }
             }).then((res)=>{
                 this.setState((prev) => ({responseText:"Hall added"}));

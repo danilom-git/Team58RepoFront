@@ -17,7 +17,7 @@ class OneClicks extends Component{
     loadOneClicks = () => {
         Axios({
             method: 'post',
-            url: 'http://localhost:8080/api/clinicAdmins/one',
+            url: 'http://localhost:8080/api/clinicAdmins/self',
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')},
             data: {token: localStorage.getItem('token'),expiresIn:0,userType:""}
         }).then((result) => {

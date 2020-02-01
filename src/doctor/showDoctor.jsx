@@ -30,7 +30,11 @@ class ShowDoctor extends Component {
     };
 
     componentDidMount() {
-        Axios.get("http://localhost:8080/api/doctors/" + this.state.id).then(res => {
+        Axios.get("http://localhost:8080/api/doctors/" + this.state.id,{
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        }).then(res => {
             this.setState({doctor: res.data});
         });
     }
@@ -55,7 +59,11 @@ class ShowDoctor extends Component {
             this.setState((prev) => ({modal: true}));
             const postDoctor = this.state.doctor;
             console.log("pre posta", postDoctor);
-            Axios.put("http://localhost:8080/api/doctors", postDoctor).then(res => {
+            Axios.put("http://localhost:8080/api/doctors", postDoctor,{
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+            }).then(res => {
                     this.showModal();
                 }
             );

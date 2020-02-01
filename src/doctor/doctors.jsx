@@ -14,9 +14,10 @@ class Doctors extends Component {
   }
 
   state = {
-    doctors: [],
+      doctors: [],
       modal: false,
-      responseText:"Doctors with scheduled checkups can't be deleted."
+      responseText:"Doctors with scheduled checkups can't be deleted.",
+      clinicId:""
   };
 
     showModal = () => {
@@ -28,22 +29,46 @@ class Doctors extends Component {
     };
 
   loadDoctors = () => {
-      Axios.get("http://localhost:8080/api/doctors/all/clinic:" + this.props.admin.clinicId).then(res => {
+      Axios.get("http://localhost:8080/api/doctors/all/clinic:" + this.state.clinicId,{
+          headers: {
+              Authorization: 'Bearer ' + localStorage.getItem('token')
+          }
+      }).then(res => {
             this.setState({doctors:res.data});
             //console.log(res.data);
       });
   };
 
   handleDelete = (e,id) => {
-    Axios.delete("http://localhost:8080/api/doctors/" + id.toString())
+    Axios.delete("http://localhost:8080/api/doctors/" + id.toString(),{
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token')
+        }
+    })
         .then((res) => {
             this.loadDoctors();
         },(error) => {this.showModal();});
+   /* Axios({
+        method: 'delete',
+        url: "http://localhost:8080/api/doctors/" + id.toString(),
+        headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')}
+    }).then(()=>{
+        this.loadDoctors();
+    });*/
     e.stopPropagation();
   };
 
   componentDidMount() {
-    this.loadDoctors();
+      Axios({
+          method:'post',
+          url: 'http://localhost:8080/api/clinicAdmins/self',
+          headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')},
+          data: {token: localStorage.getItem('token'),expiresIn:0,userType:""}
+      }).then((result) => {
+          this.setState({clinicId:result.data.id});
+      }).then(()=>{
+          this.loadDoctors();
+      });
   };
 
   render() {
