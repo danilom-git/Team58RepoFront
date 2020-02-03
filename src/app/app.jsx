@@ -43,23 +43,28 @@ class App extends Component {
     };
 
     onLogIn = (userType, token) => {
-        this.setState({ userType: userType });
-        localStorage.setItem('userType', userType);
         localStorage.setItem('token', token);
+        localStorage.setItem('userType', userType);
+        this.setState({ userType: userType });
     };
 
     onLogOut = () => {
-        localStorage.removeItem('userType');
         localStorage.removeItem('token');
+        localStorage.removeItem('userType');
         this.setState({ userType: this.usrLoggedOut });
     };
 
+
     render() {
+        let logOutLink = {};
+        if (this.state.userType !== this.usrLoggedOut)
+            logOutLink = {id: 1, text: 'Log Out', onClick: this.onLogOut}
+
         return (
             <>
                 <Navbar title={this.getTitle(this.state.userType)}
                         links={[
-                            {id: 1, text: 'Log Out', onClick: this.onLogOut}
+                            logOutLink
                             ]}
                 />
                 {

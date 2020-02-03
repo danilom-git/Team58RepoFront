@@ -4,7 +4,7 @@ class EmptyCuboid extends Component {
     render() {
         return (
             <p className='display-4'>
-                Open one of the links from the sidebar.
+                Greetings {this.props.user && this.props.user.name}
             </p>
         );
     }

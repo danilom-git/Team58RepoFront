@@ -219,9 +219,9 @@ class ClinicsCuboid extends Component {
     };
 
     back = () => {
-        if (this.state.displayedElement === this.elements.clinics) {
-            this.props.openEmptyCuboid();
-        } else if (this.state.displayedElement === this.elements.doctors) {
+        // if (this.state.displayedElement === this.elements.clinics) {
+        //     this.props.openEmptyCuboid();
+        if (this.state.displayedElement === this.elements.doctors) {
             this.displayClinicTable();
         } else if (this.state.displayedElement === this.elements.chkRequest) {
             this.displayDoctorTable();
@@ -287,7 +287,10 @@ class ClinicsCuboid extends Component {
                         </h5>
                     </div>
                     <div className='col-1'>
-                        <button className='btn btn-primary float-right' onClick={this.back}>Back</button>
+                        {
+                            this.state.displayedElement !== this.elements.clinics &&
+                                <button className='btn btn-primary float-right' onClick={this.back}>Back</button>
+                        }
                     </div>
                 </div>
                 {
@@ -323,7 +326,7 @@ class ClinicsCuboid extends Component {
                                     onHeaderClick={this.onHeaderClick}
                                     onRowClick={this.displayDoctorTable}
                                 />
-                                : this.state.displayedElement === this.elements.doctors ?
+                            : this.state.displayedElement === this.elements.doctors ?
                                 <Table
                                     headers={this.state.doctorHeaders}
                                     rows={this.state.doctorAll}
@@ -331,7 +334,7 @@ class ClinicsCuboid extends Component {
                                     onHeaderClick={this.onHeaderClick}
                                     onRowClick={this.displayChkRequest}
                                 />
-                                :
+                            :
                                 <form>
                                     <div className='row'>
                                         <div className='col'>
