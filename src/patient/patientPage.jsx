@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import Sidebar from "../generic_components/sidebar";
-import EmptyCuboid from "./emptyCuboid";
+import HomeCuboid from "./homeCuboid";
 import ClinicsCuboid from "./clinicsCuboid";
 import Axios from "axios";
 import ProfileCuboid from "./profileCuboid";
 import CheckupsCuboid from "./checkupsCuboid";
+import MedicalCuboid from "./medicalCuboid";
 
 class PatientPage extends Component {
     constructor(props) {
@@ -48,6 +49,11 @@ class PatientPage extends Component {
         this.setState({ cuboid: this.checkupsCuboid });
     };
 
+    medicalCuboid = 'medical';
+    openMedicalCuboid = () => {
+        this.setState({ cuboid: this.medicalCuboid });
+    };
+
     render() {
         return (
             <div className='container-fluid pt-2'>
@@ -56,7 +62,7 @@ class PatientPage extends Component {
                         links={[
                             {id: 1, text: 'Home Page', onClick: this.openEmptyCuboid},
                             {id: 2, text: 'Browse Clinics', onClick: this.openClinicsCuboid},
-                            {id: 3, text: 'Medical Record'},
+                            {id: 3, text: 'Medical Record', onClick: this.openMedicalCuboid},
                             {id: 4, text: 'Checkup History', onClick: this.openCheckupsCuboid},
                             {id: 5, text: 'Profile', onClick: this.openProfileCuboid}
                             ]}/>
@@ -68,8 +74,10 @@ class PatientPage extends Component {
                                 <ProfileCuboid user={this.state.user}/>
                             : this.state.cuboid === this.checkupsCuboid ?
                                 <CheckupsCuboid />
+                            : this.state.cuboid === this.medicalCuboid ?
+                                <MedicalCuboid />
                             :
-                                <EmptyCuboid user={this.state.user} />
+                                <HomeCuboid user={this.state.user} />
                         }
                     </div>
                 </div>

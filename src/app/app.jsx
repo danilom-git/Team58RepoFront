@@ -6,8 +6,6 @@ import ClinicProfil from "../clinic/clinicProfil";
 import DoctorProfil from "../doctor/doctorProfil";
 import PatientPage from "../patient/patientPage";
 import LoginPage from "./loginPage";
-import Axios from "axios";
-import AbsenceRequests from "../doctor/absenceRequests";
 
 class App extends Component {
     constructor(props) {

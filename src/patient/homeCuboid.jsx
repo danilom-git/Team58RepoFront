@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class EmptyCuboid extends Component {
+class HomeCuboid extends Component {
     render() {
         return (
             <p className='display-4'>
@@ -10,4 +10,4 @@ class EmptyCuboid extends Component {
     }
 }
 
-export default EmptyCuboid;
+export default HomeCuboid;
