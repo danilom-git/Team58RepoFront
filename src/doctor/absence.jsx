@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import Axios from "axios";
 import Modal from 'react-modal';
 import DatePicker from "../generic_components/datepicker";
 
-class Absence extends Component{
+class Absence extends Component {
 
-    state =  {
+    state = {
         startDate: "",
         endDate: "",
         type: "",
@@ -17,10 +17,10 @@ class Absence extends Component{
         Axios({
             method: 'get',
             url: 'http://localhost:8080/api/doctors/user',
-            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')}
-        }).then((res)=>{
-            this.setState({doctorId:res.data.id});
-            this.setState({clinicId:res.data.clinicId});
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
+        }).then((res) => {
+            this.setState({doctorId: res.data.id});
+            this.setState({clinicId: res.data.clinicId});
             console.log(res.data);
         });
     }
@@ -38,33 +38,58 @@ class Absence extends Component{
     };
 
     handleSubmit = () => {
+        console.log(this.state);
+        if (this.state.startDate.getTime() < this.state.endDate.getTime()) {
+            if (this.state.type) {
+                Axios({
+                    method: 'post',
+                    url: 'http://localhost:8080/api/absenceRequests',
+                    headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')},
+                    data: {
+                        doctorId: this.state.doctorId,
+                        clinicId: this.state.clinicId,
+                        startDate: this.state.startDate,
+                        endDate: this.state.endDate,
+                        type: this.state.type,
+                        answered: false
+                    }
+                }).then((res) => {
+                    console.log(res.data);
+                });
+            }
+
+        }
 
     };
 
     render() {
-        return (<>
-            <div className="row">
-                <div className="col">
-                    <label className="form-control">Start date </label>
-                    <DatePicker className="form-control" onChange={this.startDateChange} />
+        return (
+            <div className="col">
+                <div className="row">
+                    <div className="col">
+                        <DatePicker labelText="Start date" className="form-control" onChange={this.startDateChange}/>
+                    </div>
+                    <div className="col">
+                        <DatePicker labelText="End date" className="form-control" onChange={this.endDateChange}/>
+                    </div>
                 </div>
-                <div className="col">
-                    <label className="form-control">End date </label>
-                    <DatePicker placeholderText="Start date" className="form-control" onChange={this.endDateChange} />
+                <div className="row">
+                    <div className="col">
+                        <input onChange={this.typeChange} type="radio" name="type"
+                               value="absence"/><label>Absence</label><br></br>
+                        <input onChange={this.typeChange} type="radio" name="type" value="annualLeave"/> <label>Annual
+                        leave</label>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                        <button onClick={this.handleSubmit} className="btn btn-primary">Send request</button>
+                    </div>
                 </div>
             </div>
-            <div className="row">
-                <div className="col">
-                    <input  onChange={this.typeChange} type="radio" name="type" value="absence" /><label>Absence</label><br></br>
-                    <input  onChange={this.typeChange} type="radio" name="type" value="annualLeave" /> <label>Annual leave</label>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <button className="btn btn-primary">Send request</button>
-                </div>
-            </div>
-        </>);
+        );
     }
 
-}export default Absence;
+}
+
+export default Absence;
