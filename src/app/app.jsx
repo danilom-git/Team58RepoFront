@@ -7,12 +7,15 @@ import DoctorProfil from "../doctor/doctorProfil";
 import PatientPage from "../patient/patientPage";
 import LoginPage from "./loginPage";
 import Axios from "axios";
+import AbsenceRequests from "../doctor/absenceRequests";
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userType: this.usrLoggedOut
+            userType: this.usrLoggedOut,
+            profil: <AdminClinicProfil changeToClinic={this.changeToClinic} />
+
         };
     }
 
@@ -38,7 +41,7 @@ class App extends Component {
     }
 
     changeToClinic = () => {
-        this.setState({profil: <ClinicProfil admin={this.state.user}/>});
+        this.setState({profil: <ClinicProfil />});
         this.setState({title: "Clinic"});
     };
 
@@ -68,7 +71,7 @@ class App extends Component {
                     : this.state.userType === this.usrDoctor ?
                         <DoctorProfil/>
                     : this.state.userType === this.usrClinicAdmin ?
-                        <ClinicProfil changeToClinic={this.changeToClinic} />
+                        this.state.profil
                     :
                         <LoginPage onLogIn={this.onLogIn}/>
                 }

@@ -76,8 +76,8 @@ class Absence extends Component {
                 <div className="row">
                     <div className="col">
                         <input onChange={this.typeChange} type="radio" name="type"
-                               value="absence"/><label>Absence</label><br></br>
-                        <input onChange={this.typeChange} type="radio" name="type" value="annualLeave"/> <label>Annual
+                               value="Absence"/><label>Absence</label><br></br>
+                        <input onChange={this.typeChange} type="radio" name="type" value="Annual leave"/> <label>Annual
                         leave</label>
                     </div>
                 </div>
