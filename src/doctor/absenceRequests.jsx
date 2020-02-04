@@ -73,6 +73,7 @@ class AbsenceRequests extends Component{
             {
                 this.setState(()=>({responseText:"Request for absence has been accepted."}));
                 this.showModal();
+                this.loadRequests();
             }
         });
     };
