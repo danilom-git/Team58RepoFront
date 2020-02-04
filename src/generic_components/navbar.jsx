@@ -9,16 +9,19 @@ class Navbar extends Component {
         return (
             <nav className="navbar navbar-expand bg-primary navbar-dark sticky-top">
                 <h1 className="navbar-brand flex-grow-1">{this.props.title}</h1>
-
-                <ul className='navbar-nav'>
-                    {
-                        this.props.links && this.props.links.map(link =>
-                            <li key={link.id} className='nav-item flex-fill'>
-                                <button onClick={link.onClick} className='btn btn-link nav-link'>{link.text}</button>
-                            </li>
-                        )
-                    }
-                </ul>
+                {
+                    this.props.links &&
+                        <ul className='navbar-nav'>
+                            {
+                                this.props.links.map(link =>
+                                    <li key={link.id} id={link.id} className='nav-item flex-fill'>
+                                        <button onClick={link.onClick}
+                                                className='btn btn-link nav-link'>{link.text}</button>
+                                    </li>
+                                )
+                            }
+                        </ul>
+                }
             </nav>
         );
     }

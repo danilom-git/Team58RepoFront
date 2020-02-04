@@ -6,6 +6,7 @@ import Axios from "axios";
 import ProfileCuboid from "./profileCuboid";
 import CheckupsCuboid from "./checkupsCuboid";
 import MedicalCuboid from "./medicalCuboid";
+import UpdateInfoCuboid from "./updateInfoCuboid";
 
 class PatientPage extends Component {
     constructor(props) {
@@ -25,7 +26,7 @@ class PatientPage extends Component {
         })
             .then(result => {
                 this.setState({ user: result.data });
-                console.log(result.data);
+                //console.log(result.data);
             });
     }
 
@@ -54,6 +55,16 @@ class PatientPage extends Component {
         this.setState({ cuboid: this.medicalCuboid });
     };
 
+    updateInfoCuboid = 'updateInfo';
+    openUpdateInfoCuboid = () => {
+        this.setState({ cuboid: this.updateInfoCuboid });
+    };
+
+    onInfoUpdate = (info) => {
+        this.setState({ user: info });
+        this.openProfileCuboid();
+    };
+
     render() {
         return (
             <div className='container-fluid pt-2'>
@@ -71,11 +82,13 @@ class PatientPage extends Component {
                             this.state.cuboid === this.clinicsCuboid ?
                                 <ClinicsCuboid openEmptyCuboid={this.openEmptyCuboid} />
                             : this.state.cuboid === this.profileCuboid ?
-                                <ProfileCuboid user={this.state.user}/>
+                                <ProfileCuboid user={this.state.user} openUpdateInfoCuboid={this.openUpdateInfoCuboid}/>
                             : this.state.cuboid === this.checkupsCuboid ?
                                 <CheckupsCuboid />
                             : this.state.cuboid === this.medicalCuboid ?
                                 <MedicalCuboid />
+                            : this.state.cuboid === this.updateInfoCuboid ?
+                                <UpdateInfoCuboid user={this.state.user} onInfoUpdate={this.onInfoUpdate} onCancel={this.openProfileCuboid}/>
                             :
                                 <HomeCuboid user={this.state.user} />
                         }

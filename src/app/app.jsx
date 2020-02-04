@@ -57,16 +57,14 @@ class App extends Component {
 
 
     render() {
-        let logOutLink = {};
+        let links = undefined;
         if (this.state.userType !== this.usrLoggedOut)
-            logOutLink = {id: 1, text: 'Log Out', onClick: this.onLogOut}
+            links = [{id: 1, text: 'Log Out', onClick: this.onLogOut}];
 
         return (
             <>
                 <Navbar title={this.getTitle(this.state.userType)}
-                        links={[
-                            logOutLink
-                            ]}
+                    links={links}
                 />
                 {
                     this.state.userType === this.usrPatient ?
