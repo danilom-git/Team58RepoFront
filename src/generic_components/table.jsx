@@ -29,7 +29,7 @@ class Table extends Component {
                     </thead>
                     <tbody>
                     {this.props.rows.map(row =>
-                        <tr key={row.rowId} id={row.rowId} onClick={(e) => this.props.onRowClick(e,row.rowId)}>
+                        <tr key={row.rowId} id={row.rowId} onClick={(e) => this.props.onRowClick && this.props.onRowClick(e, row.rowId)}>
                             {this.props.headers.map(header => {
                                 let value = row[header.headId];
                                 value = isNaN(value) ? value : (Math.round(value * 100) / 100).toFixed(2);

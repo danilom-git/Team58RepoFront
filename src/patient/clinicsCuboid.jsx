@@ -255,6 +255,7 @@ class ClinicsCuboid extends Component {
             let checkupRequest = {
                 startDate: startDate,
                 endDate: endDate,
+                clinicId: this.state.clinicSelected,
                 doctorId: this.state.doctorSelected,
                 checkupTypeId: this.state.chkTypeSelected
             };
@@ -264,7 +265,7 @@ class ClinicsCuboid extends Component {
                 headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')},
                 data: checkupRequest
             })
-                .then(result => { console.log('posted checkup request'); console.log(result.data); } )
+                .then(result => { /*console.log('posted checkup request');*/ console.log(result.data); } )
                 .then(() => { this.props.openEmptyCuboid(); });
         }
     };
