@@ -4,6 +4,7 @@ import EmptyCuboid from "./emptyCuboid";
 import ClinicsCuboid from "./clinicsCuboid";
 import Axios from "axios";
 import ProfileCuboid from "./profileCuboid";
+import CheckupsCuboid from "./checkupsCuboid";
 
 class PatientPage extends Component {
     constructor(props) {
@@ -42,6 +43,11 @@ class PatientPage extends Component {
         this.setState({ cuboid: this.profileCuboid })
     };
 
+    checkupsCuboid = 'checkupHistory';
+    openCheckupsCuboid = () => {
+        this.setState({ cuboid: this.checkupsCuboid });
+    };
+
     render() {
         return (
             <div className='container-fluid pt-2'>
@@ -50,8 +56,9 @@ class PatientPage extends Component {
                         links={[
                             {id: 1, text: 'Home Page', onClick: this.openEmptyCuboid},
                             {id: 2, text: 'Browse Clinics', onClick: this.openClinicsCuboid},
-                            {id: 3, text: 'View Medical Record'},
-                            {id: 4, text: 'View Profile', onClick: this.openProfileCuboid}
+                            {id: 3, text: 'Medical Record'},
+                            {id: 4, text: 'Checkup History', onClick: this.openCheckupsCuboid},
+                            {id: 5, text: 'Profile', onClick: this.openProfileCuboid}
                             ]}/>
                     <div className='col'>
                         {
@@ -59,6 +66,8 @@ class PatientPage extends Component {
                                 <ClinicsCuboid openEmptyCuboid={this.openEmptyCuboid} />
                             : this.state.cuboid === this.profileCuboid ?
                                 <ProfileCuboid user={this.state.user}/>
+                            : this.state.cuboid === this.checkupsCuboid ?
+                                <CheckupsCuboid />
                             :
                                 <EmptyCuboid user={this.state.user} />
                         }

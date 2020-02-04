@@ -60,7 +60,7 @@ class ProfileCuboid extends Component {
                         <label className='text-primary font-weight-bold'>{this.props.user && this.props.user.address}</label>
                     </div>
                 </div>
-                <div className='row mt-0 mb-2'>
+                <div className='row mt-0 mb-2 mx-2'>
                     <div className='col-4'>
                         <label className='float-right'>Phone Number:</label>
                     </div>
