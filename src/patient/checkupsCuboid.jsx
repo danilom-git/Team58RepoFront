@@ -19,7 +19,7 @@ class CheckupsCuboid extends Component {
         }
     }
 
-    chkTypeLabelText = 'Select the desired checkup type:';
+    chkTypeLabelText = 'Checkup types to display:';
     chkTypeDefaultId = '-1';
     chkTypeDefaultText = 'All';
 
@@ -75,11 +75,10 @@ class CheckupsCuboid extends Component {
                 let formatted = checkups.map(checkup => {
                     let rl = {};
                     for (let header of headers) {
-                        if (header.headId === 'startDate' || header.headId === 'endDate') {
+                        if (header.headId === 'startDate' || header.headId === 'endDate')
                             rl[header.headId] = new Date(checkup[header.headId]).toLocaleString();
-                        }
                         else
-                            rl[header.headId] = checkup[header.headId]
+                            rl[header.headId] = checkup[header.headId];
                     }
                     rl['rowId'] = checkup.id;
 

@@ -13,7 +13,7 @@ class PatientPage extends Component {
         super(props);
 
         this.state = {
-            cuboid: this.emptyCuboid,
+            cuboid: this.homeCuboid,
             user: ''
         }
     }
@@ -30,9 +30,9 @@ class PatientPage extends Component {
             });
     }
 
-    emptyCuboid = 'empty';
-    openEmptyCuboid = () => {
-        this.setState({ cuboid: this.emptyCuboid });
+    homeCuboid = 'home';
+    openHomeCuboid = () => {
+        this.setState({ cuboid: this.homeCuboid });
     };
 
     clinicsCuboid = 'clinics';
@@ -68,10 +68,10 @@ class PatientPage extends Component {
     render() {
         return (
             <div className='container-fluid pt-2'>
-                <div className='row h-100'>
+                <div className='row'>
                     <Sidebar
                         links={[
-                            {id: 1, text: 'Home Page', onClick: this.openEmptyCuboid},
+                            {id: 1, text: 'Home Page', onClick: this.openHomeCuboid},
                             {id: 2, text: 'Browse Clinics', onClick: this.openClinicsCuboid},
                             {id: 3, text: 'Medical Record', onClick: this.openMedicalCuboid},
                             {id: 4, text: 'Checkup History', onClick: this.openCheckupsCuboid},
@@ -80,7 +80,7 @@ class PatientPage extends Component {
                     <div className='col'>
                         {
                             this.state.cuboid === this.clinicsCuboid ?
-                                <ClinicsCuboid openEmptyCuboid={this.openEmptyCuboid} />
+                                <ClinicsCuboid openHomeCuboid={this.openHomeCuboid} />
                             : this.state.cuboid === this.profileCuboid ?
                                 <ProfileCuboid user={this.state.user} openUpdateInfoCuboid={this.openUpdateInfoCuboid}/>
                             : this.state.cuboid === this.checkupsCuboid ?
