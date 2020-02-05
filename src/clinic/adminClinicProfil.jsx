@@ -2,17 +2,22 @@ import React, { Component } from "react";
 import Sidebar from "../generic_components/sidebar";
 import AbsenceRequests from "../doctor/absenceRequests";
 import CheckupRequests from "../checkup/checkupRequests";
+import SearchHall from "../hall/searchHall";
 
 class AdminClinicProfil extends Component {
 
   state = { main: <div></div> };
+
+  changeToSearchHall = (requestId) => {
+      this.setState({main: <SearchHall requestId={requestId} />});
+  };
 
   changeToRequests = () => {
     this.setState({main: <AbsenceRequests />});
   };
 
   changeToCheckupRequests = () => {
-      this.setState({main: <CheckupRequests />});
+      this.setState({main: <CheckupRequests changeToSearchHall={this.changeToSearchHall} />});
   };
 
   render() {

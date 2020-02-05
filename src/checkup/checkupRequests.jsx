@@ -46,7 +46,7 @@ class CheckupRequests extends Component{
                 <td>{request.startDate}</td>
                 <td>{request.endDate}</td>
                 <td>{request.checkupTypeId}</td>
-                <td><button className="btn btn-primary">Schedule</button></td>
+                <td><button onClick={ (e) => this.props.changeToSearchHall(request.id)} className="btn btn-primary">Schedule</button></td>
             </tr>
         ));
         return (
