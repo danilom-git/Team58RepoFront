@@ -27,8 +27,8 @@ class CheckupRequests extends Component{
                     st = new Date(c.endDate);
                     c.endDate = st.toLocaleDateString()+  " " + st.toLocaleTimeString();
                 }
-                //console.log(res.data);
-
+                console.log(res.data);
+                this.setState({requests:res.data});
             });
         });
 
@@ -39,9 +39,34 @@ class CheckupRequests extends Component{
     }
 
     render() {
-        return (<>
+        let reqs = this.state.requests.map(request => (
+            <tr key={request.id}>
+                <td>{request.id}</td>
+                <td>{request.doctorName+ " "+ request.doctorLastName }</td>
+                <td>{request.startDate}</td>
+                <td>{request.endDate}</td>
+                <td>{request.checkupTypeId}</td>
+                <td><button className="btn btn-primary">Schedule</button></td>
+            </tr>
+        ));
+        return (
+            <table className="table">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Doctor</th>
+                    <th scope="col">Start date</th>
+                    <th scope="col">End date</th>
+                    <th scope="col">Checkup type</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {reqs}
+                </tbody>
 
-        </>);
+            </table>
+        );
     }
 
 }export default CheckupRequests;
