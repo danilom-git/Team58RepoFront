@@ -6,12 +6,14 @@ import ClinicProfil from "../clinic/clinicProfil";
 import DoctorProfil from "../doctor/doctorProfil";
 import PatientPage from "../patient/patientPage";
 import LoginPage from "./loginPage";
+import RegistrationPage from "./registrationPage";
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             userType: this.usrLoggedOut,
+            registering: false,
             profil: <AdminClinicProfil changeToClinic={this.changeToClinic} />
 
         };
@@ -55,11 +57,19 @@ class App extends Component {
         this.setState({ userType: this.usrLoggedOut });
     };
 
+    onRegistration = (message) => {
+        this.setState({ registering: false });
+        console.log(message);
+    };
 
     render() {
         let links = undefined;
         if (this.state.userType !== this.usrLoggedOut)
             links = [{id: 1, text: 'Log Out', onClick: this.onLogOut}];
+        else if (this.state.registering === true)
+            links = [{id: 1, text: 'Log In', onClick: () => this.setState({ registering: false })}];
+        else
+            links = [{id: 1, text: 'Register', onClick: () => this.setState({ registering: true })}];
 
         return (
             <>
@@ -73,6 +83,8 @@ class App extends Component {
                         <DoctorProfil/>
                     : this.state.userType === this.usrClinicAdmin ?
                         this.state.profil
+                    : this.state.registering ?
+                        <RegistrationPage onRegistration={this.onRegistration}/>
                     :
                         <LoginPage onLogIn={this.onLogIn}/>
                 }
