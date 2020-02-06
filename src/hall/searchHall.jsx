@@ -20,7 +20,7 @@ class SearchHall extends Component {
         responseText: <div></div>
     };
 
-    componentDidMount() {
+    loadRequests = () => {
         Axios({
             method: 'get',
             url: 'http://localhost:8080/api/checkupRequests/checkupRequest:' + this.props.requestId,
@@ -29,6 +29,10 @@ class SearchHall extends Component {
             this.setState({checkupRequest: res.data});
             console.log(res.data);
         });
+    };
+
+    componentDidMount() {
+       this.loadRequests();
     }
 
     showSchedules = (e,checkups) => {
@@ -101,11 +105,17 @@ class SearchHall extends Component {
 
         Axios({
             method: 'post',
-            url: 'http://localhost:8080/api/checkups',
+            url: 'http://localhost:8080/api/checkups/request:'+this.props.requestId,
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')},
             data: checkup
         }).then((res)=>{
             console.log(res.data);
+            if(res.data)
+                this.setState(() => ({responseText: "Request for checkup confirmation are sent."}));
+            else
+                this.setState(() => ({responseText: "Selected hall is already scheduled for requester time."}));
+            this.showModal();
+            this.loadRequests();
         });
 
         e.stopPropagation();
