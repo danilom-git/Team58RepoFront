@@ -27,7 +27,7 @@ class SearchHall extends Component {
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
         }).then((res) => {
             this.setState({checkupRequest: res.data});
-            //console.log(res.data);
+            console.log(res.data);
         });
     }
 
@@ -86,13 +86,38 @@ class SearchHall extends Component {
         }
     };
 
+    scheduleCheckup = (e,hallId) => {
+        console.log(hallId);
+
+        let checkup = {
+            startDate: this.state.checkupRequest.startDate,
+            endDate: this.state.checkupRequest.endDate,
+            patientId: this.state.checkupRequest.patientId,
+            doctorId: this.state.checkupRequest.doctorId,
+            hallId: hallId,
+            checkupTypeId: this.state.checkupRequest.checkupTypeId,
+            clinicId:this.state.checkupRequest.clinicId
+        };
+
+        Axios({
+            method: 'post',
+            url: 'http://localhost:8080/api/checkups',
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')},
+            data: checkup
+        }).then((res)=>{
+            console.log(res.data);
+        });
+
+        e.stopPropagation();
+    };
+
     render() {
         const halls = this.state.searchedHalls.map(hall => (
             <tr onClick={(e) => this.showSchedules(e,hall.checkups)} key={hall.id}>
                 <td>{hall.id}</td>
                 <td>{hall.name}</td>
                 <td>{hall.number}</td>
-                <td><button  type="button" className="btn btn-light">Schedule</button></td>
+                <td><button onClick={(e)=> this.scheduleCheckup(e,hall.id)} type="button" className="btn btn-light">Schedule</button></td>
             </tr>
         ));
 
