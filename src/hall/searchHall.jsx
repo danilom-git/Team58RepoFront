@@ -15,9 +15,15 @@ class SearchHall extends Component {
         date: "",
         hallNumber: "",
         hallName: "",
+        hallId: "",
         searchedHalls: [],
+        fStart: "",
+        fEnd: "",
         modal: false,
-        responseText: <div></div>
+        modal2: false,
+        responseText: <div></div>,
+        responseText2: <div></div>
+
     };
 
     loadRequests = () => {
@@ -32,23 +38,22 @@ class SearchHall extends Component {
     };
 
     componentDidMount() {
-       this.loadRequests();
+        this.loadRequests();
     }
 
-    showSchedules = (e,checkups) => {
+    showSchedules = (e, checkups) => {
         let res = [];
         console.log(checkups);
-        for(let c of checkups)
-        {
+        for (let c of checkups) {
             let st = new Date(c.startDate).toLocaleTimeString();
             let en = new Date(c.endDate).toLocaleTimeString();
-            let fin  = st + " - " + en;
+            let fin = st + " - " + en;
             res.push(fin);
         }
         res = res.map(res => (
             <div>{res}</div>
         ));
-        this.setState({responseText:res});
+        this.setState({responseText: res});
         this.showModal();
     };
 
@@ -59,6 +64,16 @@ class SearchHall extends Component {
     handleModalCloseRequest = () => {
         this.setState({modal: false});
         this.setState({responseText: ""});
+    };
+
+    showModal2 = () => {
+        this.setState({modal2: true});
+    };
+
+    handleModalCloseRequest2 = () => {
+        this.setState({modal2: false});
+        this.setState({responseText2: ""});
+        this.setState({hallId: ""});
     };
 
     onChangeName = (e) => {
@@ -90,7 +105,7 @@ class SearchHall extends Component {
         }
     };
 
-    scheduleCheckup = (e,hallId) => {
+    scheduleCheckup = (e, hallId) => {
         console.log(hallId);
 
         let checkup = {
@@ -100,17 +115,17 @@ class SearchHall extends Component {
             doctorId: this.state.checkupRequest.doctorId,
             hallId: hallId,
             checkupTypeId: this.state.checkupRequest.checkupTypeId,
-            clinicId:this.state.checkupRequest.clinicId
+            clinicId: this.state.checkupRequest.clinicId
         };
 
         Axios({
             method: 'post',
-            url: 'http://localhost:8080/api/checkups/request:'+this.props.requestId,
+            url: 'http://localhost:8080/api/checkups/request:' + this.props.requestId,
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')},
             data: checkup
-        }).then((res)=>{
+        }).then((res) => {
             console.log(res.data);
-            if(res.data)
+            if (res.data)
                 this.setState(() => ({responseText: "Request for checkup confirmation are sent."}));
             else
                 this.setState(() => ({responseText: "Selected hall is already scheduled for requester time."}));
@@ -121,13 +136,76 @@ class SearchHall extends Component {
         e.stopPropagation();
     };
 
+    firstAvailable = (e, hallId) => {
+        Axios({
+            method: 'get',
+            url: 'http://localhost:8080/api/halls/firstAvailable/hall:' + hallId + '/request:' + this.props.requestId,
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')},
+        }).then(res => {
+            let start = new Date(res.data.startDate);
+            start = start.toLocaleDateString() + " " + start.toLocaleTimeString();
+            let end = new Date(res.data.endDate);
+            end = end.toLocaleDateString() + " " + end.toLocaleTimeString();
+            this.setState(() => ({
+                responseText2: <div>First available time for scheduling:<br></br>Start time:{start} <br></br>End
+                    time{end}</div>
+            }));
+            //console.log(res.data);
+            this.setState({hallId: hallId});
+            this.showModal2();
+            this.setState({fStart: new Date(res.data.startDate)});
+            this.setState({fEnd: new Date(res.data.endDate)});
+        });
+        e.stopPropagation();
+    };
+
+    submitFirstAvailable = () => {
+        let checkup = {
+            startDate: this.state.fStart,
+            endDate: this.state.fEnd,
+            patientId: this.state.checkupRequest.patientId,
+            doctorId: this.state.checkupRequest.doctorId,
+            hallId: this.state.hallId,
+            checkupTypeId: this.state.checkupRequest.checkupTypeId,
+            clinicId: this.state.checkupRequest.clinicId
+        };
+        Axios({
+            method: 'post',
+            url: 'http://localhost:8080/api/checkupRequests/changeDate/request:' + this.props.requestId,
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')},
+            data: {startDate:this.state.fStart,endDate:this.state.fEnd}
+        }).then(res => {
+            console.log(res.data);
+            Axios({
+                method: 'post',
+                url: 'http://localhost:8080/api/checkups/request:' + this.props.requestId,
+                headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')},
+                data: checkup
+            }).then((res) => {
+                console.log(res.data);
+
+            });
+        });
+
+
+    };
+
     render() {
         const halls = this.state.searchedHalls.map(hall => (
-            <tr onClick={(e) => this.showSchedules(e,hall.checkups)} key={hall.id}>
+            <tr onClick={(e) => this.showSchedules(e, hall.checkups)} key={hall.id}>
                 <td>{hall.id}</td>
                 <td>{hall.name}</td>
                 <td>{hall.number}</td>
-                <td><button onClick={(e)=> this.scheduleCheckup(e,hall.id)} type="button" className="btn btn-light">Schedule</button></td>
+                <td>
+                    <button onClick={(e) => this.firstAvailable(e, hall.id)} type="button"
+                            className="btn btn-primary">First available
+                    </button>
+                </td>
+                <td>
+                    <button onClick={(e) => this.scheduleCheckup(e, hall.id)} type="button"
+                            className="btn btn-primary">Schedule
+                    </button>
+                </td>
             </tr>
         ));
 
@@ -187,6 +265,35 @@ class SearchHall extends Component {
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary"
                                 onClick={this.handleModalCloseRequest}>Close
+                        </button>
+                    </div>
+                </div>
+            </Modal>
+
+            <Modal
+                className="Modal__Bootstrap modal-dialog"
+                closeTimeoutMS={150}
+                isOpen={this.state.modal2}
+                style={customStyles}
+                onRequestClose={this.handleModalCloseRequest2}
+            >
+                <div className="modal-content" role="dialog">
+                    <div className="modal-header">
+                        <h4 className="modal-title">Notification</h4>
+                        <button type="button" className="close" onClick={this.handleModalCloseRequest2}>
+                            <span aria-hidden="true">&times;</span>
+                            <span className="sr-only">Close</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        <p>Time of scheduled checkups:</p>
+                        {this.state.responseText2}
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary"
+                                onClick={this.handleModalCloseRequest2}>Close
+                        </button>
+                        <button onClick={this.submitFirstAvailable} type="button" className="btn btn-secondary">Schedule
                         </button>
                     </div>
                 </div>
