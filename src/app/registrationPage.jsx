@@ -4,6 +4,7 @@ import Axios from "axios";
 class RegistrationPage extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             email: '',
             password: '',
@@ -24,7 +25,7 @@ class RegistrationPage extends Component {
             this.state.city === '' || this.state.address === '' || this.state.phoneNumber === '')
             return;
         Axios.post('http://localhost:8080/api/registration/new', this.state)
-            .then(result => this.props.onRegistration(result.data));
+            .then(result => this.props.onRegistration && this.props.onRegistration(result.data));
     };
 
     render() {

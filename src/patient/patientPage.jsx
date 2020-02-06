@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 import Sidebar from "../generic_components/sidebar";
-import EmptyCuboid from "./emptyCuboid";
+import HomeCuboid from "./homeCuboid";
 import ClinicsCuboid from "./clinicsCuboid";
 import Axios from "axios";
 import ProfileCuboid from "./profileCuboid";
+import CheckupsCuboid from "./checkupsCuboid";
+import MedicalCuboid from "./medicalCuboid";
+import UpdateInfoCuboid from "./updateInfoCuboid";
 
 class PatientPage extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            cuboid: this.emptyCuboid,
+            cuboid: this.homeCuboid,
             user: ''
         }
     }
@@ -23,13 +26,13 @@ class PatientPage extends Component {
         })
             .then(result => {
                 this.setState({ user: result.data });
-                console.log(result.data);
+                //console.log(result.data);
             });
     }
 
-    emptyCuboid = 'empty';
-    openEmptyCuboid = () => {
-        this.setState({ cuboid: this.emptyCuboid });
+    homeCuboid = 'home';
+    openHomeCuboid = () => {
+        this.setState({ cuboid: this.homeCuboid });
     };
 
     clinicsCuboid = 'clinics';
@@ -42,25 +45,52 @@ class PatientPage extends Component {
         this.setState({ cuboid: this.profileCuboid })
     };
 
+    checkupsCuboid = 'checkupHistory';
+    openCheckupsCuboid = () => {
+        this.setState({ cuboid: this.checkupsCuboid });
+    };
+
+    medicalCuboid = 'medical';
+    openMedicalCuboid = () => {
+        this.setState({ cuboid: this.medicalCuboid });
+    };
+
+    updateInfoCuboid = 'updateInfo';
+    openUpdateInfoCuboid = () => {
+        this.setState({ cuboid: this.updateInfoCuboid });
+    };
+
+    onInfoUpdate = (info) => {
+        this.setState({ user: info });
+        this.openProfileCuboid();
+    };
+
     render() {
         return (
             <div className='container-fluid pt-2'>
-                <div className='row h-100'>
+                <div className='row'>
                     <Sidebar
                         links={[
-                            {id: 1, text: 'Home Page', onClick: this.openEmptyCuboid},
+                            {id: 1, text: 'Home Page', onClick: this.openHomeCuboid},
                             {id: 2, text: 'Browse Clinics', onClick: this.openClinicsCuboid},
-                            {id: 3, text: 'View Medical Record'},
-                            {id: 4, text: 'View Profile', onClick: this.openProfileCuboid}
+                            {id: 3, text: 'Medical Record', onClick: this.openMedicalCuboid},
+                            {id: 4, text: 'Checkup History', onClick: this.openCheckupsCuboid},
+                            {id: 5, text: 'Profile', onClick: this.openProfileCuboid}
                             ]}/>
                     <div className='col'>
                         {
                             this.state.cuboid === this.clinicsCuboid ?
-                                <ClinicsCuboid openEmptyCuboid={this.openEmptyCuboid} />
+                                <ClinicsCuboid openHomeCuboid={this.openHomeCuboid} />
                             : this.state.cuboid === this.profileCuboid ?
-                                <ProfileCuboid user={this.state.user}/>
+                                <ProfileCuboid user={this.state.user} openUpdateInfoCuboid={this.openUpdateInfoCuboid}/>
+                            : this.state.cuboid === this.checkupsCuboid ?
+                                <CheckupsCuboid />
+                            : this.state.cuboid === this.medicalCuboid ?
+                                <MedicalCuboid />
+                            : this.state.cuboid === this.updateInfoCuboid ?
+                                <UpdateInfoCuboid user={this.state.user} onInfoUpdate={this.onInfoUpdate} onCancel={this.openProfileCuboid}/>
                             :
-                                <EmptyCuboid user={this.state.user} />
+                                <HomeCuboid user={this.state.user} />
                         }
                     </div>
                 </div>

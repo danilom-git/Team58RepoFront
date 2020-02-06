@@ -26,6 +26,10 @@ class ClinicsCuboid extends Component {
 
             sortedBy: {key: '', order: ''},
 
+            oneClickHeaders: [],
+            oneClickAll: [],
+            ocSortedBy: {key: '', order: ''},
+
             doctorSelected: '',
 
             startTime: this.startTimeDefault,
@@ -48,6 +52,7 @@ class ClinicsCuboid extends Component {
 
     clinicEmptyListMsg = 'No clinics found that fit the selected criteria.';
     doctorEmptyListMsg = 'No doctors found that fit the selected criteria.';
+    oneClickEmptyListMsg = 'No one-click checkups found that fit the selected criteria.';
 
     startTimeDefault = '';
     endTimeDefault = '';
@@ -56,6 +61,7 @@ class ClinicsCuboid extends Component {
         // console.log('listView mounted');
         this.loadClinics('all');
         this.loadCheckupTypes();
+        this.loadOneClicks('')
     }
 
     clinicEnding = (chkType, date) => {
@@ -144,6 +150,69 @@ class ClinicsCuboid extends Component {
         // .then(() => {console.log('fetched doctors/' + ending)})
     };
 
+    oneClickEnding = (clinic, checkupType, date) => {
+        let ending = '';
+
+        if (clinic !== '')
+            ending += '/clinic:' + clinic;
+        if (checkupType !== this.chkTypeDefaultId)
+            ending += '/checkupType:' + checkupType;
+        if (date !== this.chkDateDefault)
+            ending += '/date:' + date;
+
+        console.log('inside oneClickEnding: ' + clinic + '\t' + checkupType + '\t' + date + '\n' + ending);
+        return ending;
+    };
+
+    loadOneClicks = (ending) => {
+        Axios({
+            method: 'get',
+            url: 'http://localhost:8080/api/oneClickCheckup/pretty' + ending,
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')}
+        })
+            .then(result => result.data)
+            .then(oneClicks => {
+                let headers = [
+                    {headId: 'clinicName', text: 'Clinic'},
+                    {headId: 'hallName', text: 'Hall'},
+                    {headId: 'doctorFullName', text: 'Doctor'},
+                    {headId: 'startDate', text: 'Start Time'},
+                    {headId: 'duration', text: 'Duration'},
+                    {headId: 'price', text: 'Price'}
+                ];
+                if (!ending.toString().includes('checkupType'))
+                    headers = headers.concat({headId: 'checkupTypeName', text: 'Checkup Type'});
+
+                let formatted = oneClicks.map(oneClick => {
+                    let rl = {};
+                    for (let header of headers) {
+                        if (header.headId === 'startDate')
+                            rl[header.headId] = new Date(oneClick[header.headId]).toLocaleString();
+                        else
+                            rl[header.headId] = oneClick[header.headId]
+                    }
+                    rl['rowId'] = oneClick.id;
+                    return rl;
+                });
+
+                this.setState({ oneClickHeaders: headers, oneClickAll: formatted })
+            });
+    };
+
+    reserveOneClick = (oneClickId) => {
+        Axios({
+            method: 'put',
+            url: 'http://localhost:8080/api/oneClickCheckup/reserve:' + oneClickId,
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')}
+        })
+            .then(result => console.log(result.data))
+            .then(() => this.props.openHomeCuboid());
+    };
+
+    ocExtraHeaders = [
+        {id: 'e1', text: 'Reserve', onClick: this.reserveOneClick}
+    ];
+
     loadCheckupTypes = () => {
         Axios({
             method: 'get',
@@ -163,6 +232,8 @@ class ClinicsCuboid extends Component {
         this.setState( {chkTypeSelected: selectedChkType});
         // console.log('selected checkup type: ' + selectedChkType);
 
+        this.loadOneClicks(this.oneClickEnding(this.state.clinicSelected, selectedChkType, this.state.chkDateSelected));
+
         if (this.state.displayedElement === this.elements.clinics)
             this.loadClinics(this.clinicEnding(selectedChkType, this.state.chkDateSelected));
         else if (this.state.displayedElement === this.elements.doctors)
@@ -171,13 +242,27 @@ class ClinicsCuboid extends Component {
 
     onDateChange = (e) => {
         let selectedDate = e.target.value;
-        this.setState({chkDateSelected: selectedDate});
+        this.setState({ chkDateSelected: selectedDate });
         // console.log(selectedDate);
+
+        this.loadOneClicks(this.oneClickEnding(this.state.clinicSelected, this.state.chkTypeSelected, selectedDate));
 
         if (this.state.displayedElement === this.elements.clinics)
             this.loadClinics(this.clinicEnding(this.state.chkTypeSelected, selectedDate));
         else if (this.state.displayedElement === this.elements.doctors)
             this.loadDoctors(this.doctorEnding(this.state.clinicSelected, this.state.chkTypeSelected, selectedDate));
+    };
+
+    onOneClickHeaderClick = (e) => {
+        let order = 'asc';
+        const key = e.target.id;
+        if (key === this.state.ocSortedBy.key)
+            if (this.state.ocSortedBy.order === 'asc')
+                order = 'desc';
+
+        let sorted = sortBy(this.state.oneClickAll, key, order);
+        this.setState({ ocSortedBy: { key: key, order: order } });
+        this.setState( { oneClickAll: sorted });
     };
 
     onHeaderClick = (e) => {
@@ -201,26 +286,30 @@ class ClinicsCuboid extends Component {
     };
 
     displayClinicTable = () => {
-        this.setState( {displayedElement: this.elements.clinics});
+        this.setState({ displayedElement: this.elements.clinics });
+        this.setState({ clinicSelected: '' });
         this.loadClinics(this.clinicEnding(this.state.chkTypeSelected, this.state.chkDateSelected));
+        this.loadOneClicks(this.oneClickEnding('', this.state.chkTypeSelected, this.state.chkDateSelected));
     };
 
     displayDoctorTable = (e) => {
         let selectedClinic = (e && e.target.getAttribute('data-row-id')) || this.state.doctorSelected;
-        this.setState( {displayedElement: this.elements.doctors, clinicSelected: selectedClinic} );
+        this.setState({ displayedElement: this.elements.doctors, clinicSelected: selectedClinic });
+        this.setState({ doctorSelected: '' });
         this.loadDoctors(this.doctorEnding(selectedClinic, this.state.chkTypeSelected, this.state.chkDateSelected));
+        this.loadOneClicks(this.oneClickEnding(selectedClinic, this.state.chkTypeSelected, this.state.chkDateSelected));
     };
 
     displayChkRequest = (e) => {
         if (this.state.chkDateSelected !== this.chkDateDefault && this.state.chkTypeSelected !== this.chkTypeDefaultId) {
             let selectedDoctor = e.target.getAttribute('data-row-id');
-            this.setState({displayedElement: this.elements.chkRequest, doctorSelected: selectedDoctor});
+            this.setState({ displayedElement: this.elements.chkRequest, doctorSelected: selectedDoctor });
         }
     };
 
     back = () => {
         // if (this.state.displayedElement === this.elements.clinics) {
-        //     this.props.openEmptyCuboid();
+        //     this.props.openHomeCuboid();
         if (this.state.displayedElement === this.elements.doctors) {
             this.displayClinicTable();
         } else if (this.state.displayedElement === this.elements.chkRequest) {
@@ -255,6 +344,7 @@ class ClinicsCuboid extends Component {
             let checkupRequest = {
                 startDate: startDate,
                 endDate: endDate,
+                clinicId: this.state.clinicSelected,
                 doctorId: this.state.doctorSelected,
                 checkupTypeId: this.state.chkTypeSelected
             };
@@ -264,14 +354,14 @@ class ClinicsCuboid extends Component {
                 headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')},
                 data: checkupRequest
             })
-                .then(result => { console.log('posted checkup request'); console.log(result.data); } )
-                .then(() => { this.props.openEmptyCuboid(); });
+                .then(result => { /*console.log('posted checkup request');*/ console.log(result.data); } )
+                .then(() => this.props.openHomeCuboid());
         }
     };
 
     render() {
         return (
-            <div className='container-fluid'>
+            <div className='row'> <div className='col'>
                 <div className='row'>
                     <div className='col'>
                         <h5 className='text-primary'>
@@ -363,7 +453,20 @@ class ClinicsCuboid extends Component {
                         }
                     </div>
                 </div>
-            </div>
+                {(this.state.displayedElement === this.elements.clinics || this.state.displayedElement === this.elements.doctors) &&
+                    <div className='row'>
+                        <div className='col'>
+                            <Table
+                                headers={this.state.oneClickHeaders}
+                                rows={this.state.oneClickAll}
+                                emptyListMsg={this.oneClickEmptyListMsg}
+                                extraHeaders={this.ocExtraHeaders}
+                                onHeaderClick={this.onOneClickHeaderClick}
+                            />
+                        </div>
+                    </div>
+                }
+            </div> </div>
         );
     }
 }
