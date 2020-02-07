@@ -16,6 +16,7 @@ class SearchHall extends Component {
         hallNumber: "",
         hallName: "",
         hallId: "",
+        text:"",
         searchedHalls: [],
         fStart: "",
         fEnd: "",
@@ -58,12 +59,14 @@ class SearchHall extends Component {
     };
 
     showModal = () => {
+        this.setState(() => ({text:"Time of scheduled checkups:"}));
         this.setState({modal: true});
     };
 
     handleModalCloseRequest = () => {
         this.setState({modal: false});
         this.setState({responseText: ""});
+        this.setState({text:""});
     };
 
     showModal2 = () => {
@@ -126,11 +129,12 @@ class SearchHall extends Component {
         }).then((res) => {
             console.log(res.data);
             if (res.data)
-                this.setState(() => ({responseText: "Request for checkup confirmation are sent."}));
-            else
+                this.props.changeToRequests();
+            else {
                 this.setState(() => ({responseText: "Selected hall is already scheduled for requester time."}));
-            this.showModal();
-            this.loadRequests();
+                this.showModal();
+            }
+            //this.loadRequests();
         });
 
         e.stopPropagation();
@@ -182,8 +186,8 @@ class SearchHall extends Component {
                 headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')},
                 data: checkup
             }).then((res) => {
-                console.log(res.data);
-
+                //console.log(res.data);
+                this.props.changeToRequests();
             });
         });
 
@@ -229,7 +233,7 @@ class SearchHall extends Component {
                 </div>
             </div>
             <div className="row">
-                <table className="table">
+                <table className="table mt-3 mr-4">
                     <thead>
                     <tr>
                         <th scope="col">id</th>
@@ -259,7 +263,7 @@ class SearchHall extends Component {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <p>Time of scheduled checkups:</p>
+                        <p>{this.state.text}</p>
                         {this.state.responseText}
                     </div>
                     <div className="modal-footer">
@@ -286,7 +290,6 @@ class SearchHall extends Component {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <p>Time of scheduled checkups:</p>
                         {this.state.responseText2}
                     </div>
                     <div className="modal-footer">

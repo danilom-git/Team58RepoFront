@@ -3,13 +3,36 @@ import Sidebar from "../generic_components/sidebar";
 import AbsenceRequests from "../doctor/absenceRequests";
 import CheckupRequests from "../checkup/checkupRequests";
 import SearchHall from "../hall/searchHall";
+import { YMaps, Map ,GeoObject} from 'react-yandex-maps';
 
 class AdminClinicProfil extends Component {
 
-  state = { main: <div></div> };
+  state = { main: <div>
+          <div id="map"></div>
+          <YMaps>
+              <div>
+                  My awesome application with maps!
+                  <Map state={{ center: [45.75, 25.57], zoom: 9 }}>
+                      <GeoObject
+                          geometry={{
+                              type: 'Point',
+                              coordinates: [45.75, 25.57],
+                          }}
+
+                          properties={{
+                              iconContent: 'Lokacija',
+                              hintContent: 'Lokacija',
+                          }}
+
+                      />
+                  </Map>
+
+              </div>
+          </YMaps>
+      </div> };
 
   changeToSearchHall = (requestId) => {
-      this.setState({main: <SearchHall requestId={requestId} />});
+      this.setState({main: <SearchHall changeToRequests={this.changeToCheckupRequests} requestId={requestId} />});
   };
 
   changeToRequests = () => {
