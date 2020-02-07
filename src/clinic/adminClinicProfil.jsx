@@ -83,7 +83,7 @@ class AdminClinicProfil extends Component {
                         id: 6,
                         text: "Add doctor",
                         onClick: this.changeToAddDoctor
-                    }, , {id: 7, text: "Add hall", onClick: this.changeToAddHall}, {
+                    }, {id: 7, text: "Add hall", onClick: this.changeToAddHall}, {
                         id: 8,
                         text: "Add checkup",
                         onClick: this.changeToOneClickForm
