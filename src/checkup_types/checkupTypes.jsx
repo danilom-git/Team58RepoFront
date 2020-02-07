@@ -19,7 +19,7 @@ class CheckupTypes extends Component{
                 url: 'http://localhost:8080/api/checkupTypes/all/clinic:'+res.data.clinicId,
                 headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token')},
             }).then((res) => {
-                console.log(res.data);
+                //console.log(res.data);
                 this.setState({types: res.data});
             });
         });
@@ -28,6 +28,25 @@ class CheckupTypes extends Component{
     }
 
     render() {
-        return (<></>);
+        const types = this.state.types.map(type => (
+            <tr key={type.id}>
+                <td>{type.name}</td>
+                <td>{type.price}</td>
+            </tr>
+        ));
+
+        return (<>
+            <table className="table">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {types}
+                </tbody>
+            </table>
+        </>);
     }
 }export default CheckupTypes;
