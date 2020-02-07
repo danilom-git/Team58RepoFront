@@ -7,7 +7,7 @@ import {YMaps, Map, GeoObject} from 'react-yandex-maps';
 import OneClickForm from "../checkup/oneClickForm";
 import HallAddForm from "../hall/hallAddForm";
 import DoctorAddForm from "../doctor/doctorAddForm";
-
+import AddCheckupType from "../checkup/addCheckupType";
 
 class AdminClinicProfil extends Component {
 
@@ -35,6 +35,10 @@ class AdminClinicProfil extends Component {
                 </div>
             </YMaps>
         </div>
+    };
+
+    changeToAddCheckupType = () => {
+        this.setState({main: <AddCheckupType />});
     };
 
     changeToAddDoctor = () => {
@@ -83,6 +87,10 @@ class AdminClinicProfil extends Component {
                         id: 8,
                         text: "Add checkup",
                         onClick: this.changeToOneClickForm
+                    },{
+                        id: 9,
+                        text: "Add checkup type",
+                        onClick: this.changeToAddCheckupType
                     }]}
                     />
 
