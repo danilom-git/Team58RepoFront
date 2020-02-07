@@ -79,7 +79,7 @@ class Doctors extends Component {
           <td>{doctor.lastName}</td>
           <td>{doctor.workingTime}</td>
           <td>{doctor.email}</td>
-          <td><button data-naziv="" onClick={(e) => this.handleDelete(e,doctor.id)} type="button" className="btn btn-light">Delete</button></td>
+          <td><button onClick={(e) => this.handleDelete(e,doctor.id)} type="button" className="btn btn-primary">Delete</button></td>
       </tr>
     ));
     return (
