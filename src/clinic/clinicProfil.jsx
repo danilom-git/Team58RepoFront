@@ -5,6 +5,7 @@ import ShowDoctor from "../doctor/showDoctor";
 import Sidebar from "../generic_components/sidebar";
 import ShowHall from "../hall/showHall";
 import OneClicks from "../checkup/OneClicks";
+import CheckupTypes from "../checkup_types/checkupTypes";
 
 class ClinicProfil extends Component {
     state = {main: <div></div>};
@@ -16,7 +17,6 @@ class ClinicProfil extends Component {
     showHalls = () => {
         this.setState({main: <Halls showHall={this.changeToShowHall}/>});
     };
-
 
     changeToShowDoctor = (e, doctor) => {
         this.setState({main: <ShowDoctor doctor={doctor}/>});
@@ -30,13 +30,16 @@ class ClinicProfil extends Component {
         this.setState({main: <OneClicks/>});
     };
 
+    changeToTypes = () => {
+        this.setState({main: <CheckupTypes />});
+    };
+
     render() {
-        //<ClinicProfilNav showHalls={this.showHalls} changeToAddHall={this.changeToAddHall} showDoctors={this.showDoctors} changeToAddDoctor={this.changeToAddDoctor} />
         return (
             <div className="container-fluid pt-2">
                 <div id="mainRow" className="row">
                     <Sidebar
-                        links={[{id: 1, text: 'Doctors', onClick: this.showDoctors}, {
+                        links={[{id: 0, text: 'About'}, {id: 1, text: 'Doctors', onClick: this.showDoctors}, {
                             id: 2,
                             text: 'Halls',
                             onClick: this.showHalls
@@ -44,7 +47,7 @@ class ClinicProfil extends Component {
                             id: 3,
                             text: 'Checkups',
                             onClick: this.changeToOneClick
-                        }, {id: 4, text: 'Checkup types'}]}/>
+                        }, {id: 4, text: 'Checkup types',onClick: this.changeToTypes}]}/>
 
                     <div className="col">{this.state.main}</div>
                 </div>
