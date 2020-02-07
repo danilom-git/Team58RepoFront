@@ -6,9 +6,14 @@ import Sidebar from "../generic_components/sidebar";
 import ShowHall from "../hall/showHall";
 import OneClicks from "../checkup/OneClicks";
 import CheckupTypes from "../checkup_types/checkupTypes";
+import CheckupTypeShow from "../checkup_types/checkupTypeShow";
 
 class ClinicProfil extends Component {
     state = {main: <div></div>};
+
+    showType = (e,typeId,price,name) => {
+        this.setState({main: <CheckupTypeShow typeId={typeId} name={name} price={price}/>});
+    };
 
     showDoctors = () => {
         this.setState({main: <Doctors showDoctor={this.changeToShowDoctor}/>});
@@ -31,7 +36,7 @@ class ClinicProfil extends Component {
     };
 
     changeToTypes = () => {
-        this.setState({main: <CheckupTypes />});
+        this.setState({main: <CheckupTypes showTypes={this.showType}/>});
     };
 
     render() {
