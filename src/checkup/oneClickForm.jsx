@@ -178,7 +178,7 @@ class OneClickForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        if(this.state.endDate > this.state.startDate) {
+        if(this.state.endDate.getTime() > this.state.startDate.getTime()) {
             if ((!this.state.disable) && (!this.state.disableTime) && (this.state.price > 0) && this.state.doctor && this.state.hall) {
                 console.log("state iz submita", this.state);
                 const postCheck = {
