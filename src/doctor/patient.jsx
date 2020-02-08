@@ -29,7 +29,7 @@ class Patient extends Component{
             </div>
                 <div className="col">
                     <div className="text-center">
-                        <button className='btn btn-primary'>
+                        <button onClick={(e)=> this.props.changeToDoctorRequest(e,this.state.patient)} className='btn btn-primary'>
                             Checkup start
                         </button>
                         </div>
