@@ -197,7 +197,6 @@ class SearchHall extends Component {
     render() {
         const halls = this.state.searchedHalls.map(hall => (
             <tr onClick={(e) => this.showSchedules(e, hall.checkups)} key={hall.id}>
-                <td>{hall.id}</td>
                 <td>{hall.name}</td>
                 <td>{hall.number}</td>
                 <td>
@@ -236,13 +235,11 @@ class SearchHall extends Component {
                 <table className="table mt-3 mr-4">
                     <thead>
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Number</th>
+                        <th colSpan="5" scope="col"><p align="center">Searched halls</p></th>
                     </tr>
                     </thead>
                     <tbody>
-                    {halls}
+                        {halls}
                     </tbody>
                 </table>
             </div>
