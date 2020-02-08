@@ -7,12 +7,11 @@ import OneClickForm from "../checkup/oneClickForm";
 import HallAddForm from "../hall/hallAddForm";
 import DoctorAddForm from "../doctor/doctorAddForm";
 import AddCheckupType from "../checkup/addCheckupType";
+import ClinicAdminInfo from "./clinicAdminInfo";
 
 class AdminClinicProfil extends Component {
 
     state = {
-        x: "",
-        y: "",
         main: <div>
 
         </div>
@@ -22,6 +21,10 @@ class AdminClinicProfil extends Component {
         this.setState({x:45.29});
         this.setState({y:19.83});
     }
+
+    changeToClinicAdminInfo= () => {
+        this.setState({main: <ClinicAdminInfo />});
+    };
 
     changeToAddCheckupType = () => {
         this.setState({main: <AddCheckupType />});
@@ -57,7 +60,7 @@ class AdminClinicProfil extends Component {
             <div className="container-fluid pt-2">
                 <div className="row">
 
-                    <Sidebar links={[{id: 1, text: "User profile"}, {
+                    <Sidebar links={[{id: 1, text: "User profile",onClick:this.changeToClinicAdminInfo}, {
                         id: 2,
                         text: "Clinic profile",
                         onClick: this.props.changeToClinic
