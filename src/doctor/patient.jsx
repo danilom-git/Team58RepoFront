@@ -3,7 +3,8 @@ import Axios from "axios";
 
 class Patient extends Component{
     state = {
-        patient : {}
+        patient : {},
+        doctor: {}
     };
 
     componentDidMount() {
@@ -14,6 +15,22 @@ class Patient extends Component{
         }).then(res => {
             this.setState((prevState) => ({patient: res.data}));
             console.log(this.state.patient);
+            Axios({
+                method: 'get',
+                url: 'http://localhost:8080/api/doctors/user',
+                headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')},
+            }).then((res) => {
+                this.setState({doctor:res.data});
+                //<checkMedicalRecord/patient:{pid}/doctor:{did}
+                Axios({
+                    method: 'get',
+                    url: 'http://localhost:8080/api/checkups/checkMedicalRecord/patient:'+this.props.patient+'/doctor:'+res.data.id,
+                    headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')},
+                }).then((res) => {
+                    console.log(res.data);
+
+                });
+            });
         });
     }
 
