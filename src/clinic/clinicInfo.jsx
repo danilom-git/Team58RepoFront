@@ -6,7 +6,31 @@ class ClinicInfo extends Component {
 
     state = {
         clinicId: "",
-        clinicInfo: {}
+        clinicInfo: {},
+        loaded: false
+    };
+
+    mapa = () => {
+        return (<YMaps>
+            <div>
+                Clinic location:
+                <Map state={{
+                    center: [this.state.clinicInfo.xCoord, this.state.clinicInfo.yCoord],
+                    zoom: 12
+                }}>
+                    <GeoObject
+                        geometry={{
+                            type: 'Point',
+                            coordinates: [this.state.clinicInfo.xCoord, this.state.clinicInfo.yCoord],
+                        }}
+                        properties={{
+                            iconContent: '',
+                            hintContent: 'Clinic location',
+                        }}
+                    />
+                </Map>
+            </div>
+        </YMaps>);
     };
 
     componentDidMount() {
@@ -25,6 +49,7 @@ class ClinicInfo extends Component {
                 console.log(res.data);
                 res.data.averageRating  = res.data.averageRating.toFixed(2);
                 this.setState(() => ({clinicInfo: res.data}));
+                this.setState({loaded:true});
             });
         });
     }
@@ -60,26 +85,7 @@ class ClinicInfo extends Component {
                     </div>
                 </div>
                 <div className="col">
-                    <YMaps>
-                        <div>
-                            Clinic location:
-                            <Map state={{
-                                center: [this.state.clinicInfo.xCoord, this.state.clinicInfo.yCoord],
-                                zoom: 12
-                            }}>
-                                <GeoObject
-                                    geometry={{
-                                        type: 'Point',
-                                        coordinates: [this.state.clinicInfo.xCoord, this.state.clinicInfo.yCoord],
-                                    }}
-                                    properties={{
-                                        iconContent: '',
-                                        hintContent: 'Clinic location',
-                                    }}
-                                />
-                            </Map>
-                        </div>
-                    </YMaps>
+                    {this.state.loaded && this.mapa()}
                 </div>
             </div>
         </>);
