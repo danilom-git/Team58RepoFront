@@ -28,7 +28,14 @@ class ClinicAdminInfo extends Component {
     };
 
     handleSubmit = () => {
-        console.log(this.state);
+        Axios({
+            method: 'put',
+            url:'http://localhost:8080/api/clinicAdmins',
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')},
+            data:  this.state.admin
+        }).then(res => {
+            console.log(res.data);
+        });
     };
 
     render() {
