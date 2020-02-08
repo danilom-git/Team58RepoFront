@@ -44,6 +44,14 @@ class ChangeClinicInfo extends Component{
 
     handleSubmit = () =>{
       console.log(this.state.clinicInfo);
+      Axios({
+          method: 'put',
+          url: 'http://localhost:8080/api/clinics/save',
+          headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')},
+          data: this.state.clinicInfo
+      }).then((res)=>{
+          console.log(res.data);
+      });
     };
 
     render() {
