@@ -45,8 +45,8 @@ class CheckupTypeShow extends Component{
             </div>
         </div>
             <div className="row">
-                <div className="col">
-                <input value={this.props.name} disabled={true} />
+                <div className="col-sm-4">
+                <input className="form-control" value={this.props.name} disabled={true} />
                 </div>
             </div>
             <div className="row">
@@ -55,13 +55,13 @@ class CheckupTypeShow extends Component{
                 </div>
             </div>
             <div className="row">
-                <div className="col">
-                    <input onChange={this.priceChange} value={this.state.price}/>
+                <div className="col-sm-4">
+                    <input className="form-control" onChange={this.priceChange} value={this.state.price}/>
                 </div>
             </div>
             <div className="row">
                 <div className="col">
-                    <button onClick={this.handleSubmit}>Change</button>
+                    <button className="btn btn-primary" onClick={this.handleSubmit}>Change</button>
                 </div>
             </div>
         </>);

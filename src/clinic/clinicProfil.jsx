@@ -7,9 +7,19 @@ import ShowHall from "../hall/showHall";
 import OneClicks from "../checkup/OneClicks";
 import CheckupTypes from "../checkup_types/checkupTypes";
 import CheckupTypeShow from "../checkup_types/checkupTypeShow";
+import ClinicInfo from "./clinicInfo";
+import ChangeClinicInfo from "./changeClinicIfno";
 
 class ClinicProfil extends Component {
     state = {main: <div></div>};
+
+    changeClinicInfo = (e,clinicId) => {
+        this.setState({main: <ChangeClinicInfo clinicId={clinicId}/>});
+    };
+
+    showClinicInfo = () => {
+        this.setState({main: <ClinicInfo changeClinicInfo={this.changeClinicInfo}/>});
+    };
 
     showType = (e,typeId,price,name) => {
         this.setState({main: <CheckupTypeShow typeId={typeId} name={name} price={price}/>});
@@ -44,7 +54,7 @@ class ClinicProfil extends Component {
             <div className="container-fluid pt-2">
                 <div id="mainRow" className="row">
                     <Sidebar
-                        links={[{id: 0, text: 'About'}, {id: 1, text: 'Doctors', onClick: this.showDoctors}, {
+                        links={[{id: 0, text: 'About',onClick:this.showClinicInfo}, {id: 1, text: 'Doctors', onClick: this.showDoctors}, {
                             id: 2,
                             text: 'Halls',
                             onClick: this.showHalls

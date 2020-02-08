@@ -3,7 +3,6 @@ import Sidebar from "../generic_components/sidebar";
 import AbsenceRequests from "../doctor/absenceRequests";
 import CheckupRequests from "../checkup/checkupRequests";
 import SearchHall from "../hall/searchHall";
-import {YMaps, Map, GeoObject} from 'react-yandex-maps';
 import OneClickForm from "../checkup/oneClickForm";
 import HallAddForm from "../hall/hallAddForm";
 import DoctorAddForm from "../doctor/doctorAddForm";
@@ -12,30 +11,17 @@ import AddCheckupType from "../checkup/addCheckupType";
 class AdminClinicProfil extends Component {
 
     state = {
+        x: "",
+        y: "",
         main: <div>
-            <div id="map"></div>
-            <YMaps>
-                <div>
-                    My awesome application with maps!
-                    <Map state={{center: [45.75, 25.57], zoom: 9}}>
-                        <GeoObject
-                            geometry={{
-                                type: 'Point',
-                                coordinates: [45.75, 25.57],
-                            }}
 
-                            properties={{
-                                iconContent: 'Lokacija',
-                                hintContent: 'Lokacija',
-                            }}
-
-                        />
-                    </Map>
-
-                </div>
-            </YMaps>
         </div>
     };
+
+    componentDidMount() {
+        this.setState({x:45.29});
+        this.setState({y:19.83});
+    }
 
     changeToAddCheckupType = () => {
         this.setState({main: <AddCheckupType />});
@@ -96,6 +82,7 @@ class AdminClinicProfil extends Component {
 
                     <div className="col">{this.state.main}</div>
                 </div>
+
             </div>
         );
     }

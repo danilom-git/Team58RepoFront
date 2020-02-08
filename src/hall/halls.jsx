@@ -51,7 +51,7 @@ class Halls extends Component{
                 <td>{hall.id}</td>
                 <td>{hall.name}</td>
                 <td>{hall.number}</td>
-                <td><button onClick={(e) => this.handleDelete(e,hall.id)} type="button" className="btn btn-light">Delete</button></td>
+                <td><button onClick={(e) => this.handleDelete(e,hall.id)} type="button" className="btn btn-primary">Delete</button></td>
             </tr>
         ));
         return (
