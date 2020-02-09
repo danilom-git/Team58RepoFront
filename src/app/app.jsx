@@ -81,7 +81,7 @@ class App extends Component {
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')},
             data: passDto
         }).then((res)=>{
-            console.log(passDto);
+            //console.log(passDto);
             this.handleModalCloseRequest();
        });
     };
@@ -102,7 +102,7 @@ class App extends Component {
             });
         }
 
-        console.log(userType,token);
+        //console.log(userType,token);
 
         this.setState({ userType: userType });
     };

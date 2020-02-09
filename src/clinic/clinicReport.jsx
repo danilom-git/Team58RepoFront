@@ -71,7 +71,7 @@ class ClinicReport extends Component {
                     { x: new Date("2018-03-29"), y: 88.15}
                 ]
             }]
-        }
+        };
 
         return (<>
             <CanvasJSChart options = {options}
