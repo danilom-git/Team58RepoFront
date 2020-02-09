@@ -254,15 +254,15 @@ class ClinicReport extends Component {
                 <div className="col">
                     <div className="row">
                         <div className="col">
-                            Filter by:
+                            <h4>Filter by:</h4>
                         </div>
                     </div>
                     <div className="row">
-                        <button className="btn btn-primary mr-2" onClick={this.filterDay}>Day</button>
+                        <button className="btn btn-primary mr-2 ml-2" onClick={this.filterDay}>Day</button>
                         <button className="btn btn-primary mr-2" onClick={this.filterMonth}>Month</button>
                         <button className="btn btn-primary" onClick={this.filterYear}>Year</button>
                     </div>
-                    <div className="row">
+                    <div className="row mt-2">
                     {this.state.rend && this.chart()}
                     </div>
                 </div>
