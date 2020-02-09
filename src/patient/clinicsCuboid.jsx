@@ -394,9 +394,9 @@ class ClinicsCuboid extends Component {
                             :
                                 <>
                                     <h5 className='text-primary mb-0'><b>Request a Checkup</b></h5>
-                                    <h7 className='text-primary ml-2 mt-0'>{this.state.chkTypeSelectedName}</h7><br/>
-                                    <h7 className='text-primary ml-2 mt-0'>{this.state.doctorSelectedName}</h7><br/>
-                                    <h7 className='text-primary ml-2 mt-0 mb-2'>{this.state.chkDateSelected}</h7>
+                                    <h6 className='text-primary ml-2 my-0 p-0'>{this.state.chkTypeSelectedName}</h6>
+                                    <h6 className='text-primary ml-2 my-0 p-0'>{this.state.doctorSelectedName}</h6>
+                                    <h6 className='text-primary ml-2 mt-0 mb-2 p-0'>{this.state.chkDateSelected}</h6>
                                 </>
                         }
                     </div>
