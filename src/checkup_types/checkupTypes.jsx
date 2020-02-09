@@ -46,6 +46,7 @@ class CheckupTypes extends Component {
             if (res.data)
                 this.loadTypes();
         });
+        e.stopPropagation();
     };
 
 
