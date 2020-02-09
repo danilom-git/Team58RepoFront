@@ -34,6 +34,7 @@ class App extends Component {
     usrDoctor = 'doctor';
     usrClinicAdmin = 'clinicAdmin';
 
+
     getTitle = (userType) => {
         switch (userType) {
             case this.usrPatient: return 'Patient';
@@ -60,7 +61,11 @@ class App extends Component {
         let userType = localStorage.getItem('userType');
         if (userType)
             this.setState({ userType: userType });
+
+
     }
+
+
 
     changeToClinic = () => {
         this.setState({profil: <ClinicProfil />});
