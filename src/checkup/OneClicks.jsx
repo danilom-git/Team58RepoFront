@@ -53,7 +53,6 @@ class OneClicks extends Component{
                 <td>{click.startTime}</td>
                 <td>{click.duration}</td>
                 <td>{click.price}</td>
-                <td><button className="btn btn-light">Schedule</button></td>
             </tr>
         ));
 
@@ -70,7 +69,6 @@ class OneClicks extends Component{
                     <th scope="col">Start time</th>
                     <th scope="col">Duration</th>
                     <th scope="col">Price</th>
-                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>

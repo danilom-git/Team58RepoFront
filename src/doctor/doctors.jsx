@@ -74,7 +74,6 @@ class Doctors extends Component {
   render() {
     const doctors = this.state.doctors.map(doctor => (
       <tr data-naziv="trDoctor" onClick={(e) => this.props.showDoctor(e,doctor)} key={doctor.id}>
-          <td>{doctor.id}</td>
           <td>{doctor.name}</td>
           <td>{doctor.lastName}</td>
           <td>{doctor.workingTime}</td>
@@ -87,7 +86,6 @@ class Doctors extends Component {
          <table className="table">
              <thead>
                 <tr>
-                    <th scope="col">id</th>
                     <th scope="col">Name</th>
                     <th scope="col">Last name</th>
                     <th scope="col">Work hours</th>

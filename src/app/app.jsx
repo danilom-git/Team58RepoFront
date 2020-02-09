@@ -90,15 +90,17 @@ class App extends Component {
         localStorage.setItem('token', token);
         localStorage.setItem('userType', userType);
 
-        Axios({
-            method:'get',
-            url: 'http://localhost:8080/auth/getUser/token:'+token+'/type:'+userType,
-            headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')},
-        }).then(res => {
-            this.setState({userId:res.data.id});
-            if(!res.data.firstPasswordChanged)
-                this.showModal();
-        });
+        if(userType !== 'patient') {
+            Axios({
+                method: 'get',
+                url: 'http://localhost:8080/auth/getUser/token:' + token + '/type:' + userType,
+                headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')},
+            }).then(res => {
+                this.setState({userId: res.data.id});
+                if (!res.data.firstPasswordChanged)
+                    this.showModal();
+            });
+        }
 
         console.log(userType,token);
 

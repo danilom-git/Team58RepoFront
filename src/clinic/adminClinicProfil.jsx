@@ -8,6 +8,7 @@ import HallAddForm from "../hall/hallAddForm";
 import DoctorAddForm from "../doctor/doctorAddForm";
 import AddCheckupType from "../checkup/addCheckupType";
 import ClinicAdminInfo from "./clinicAdminInfo";
+import ClinicReport from "./clinicReport";
 
 class AdminClinicProfil extends Component {
 
@@ -24,6 +25,10 @@ class AdminClinicProfil extends Component {
 
     changeToClinicAdminInfo= () => {
         this.setState({main: <ClinicAdminInfo />});
+    };
+
+    changeToClinicReport= () => {
+        this.setState({main: <ClinicReport />});
     };
 
     changeToAddCheckupType = () => {
@@ -64,7 +69,7 @@ class AdminClinicProfil extends Component {
                         id: 2,
                         text: "Clinic profile",
                         onClick: this.props.changeToClinic
-                    }, {id: 3, text: "Clinic report"}, {
+                    }, {id: 3, text: "Clinic report",onClick:this.changeToClinicReport}, {
                         id: 4,
                         text: "Absence requests",
                         onClick: this.changeToRequests

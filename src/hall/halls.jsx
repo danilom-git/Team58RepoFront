@@ -48,7 +48,6 @@ class Halls extends Component{
     render() {
         const halls = this.state.halls.map(hall => (
             <tr onClick={(e) => this.props.showHall(e,hall)} key={hall.id}>
-                <td>{hall.id}</td>
                 <td>{hall.name}</td>
                 <td>{hall.number}</td>
                 <td><button onClick={(e) => this.handleDelete(e,hall.id)} type="button" className="btn btn-primary">Delete</button></td>
@@ -59,7 +58,6 @@ class Halls extends Component{
             <table className="table">
                 <thead>
                 <tr>
-                    <th scope="col">id</th>
                     <th scope="col">Name</th>
                     <th scope="col">Number</th>
                 </tr>
