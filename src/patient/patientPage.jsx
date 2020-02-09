@@ -77,10 +77,10 @@ class PatientPage extends Component {
                             {id: 4, text: 'Checkup History', onClick: this.openCheckupsCuboid},
                             {id: 5, text: 'Profile', onClick: this.openProfileCuboid}
                             ]}/>
-                    <div className='col'>
+                    <div className='col-10 pr-2 pr-4'>
                         {
                             this.state.cuboid === this.clinicsCuboid ?
-                                <ClinicsCuboid openHomeCuboid={this.openHomeCuboid} />
+                                <ClinicsCuboid user={this.state.user} openHomeCuboid={this.openHomeCuboid} />
                             : this.state.cuboid === this.profileCuboid ?
                                 <ProfileCuboid user={this.state.user} openUpdateInfoCuboid={this.openUpdateInfoCuboid}/>
                             : this.state.cuboid === this.checkupsCuboid ?

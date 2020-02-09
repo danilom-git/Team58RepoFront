@@ -10,7 +10,8 @@ class ClinicsCuboid extends Component {
         super(props);
 
         this.state = {
-            chkTypeSelected: this.chkTypeDefaultId,
+            chkTypeSelectedId: this.chkTypeDefaultId,
+            chkTypeSelectedName: '',
             chkTypeAll: [],
 
             chkDateSelected: this.chkDateDefault,
@@ -20,7 +21,8 @@ class ClinicsCuboid extends Component {
             clinicHeaders: [],
             clinicAll: [],
 
-            clinicSelected: '',
+            clinicSelectedId: '',
+            clinicSelectedName: '',
             doctorHeaders: [],
             doctorAll: [],
 
@@ -30,7 +32,8 @@ class ClinicsCuboid extends Component {
             oneClickAll: [],
             ocSortedBy: {key: '', order: ''},
 
-            doctorSelected: '',
+            doctorSelectedId: '',
+            doctorSelectedName: '',
 
             startTime: this.startTimeDefault,
             endTime: this.endTimeDefault
@@ -160,7 +163,7 @@ class ClinicsCuboid extends Component {
         if (date !== this.chkDateDefault)
             ending += '/date:' + date;
 
-        console.log('inside oneClickEnding: ' + clinic + '\t' + checkupType + '\t' + date + '\n' + ending);
+        // console.log('inside oneClickEnding: ' + clinic + '\t' + checkupType + '\t' + date + '\n' + ending);
         return ending;
     };
 
@@ -229,15 +232,21 @@ class ClinicsCuboid extends Component {
 
     onCheckupTypeChange = (e) => {
         let selectedChkType = e.target.value;
-        this.setState( {chkTypeSelected: selectedChkType});
+        this.setState( {chkTypeSelectedId: selectedChkType});
         // console.log('selected checkup type: ' + selectedChkType);
+        for (let checkupType of this.state.chkTypeAll) {
+            if (checkupType.id.toString() === selectedChkType.toString()) {
+                this.setState({ chkTypeSelectedName: checkupType.text });
+                break;
+            }
+        }
 
-        this.loadOneClicks(this.oneClickEnding(this.state.clinicSelected, selectedChkType, this.state.chkDateSelected));
+        this.loadOneClicks(this.oneClickEnding(this.state.clinicSelectedId, selectedChkType, this.state.chkDateSelected));
 
         if (this.state.displayedElement === this.elements.clinics)
             this.loadClinics(this.clinicEnding(selectedChkType, this.state.chkDateSelected));
         else if (this.state.displayedElement === this.elements.doctors)
-            this.loadDoctors(this.doctorEnding(this.state.clinicSelected, selectedChkType, this.state.chkDateSelected));
+            this.loadDoctors(this.doctorEnding(this.state.clinicSelectedId, selectedChkType, this.state.chkDateSelected));
     };
 
     onDateChange = (e) => {
@@ -245,12 +254,12 @@ class ClinicsCuboid extends Component {
         this.setState({ chkDateSelected: selectedDate });
         // console.log(selectedDate);
 
-        this.loadOneClicks(this.oneClickEnding(this.state.clinicSelected, this.state.chkTypeSelected, selectedDate));
+        this.loadOneClicks(this.oneClickEnding(this.state.clinicSelectedId, this.state.chkTypeSelectedId, selectedDate));
 
         if (this.state.displayedElement === this.elements.clinics)
-            this.loadClinics(this.clinicEnding(this.state.chkTypeSelected, selectedDate));
+            this.loadClinics(this.clinicEnding(this.state.chkTypeSelectedId, selectedDate));
         else if (this.state.displayedElement === this.elements.doctors)
-            this.loadDoctors(this.doctorEnding(this.state.clinicSelected, this.state.chkTypeSelected, selectedDate));
+            this.loadDoctors(this.doctorEnding(this.state.clinicSelectedId, this.state.chkTypeSelectedId, selectedDate));
     };
 
     onOneClickHeaderClick = (e) => {
@@ -287,23 +296,35 @@ class ClinicsCuboid extends Component {
 
     displayClinicTable = () => {
         this.setState({ displayedElement: this.elements.clinics });
-        this.setState({ clinicSelected: '' });
-        this.loadClinics(this.clinicEnding(this.state.chkTypeSelected, this.state.chkDateSelected));
-        this.loadOneClicks(this.oneClickEnding('', this.state.chkTypeSelected, this.state.chkDateSelected));
+        this.setState({ clinicSelectedId: '' });
+        this.loadClinics(this.clinicEnding(this.state.chkTypeSelectedId, this.state.chkDateSelected));
+        this.loadOneClicks(this.oneClickEnding('', this.state.chkTypeSelectedId, this.state.chkDateSelected));
     };
 
     displayDoctorTable = (e) => {
-        let selectedClinic = (e && e.target.getAttribute('data-row-id')) || this.state.doctorSelected;
-        this.setState({ displayedElement: this.elements.doctors, clinicSelected: selectedClinic });
-        this.setState({ doctorSelected: '' });
-        this.loadDoctors(this.doctorEnding(selectedClinic, this.state.chkTypeSelected, this.state.chkDateSelected));
-        this.loadOneClicks(this.oneClickEnding(selectedClinic, this.state.chkTypeSelected, this.state.chkDateSelected));
+        let selectedClinic = (e && e.target.getAttribute('data-row-id')) || this.state.doctorSelectedId;
+        for (let clinic of this.state.clinicAll) {
+            if (clinic.rowId.toString() === selectedClinic.toString()) {
+                this.setState({ clinicSelectedName: clinic.name });
+                break;
+            }
+        }
+        this.setState({ displayedElement: this.elements.doctors, clinicSelectedId: selectedClinic });
+        this.setState({ doctorSelectedId: '' });
+        this.loadDoctors(this.doctorEnding(selectedClinic, this.state.chkTypeSelectedId, this.state.chkDateSelected));
+        this.loadOneClicks(this.oneClickEnding(selectedClinic, this.state.chkTypeSelectedId, this.state.chkDateSelected));
     };
 
     displayChkRequest = (e) => {
-        if (this.state.chkDateSelected !== this.chkDateDefault && this.state.chkTypeSelected !== this.chkTypeDefaultId) {
+        if (this.state.chkDateSelected !== this.chkDateDefault && this.state.chkTypeSelectedId !== this.chkTypeDefaultId) {
             let selectedDoctor = e.target.getAttribute('data-row-id');
-            this.setState({ displayedElement: this.elements.chkRequest, doctorSelected: selectedDoctor });
+            for (let doctor of this.state.doctorAll) {
+                if (doctor.rowId.toString() === selectedDoctor.toString()) {
+                    this.setState({ doctorSelectedName: doctor.name + ' ' + doctor.lastName });
+                    break;
+                }
+            }
+            this.setState({ displayedElement: this.elements.chkRequest, doctorSelectedId: selectedDoctor });
         }
     };
 
@@ -344,9 +365,10 @@ class ClinicsCuboid extends Component {
             let checkupRequest = {
                 startDate: startDate,
                 endDate: endDate,
-                clinicId: this.state.clinicSelected,
-                doctorId: this.state.doctorSelected,
-                checkupTypeId: this.state.chkTypeSelected
+                clinicId: this.state.clinicSelectedId,
+                doctorId: this.state.doctorSelectedId,
+                checkupTypeId: this.state.chkTypeSelectedId,
+                patientId: this.props.user && this.props.user.id
             };
             Axios({
                 method: 'post',
@@ -364,17 +386,19 @@ class ClinicsCuboid extends Component {
             <div className='row'> <div className='col'>
                 <div className='row'>
                     <div className='col'>
-                        <h5 className='text-primary'>
-                            {
-                                this.state.displayedElement === this.elements.clinics ?
-                                    'Clinics'
-                                    : this.state.displayedElement === this.elements.doctors ?
-                                    'Doctors of Clinic ' + this.state.clinicSelected
-                                    :
-                                    'Checkup Request for Type ' + this.state.chkTypeSelected + ' by Doctor ' +
-                                    this.state.doctorSelected + ' on ' + this.state.chkDateSelected
-                            }
-                        </h5>
+                        {
+                            this.state.displayedElement === this.elements.clinics ?
+                                <h5 className='text-primary'><b>Clinics</b></h5>
+                            : this.state.displayedElement === this.elements.doctors ?
+                                <h5 className='text-primary'><b>Doctors of {this.state.clinicSelectedName}</b></h5>
+                            :
+                                <>
+                                    <h5 className='text-primary mb-0'><b>Request a Checkup</b></h5>
+                                    <h7 className='text-primary ml-2 mt-0'>{this.state.chkTypeSelectedName}</h7><br/>
+                                    <h7 className='text-primary ml-2 mt-0'>{this.state.doctorSelectedName}</h7><br/>
+                                    <h7 className='text-primary ml-2 mt-0 mb-2'>{this.state.chkDateSelected}</h7>
+                                </>
+                        }
                     </div>
                     <div className='col-1'>
                         {
@@ -392,7 +416,7 @@ class ClinicsCuboid extends Component {
                                 options={this.state.chkTypeAll}
                                 defaultId={this.chkTypeDefaultId}
                                 defaultText={this.chkTypeDefaultText}
-                                selectedId={this.state.chkTypeSelected}
+                                selectedId={this.state.chkTypeSelectedId}
                                 onChange={this.onCheckupTypeChange}
                             />
                         </div>
@@ -454,15 +478,22 @@ class ClinicsCuboid extends Component {
                     </div>
                 </div>
                 {(this.state.displayedElement === this.elements.clinics || this.state.displayedElement === this.elements.doctors) &&
-                    <div className='row'>
-                        <div className='col'>
-                            <Table
-                                headers={this.state.oneClickHeaders}
-                                rows={this.state.oneClickAll}
-                                emptyListMsg={this.oneClickEmptyListMsg}
-                                extraHeaders={this.ocExtraHeaders}
-                                onHeaderClick={this.onOneClickHeaderClick}
-                            />
+                    <div>
+                        <div className='row mt-3'>
+                            <div className='col'>
+                                <h5 className='text-primary font-weight-bold'>One-Click Checkups</h5>
+                            </div>
+                        </div>
+                        <div className='row mt-1'>
+                            <div className='col'>
+                                <Table
+                                    headers={this.state.oneClickHeaders}
+                                    rows={this.state.oneClickAll}
+                                    emptyListMsg={this.oneClickEmptyListMsg}
+                                    extraHeaders={this.ocExtraHeaders}
+                                    onHeaderClick={this.onOneClickHeaderClick}
+                                />
+                            </div>
                         </div>
                     </div>
                 }
