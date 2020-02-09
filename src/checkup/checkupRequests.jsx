@@ -41,7 +41,6 @@ class CheckupRequests extends Component{
     render() {
         let reqs = this.state.requests.map(request => (
             <tr key={request.id}>
-                <td>{request.id}</td>
                 <td>{request.doctorName+ " "+ request.doctorLastName }</td>
                 <td>{request.startDate}</td>
                 <td>{request.endDate}</td>
@@ -53,7 +52,6 @@ class CheckupRequests extends Component{
             <table className="table">
                 <thead>
                 <tr>
-                    <th scope="col">Id</th>
                     <th scope="col">Doctor</th>
                     <th scope="col">Start date</th>
                     <th scope="col">End date</th>

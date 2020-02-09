@@ -40,6 +40,7 @@ class DoctorProfil extends Component {
                 />
                 {this.state.main}
             </div>
+
         </div>
     );
   }

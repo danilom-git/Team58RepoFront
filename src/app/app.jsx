@@ -1,4 +1,5 @@
 import React, {Component,} from 'react';
+import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "../generic_components/navbar";
 import AdminClinicProfil from "../clinic/adminClinicProfil";
@@ -7,6 +8,14 @@ import DoctorProfil from "../doctor/doctorProfil";
 import PatientPage from "../patient/patientPage";
 import LoginPage from "./loginPage";
 import RegistrationPage from "./registrationPage";
+import Modal from "react-modal";
+
+Modal.setAppElement('#root');
+
+const customStyles = {
+    overlay: {zIndex: 10000}
+};
+
 
 class App extends Component {
     constructor(props) {
@@ -14,8 +23,9 @@ class App extends Component {
         this.state = {
             userType: this.usrLoggedOut,
             registering: false,
-            profil: <AdminClinicProfil changeToClinic={this.changeToClinic} />
-
+            profil: <AdminClinicProfil changeToClinic={this.changeToClinic} />,
+            newPassword: "",
+            userId: ""
         };
     }
 
@@ -34,6 +44,18 @@ class App extends Component {
         }
     };
 
+    newPasswordOnChange = (e) =>{
+        this.setState({newPassword:e.target.value});
+    };
+
+    showModal = () => {
+        this.setState({modal: true});
+    };
+
+    handleModalCloseRequest = () => {
+        this.setState({modal: false});
+    };
+
     componentDidMount() {
         let userType = localStorage.getItem('userType');
         if (userType)
@@ -45,9 +67,41 @@ class App extends Component {
         this.setState({title: "Clinic"});
     };
 
+    passwordChange = () =>{
+        let passDto = {
+         oldPassword: "123",
+         newPassword: this.state.newPassword
+        };
+
+        console.log(passDto);
+
+       Axios({
+            method:'put',
+            url:'http://localhost:8080/auth/changePassword',
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')},
+            data: passDto
+        }).then((res)=>{
+            console.log(passDto);
+            this.handleModalCloseRequest();
+       });
+    };
+
     onLogIn = (userType, token) => {
         localStorage.setItem('token', token);
         localStorage.setItem('userType', userType);
+
+        Axios({
+            method:'get',
+            url: 'http://localhost:8080/auth/getUser/token:'+token+'/type:'+userType,
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')},
+        }).then(res => {
+            this.setState({userId:res.data.id});
+            if(!res.data.firstPasswordChanged)
+                this.showModal();
+        });
+
+        console.log(userType,token);
+
         this.setState({ userType: userType });
     };
 
@@ -88,7 +142,37 @@ class App extends Component {
                     :
                         <LoginPage onLogIn={this.onLogIn}/>
                 }
-            </>
+
+                <Modal
+                    className="Modal__Bootstrap modal-dialog"
+                    closeTimeoutMS={150}
+                    isOpen={this.state.modal}
+                    style={customStyles}
+                    onRequestClose={this.handleModalCloseRequest}
+                >
+                    <div className="modal-content" role="dialog">
+                        <div className="modal-header">
+                            <h4 className="modal-title">Change your password</h4>
+                            <button type="button" className="close" onClick={this.handleModalCloseRequest}>
+                                <span aria-hidden="true">&times;</span>
+                                <span className="sr-only">Close</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <p>New password:</p>
+                            <input onChange={this.newPasswordOnChange} type="password"/>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary"
+                                    onClick={this.passwordChange}>Confirm
+                            </button>
+                            <button type="button" className="btn btn-secondary"
+                                    onClick={this.handleModalCloseRequest}>Close
+                            </button>
+                        </div>
+                    </div>
+                </Modal>
+             </>
         );
     }
 }
