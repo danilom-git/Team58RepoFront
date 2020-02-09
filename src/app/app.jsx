@@ -23,7 +23,7 @@ class App extends Component {
         this.state = {
             userType: this.usrLoggedOut,
             registering: false,
-            profil: <AdminClinicProfil changeToClinic={this.changeToClinic} />,
+            profil: <AdminClinicProfil  changeToClinic={this.changeToClinic} />,
             newPassword: "",
             userId: ""
         };
@@ -34,6 +34,9 @@ class App extends Component {
     usrDoctor = 'doctor';
     usrClinicAdmin = 'clinicAdmin';
 
+    changeToClinicAdmin = () => {
+        this.setState({profil: <AdminClinicProfil  changeToClinic={this.changeToClinic} />});
+    };
 
     getTitle = (userType) => {
         switch (userType) {
@@ -68,7 +71,7 @@ class App extends Component {
 
 
     changeToClinic = () => {
-        this.setState({profil: <ClinicProfil />});
+        this.setState({profil: <ClinicProfil changeToAdmin={this.changeToClinicAdmin} />});
         this.setState({title: "Clinic"});
     };
 
@@ -95,7 +98,7 @@ class App extends Component {
         localStorage.setItem('token', token);
         localStorage.setItem('userType', userType);
 
-        if(userType !== 'patient') {
+        if(userType != 'patient') {
             Axios({
                 method: 'get',
                 url: 'http://localhost:8080/auth/getUser/token:' + token + '/type:' + userType,
