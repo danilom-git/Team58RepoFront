@@ -8,6 +8,7 @@ class RegistrationPage extends Component {
         this.state = {
             email: '',
             password: '',
+            confirmPassword: '',
             name: '',
             lastName: '',
             healthInsuranceId: '',
@@ -22,9 +23,21 @@ class RegistrationPage extends Component {
         e.preventDefault();
         if (this.state.email === '' || this.state.password === '' || this.state.name === '' ||
             this.state.lastName === '' || this.state.healthInsuranceId === '' || this.state.country === '' ||
-            this.state.city === '' || this.state.address === '' || this.state.phoneNumber === '')
+            this.state.city === '' || this.state.address === '' || this.state.phoneNumber === '' ||
+            this.state.confirmPassword === '' || this.state.password !== this.state.confirmPassword)
             return;
-        Axios.post('http://localhost:8080/api/registration/new', this.state)
+
+        Axios.post('http://localhost:8080/api/registration/new', {
+            email: this.state.email,
+            password: this.state.password,
+            name: this.state.name,
+            lastName: this.state.lastName,
+            healthInsuranceId: this.state.healthInsuranceId,
+            country: this.state.country,
+            city: this.state.city,
+            address: this.state.address,
+            phoneNumber: this.state.phoneNumber
+        })
             .then(result => this.props.onRegistration && this.props.onRegistration(result.data));
     };
 
@@ -48,8 +61,17 @@ class RegistrationPage extends Component {
                                 <div className='col'>
                                     <div className='form-group'>
                                         <label htmlFor='txtPassword'>Password:</label>
-                                        <input type='txtPassword' className='form-control' id='txtEmail'
+                                        <input type='password' className='form-control' id='txtPassword'
                                                onChange={(e) => this.setState( { password: e.target.value })}/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='row'>
+                                <div className='col'>
+                                    <div className='form-group'>
+                                        <label htmlFor='txtConfirmPassword'>Confirm Password:</label>
+                                        <input type='password' className='form-control' id='txtConfirmPassword'
+                                               onChange={(e) => this.setState( { confirmPassword: e.target.value })}/>
                                     </div>
                                 </div>
                             </div>

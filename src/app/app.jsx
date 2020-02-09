@@ -25,7 +25,8 @@ class App extends Component {
             registering: false,
             profil: <AdminClinicProfil changeToClinic={this.changeToClinic} />,
             newPassword: "",
-            userId: ""
+            userId: "",
+            modal: false
         };
     }
 
@@ -95,7 +96,7 @@ class App extends Component {
         localStorage.setItem('token', token);
         localStorage.setItem('userType', userType);
 
-        if(userType !== 'patient') {
+        if(userType !== this.usrPatient) {
             Axios({
                 method: 'get',
                 url: 'http://localhost:8080/auth/getUser/token:' + token + '/type:' + userType,

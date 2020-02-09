@@ -5,12 +5,13 @@ class ProfileCuboid extends Component {
         return (
             <div className='row'>
                 <div className='col'>
-                    <div className='row m-2'>
+                    <div className='row m-2 justify-content-end'>
                         <div className='col'>
-                            <h5 className='text-primary'>User Information</h5>
+                            <h5 className='text-primary float-left'>User Information</h5>
                         </div>
                         <div className='col'>
                             <button className='btn btn-primary float-right' onClick={this.props.openUpdateInfoCuboid}>Edit</button>
+                            <button className='btn btn-primary float-right mx-2' onClick={this.props.openPasswordChangeCuboid}>Change Password</button>
                         </div>
                     </div>
                     <div className='row border border-primary rounded m-2 p-0'>
