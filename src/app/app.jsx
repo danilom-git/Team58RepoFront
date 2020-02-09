@@ -160,7 +160,7 @@ class App extends Component {
                         </div>
                         <div className="modal-body">
                             <p>New password:</p>
-                            <input onChange={this.newPasswordOnChange} type="text"/>
+                            <input onChange={this.newPasswordOnChange} type="password"/>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary"
