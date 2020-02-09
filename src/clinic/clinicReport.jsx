@@ -16,7 +16,41 @@ class ClinicReport extends Component {
         clinicReport: {},
         doctors: [],
         dataPoints: [],
-        rend: false
+        rend: false,
+        types:[],
+        profit:"",
+        profitStartDate: "",
+        profitEndDate: ""
+    };
+
+    onChangeStartDate = (e) =>{
+        this.setState({profitStartDate:new Date(e.target.value)});
+    };
+
+    onChangeEndDate = (e) =>{
+        this.setState({profitEndDate:new Date(e.target.value)});
+    };
+
+    handleProfit = () =>{
+        let profit = 0;
+        if(this.state.profitStartDate != "" && this.state.profitEndDate != "") {
+            if (this.state.profitEndDate.getTime() > this.state.profitStartDate.getTime()){
+                for(let check of this.state.clinicReport.checkups)
+                {
+                    let end = new Date(check.endDate);
+                    let start = new Date(check.startDate);
+                    if((end.getTime() < this.state.profitEndDate.getTime()) && (start.getTime() > this.state.profitStartDate.getTime()))
+                    {
+                        for(let t of this.state.types)
+                        {
+                            if(t.id == check.checkupTypeId)
+                                profit = profit+  t.price;
+                        }
+                    }
+                }
+            }
+        }
+        this.setState({profit:profit});
     };
 
     chart = () => {
@@ -210,11 +244,21 @@ class ClinicReport extends Component {
                 this.setState({doctors:res.data.doctors});
                 this.filterDay("",res.data.checkups);
                 console.log(res.data);
+
+                Axios({
+                    method: 'get',
+                    url: 'http://localhost:8080/api/clinicCheckupTypes/clinic:'+this.state.clinicId,
+                    headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
+                }).then((res)=>{
+                    this.setState({types:res.data});
+                });
+
             });
         });
     }
 
     render() {
+        console.log(this.state);
         const doctors=  this.state.doctors.map(doctor => (
             <tr key={doctor.id}>
                 <td>{doctor.name + " " + doctor.lastName}</td>
@@ -251,17 +295,6 @@ class ClinicReport extends Component {
                             </table>
                         </div>
                     </div>
-                    <div className="row">
-                        Show profit in time:
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <DatePicker />
-                        </div>
-                        <div className="col">
-                            <DatePicker />
-                        </div>
-                    </div>
                 </div>
                 <div className="col">
                     <div className="row">
@@ -277,9 +310,26 @@ class ClinicReport extends Component {
                     <div className="row mt-2">
                     {this.state.rend && this.chart()}
                     </div>
+                    <div className="row">
+                        <div className="col">
+                            <div>Start time</div>
+                            <input type="date" className="form-control mt-2" onChange={this.onChangeStartDate}/>
+                        </div>
+                        <div className="col">
+                            <div>End time</div>
+                            <input type="date" className="form-control mt-2" onChange={this.onChangeEndDate}/>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                            <button onClick={this.handleProfit} className="btn btn-primary mt-2">Show profit</button>
+                        </div>
+                        <div className="col">
+                            <label className="form-control mt-2">Profit: {this.state.profit}</label>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </>);
     }
 
