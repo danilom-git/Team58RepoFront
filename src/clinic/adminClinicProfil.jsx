@@ -19,8 +19,6 @@ class AdminClinicProfil extends Component {
     };
 
     componentDidMount() {
-        this.setState({x:45.29});
-        this.setState({y:19.83});
     }
 
     changeToClinicAdminInfo= () => {

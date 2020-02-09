@@ -23,7 +23,7 @@ class App extends Component {
         this.state = {
             userType: this.usrLoggedOut,
             registering: false,
-            profil: <AdminClinicProfil changeToClinic={this.changeToClinic} />,
+            profil: <AdminClinicProfil  changeToClinic={this.changeToClinic} />,
             newPassword: "",
             userId: "",
             modal: false
@@ -35,6 +35,9 @@ class App extends Component {
     usrDoctor = 'doctor';
     usrClinicAdmin = 'clinicAdmin';
 
+    changeToClinicAdmin = () => {
+        this.setState({profil: <AdminClinicProfil  changeToClinic={this.changeToClinic} />});
+    };
 
     getTitle = (userType) => {
         switch (userType) {
@@ -69,7 +72,7 @@ class App extends Component {
 
 
     changeToClinic = () => {
-        this.setState({profil: <ClinicProfil />});
+        this.setState({profil: <ClinicProfil changeToAdmin={this.changeToClinicAdmin} />});
         this.setState({title: "Clinic"});
     };
 
