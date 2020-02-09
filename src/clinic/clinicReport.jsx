@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import CanvasJSReact from "../canvasjs.react";
+import DatePicker from "../generic_components/datepicker";
 
 let CanvasJS = CanvasJSReact.CanvasJS;
 let CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -248,6 +249,17 @@ class ClinicReport extends Component {
                                     {doctors}
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                    <div className="row">
+                        Show profit in time:
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                            <DatePicker />
+                        </div>
+                        <div className="col">
+                            <DatePicker />
                         </div>
                     </div>
                 </div>
